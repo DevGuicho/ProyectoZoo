@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -161,5 +162,82 @@ public class Sql extends Conexion{
             return habitats;
         }
     }
+    public static ArrayList<RegistroONG> verActividades() {
+        ArrayList<RegistroONG> actividades = new ArrayList<>();
+        RegistroONG r = new RegistroONG();
+        try {
+            sql = "SELECT * FROM Registro_ONG";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                r = new RegistroONG();
+                r.setActividadId(rs.getInt(1));
+                r.setAprobacion(rs.getString(2));
+                r.setOngNombre(rs.getString(3));
+                r.setNombreActividad(rs.getString(4));
+                r.setDescripcionActividad(rs.getString(5));
+                r.setFechaSolicitud(rs.getDate(6));
+                r.setHoraApertura(rs.getString(7));
+                r.setHoraCierre(rs.getString(8));
+                r.setHabitatId(rs.getInt(9));
+           
+                actividades.add(r);
+            }
+
+            return actividades;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            System.out.println(e);
+            return actividades;
+        }
+    }
     
+    public static boolean registrarActividad(RegistroONG rong,Habitat ht) {
+        long d = rong.getFechaSolicitud().getTime();
+        java.sql.Date FechaSolicitud = new java.sql.Date(d);
+        
+        if(verActividades().isEmpty()){
+                rong.setActividadId(1);
+        }else{
+              rong.setActividadId((verActividades().get(verActividades().size()-1).getActividadId())+1);
+        }
+        
+        try {
+            //SE REALIZA LA INSERCION DE LOS DIFERENTES DATOS EN LA TABLA REGISTRO_ONG
+            sql = "INSERT INTO Registro_ONG (REG_ActividadID,REG_Aprobacion,REG_Ong_nombre,REG_Nombre_actividad,REG_Desc_actividad,REG_Fecha_solicitud,REG_Hora_apertura,REG_Hora_cierre,REG_HabitatID) VALUES (?,?,?,?,?,?,?,?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, rong.getActividadId());
+            ps.setString(2, rong.getAprobacion());
+            ps.setString(3, rong.getOngNombre());
+            ps.setString(4, rong.getNombreActividad());
+            ps.setString(5, rong.getDescripcionActividad());
+            ps.setDate(6, FechaSolicitud);
+            ps.setString(7, rong.getHoraApertura());
+            ps.setString(8, rong.getHoraCierre());
+            ps.setInt(9, rong.getHabitatId()); 
+            ps.execute();
+            
+            
+            //REALIZANDO EL ALTA DE LOS DIAS DE LA ACTIVIDAD Y EL ID DE LA ACTIVIDAD
+            //EN LA TABLA ONG_REALIZA
+            sql = "INSERT INTO ONG_Realiza (REA_ActividadID,REA_Dia) VALUES (?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            
+            for (int i = 0; i < ht.getDiasActividad().size(); i++) {
+                ps.setInt(1, rong.getActividadId());
+                ps.setString(2, ht.getDiasActividad().get(i));
+                ps.execute();
+            }
+            
+            return true;
+        } catch (SQLException e) {
+               System.out.println(e);
+            return false;
+        }
+    }
 }

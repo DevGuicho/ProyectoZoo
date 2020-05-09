@@ -7,6 +7,7 @@ package modelo;
 
 import java.util.Date;
 
+
 /**
  *
  * @author beatl
@@ -19,8 +20,8 @@ public class RegistroONG {
     private String nombreActividad;
     private String descripcionActividad;
     private Date fechaSolicitud;
-    private Date horaApertura;
-    private Date horaCierre;
+    private String horaApertura;
+    private String horaCierre;
     
     public RegistroONG(){
         
@@ -78,23 +79,23 @@ public class RegistroONG {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(Date  fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public Date getHoraApertura() {
+    public String getHoraApertura() {
         return horaApertura;
     }
 
-    public void setHoraApertura(Date horaApertura) {
+    public void setHoraApertura(String horaApertura) {
         this.horaApertura = horaApertura;
     }
 
-    public Date getHoraCierre() {
+    public String getHoraCierre() {
         return horaCierre;
     }
 
-    public void setHoraCierre(Date horaCierre) {
+    public void setHoraCierre(String horaCierre) {
         this.horaCierre = horaCierre;
     }
 
