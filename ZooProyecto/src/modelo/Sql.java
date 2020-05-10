@@ -48,6 +48,26 @@ public class Sql extends Conexion{
         }
     }
     
+    public static int verUltAnimal(){
+        
+        try {
+            sql = "SELECT MAX(ANI_AnimalID) as Id FROM Animal ";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            int i = 0;
+            while(rs.next()){
+                i = rs.getInt(1);
+            }
+ 
+            return i;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            System.out.println(e);
+            System.out.println("Error al obtener ID");
+            return 0;
+        }
+    }
     public static boolean registrarAnimal(Animal ani){
          try {
             
@@ -65,11 +85,49 @@ public class Sql extends Conexion{
             ps.setFloat(9, ani.getPeso());
             ps.setString(10, ani.getObservaciones());
             ps.execute();
-            if(ani.getProcedencia() == 1){
-                sql = "INSERT INTO Procedencia_Local () values";
-            }
+            ps.close();
+            con.close();
+            ani.setId(verUltAnimal());
+             switch (ani.getProcedencia()) {
+                 case 1:
+                     sql = "INSERT INTO Procedencia_Local (LOC_AnimalID, LOC_VeterinarioID, LOC_Fecha_nacimiento, LOC_Peso_nacimiento) values (?,?,?,?)";
+                     con = getConnection();
+                     ps = con.prepareStatement(sql);
+                     ps.setInt(1, ani.getId());
+                     ps.setInt(2, ani.getIdVeterinario());
+                     ps.setDate(3, ani.getFechaNacimiento());
+                     ps.setFloat(4, ani.getPeso());
+                     ps.execute();
+                    
+                     break;
+                 case 2:
+                     sql = "INSERT INTO Procedencia_Rescate (RES_AnimalID, RES_Edad_rescate, RES_Condicion, RES_Fecha_rescate) values (?,?,?,?)";
+                     con = getConnection();
+                     ps = con.prepareStatement(sql);
+                     ps.setInt(1, ani.getId());
+                     ps.setInt(2, ani.getEdad());
+                     ps.setString(3, ani.getCondicion());
+                     ps.setDate(4, ani.getFechaRescate());
+                     ps.execute();
+                     
+                     break;
+                 case 3:
+                     sql = "INSERT INTO Procedencia_Foranea (FOR_AnimalID,FOR_Nom_zoo,FOR_Fecha_traslado) values (?,?,?)";
+                     con = getConnection();
+                     ps = con.prepareStatement(sql);
+                     ps.setInt(1, ani.getId());
+                     ps.setString(2, ani.getNombreZoologico());
+                     ps.setDate(3,ani.getFechaTraslado());
+                     ps.execute();
+                     
+                     break;
+                 default:
+                     break;
+             }
            
             
+            ps.close();
+            con.close();
             return true;
         } catch (Exception e) {
                System.out.println(e);

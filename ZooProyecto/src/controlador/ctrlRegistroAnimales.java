@@ -223,7 +223,10 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener{
     private void guardar(){
         h = (Habitat)ra.cmbHabitat.getSelectedItem();
         c = (Cuidador) ra.cmbCuidador.getSelectedItem();
-        v = (Veterinario) ra.cmbVeterinarioNacimeinto.getSelectedItem();
+        if(ra.cmbVeterinarioNacimeinto.getSelectedIndex()>0){
+            v = (Veterinario) ra.cmbVeterinarioNacimeinto.getSelectedItem();
+        }
+        
         ani.setNombre(ra.txtNombre.getText());
         ani.setPeso(Float.parseFloat(ra.txtPeso.getText()));
         ani.setEdad(Integer.parseInt(ra.txtEdad.getText()));
@@ -254,6 +257,7 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener{
         
         if(Sql.registrarAnimal(ani)){
             JOptionPane.showMessageDialog(null, "Registro Exitoso");
+            limpiar();
         }else{
             JOptionPane.showMessageDialog(null, "Registro Fallido");
         }

@@ -134,8 +134,8 @@ public class Animal {
         this.nombreZoologico = nombreZoologico;
     }
 
-    public Date getFechaTraslado() {
-        return fechaTraslado;
+    public java.sql.Date getFechaTraslado() {
+        return new java.sql.Date(((Date) fechaTraslado).getTime());
     }
 
     public void setFechaTraslado(Date fechaTraslado) {
@@ -158,16 +158,16 @@ public class Animal {
         this.condicion = condicion;
     }
 
-    public Date getFechaRescate() {
-        return fechaRescate;
+    public java.sql.Date getFechaRescate() {
+        return new java.sql.Date(((Date) fechaRescate).getTime());
     }
 
     public void setFechaRescate(Date fechaRescate) {
         this.fechaRescate = fechaRescate;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public java.sql.Date getFechaNacimiento() {
+        return new java.sql.Date(((Date) fechaNacimiento).getTime());
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
