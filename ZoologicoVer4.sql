@@ -10,9 +10,10 @@ FLUSH PRIVILEGES;
 SET GLOBAL time_zone = '+8:00';
 
 -- SCRIPT PARA CREAR LA BBDD
+drop database Zoologico;
 create database Zoologico;
 use Zoologico;
-drop database Zoologico;
+
 
 CREATE TABLE Veterinario (
     VET_VeterinarioID INT NOT NULL AUTO_INCREMENT,
@@ -87,7 +88,7 @@ CREATE TABLE Animal (
     ANI_Edad INT NOT NULL,
     ANI_Peso FLOAT NOT NULL,
     ANI_Observaciones VARCHAR(50) NOT NULL,
-    CONSTRAINT ANI_sexo CHECK (ANI_sexo IN ('F' , 'M')),
+    CONSTRAINT ANI_sexo CHECK (ANI_sexo IN ('H' , 'M')),
     CONSTRAINT pk_ANIMAL PRIMARY KEY (ANI_AnimalID),
     CONSTRAINT fk_ANIMAL_CUIDADOR FOREIGN KEY (ANI_CuidadorID)
         REFERENCES Cuidador (CUI_CuidadorID)
@@ -183,3 +184,9 @@ insert into clima values (1,'Arido',0,5,40,45),
 (3,'Templado',10,15,20,25),
 (4,'Tropical',50,60,30,35);
 
+insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50);
+
+insert into Habitat values (1,4,1,'leones');
+
+insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167');
+select max(ANI_AnimalID) as id from Animal;
