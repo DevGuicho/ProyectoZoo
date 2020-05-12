@@ -60,17 +60,10 @@ public class Reloj implements Runnable{
         
         if(ampm.equals("PM")){
             int h = calendario.get(Calendar.HOUR_OF_DAY)-12;
-            if(h ==0){
-                h=12;
-            }
-            hora = h>9?""+h:"0"+h;
-        }else{
-            if(hora.equals("00")){
-                hora ="12";
-            }else{
-                hora = calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
-            }
             
+            hora = h>9?""+h:"0"+h;
+        }else{        
+            hora = calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);     
         }
         minutos = calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
         segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
