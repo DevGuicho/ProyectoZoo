@@ -87,31 +87,53 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.pnlMainMenu.add(h);
             m.pnlMainMenu.repaint();
             m.pnlMainMenu.revalidate();
-            
-
         } else if (e.getSource() == m.btnRegistroVeterinario) {
+            rv = new RegistroVeterinarios();
+            ctrlRV = new ctrlRegistroVeterinarios(rv);
             setPanel(rv);
         } else if (e.getSource() == m.btnRegistroCuidador) {
+            rc = new RegistroCuidadores();
+            ctrlRC = new ctrlRegistroCuidadores(rc);
             setPanel(rc);
         } else if (e.getSource() == m.btnRegistroAnimales) {
+            rani = new RegistroAnimales();
+            ctrlRAni = new ctrlRegistroAnimales(rani);
             setPanel(rani);
         }else if(e.getSource() == m.btnRegistroActividades){
+            ra = new RegistroActividades();
+            ctrlRA = new ctrlRegistroActividades(ra);
             setPanel(ra);
         }else if(e.getSource() == m.btnReporteVisitaMedica){
+            rvm = new ReporteVisitaMedica();
+            ctrlRVM = new ctrlReporteVisitaMedica(rvm);
             setPanel(rvm);
         }else if(e.getSource() == m.btnReporteHabitat){
+            rh = new ReporteHabitats();
+            ctrlRH = new ctrlReporteHabitats(rh);
             setPanel(rh);
         }else if(e.getSource() == m.btnHistorialVisitas){
+            hv = new HistorialVisitas();
+            ctrlHV = new ctrlHistorialVisitas(hv);
             setPanel(hv);
         }else if(e.getSource() == m.btnHistorialHabitats){
+            hh = new HistorialHabitats();
+            ctrlHH = new ctrlHistorialHabitats(hh);
             setPanel(hh);
         }else if(e.getSource() == m.btnHistorialActividades){
+            ha = new HistorialActividades();
+            ctrlHA = new ctrlHistorialActividades(ha);
             setPanel(ha);
         }else if(e.getSource() == m.btnPersonalAnimales){
+            pa = new PersonalAnimales();
+            ctrlPA = new ctrlPersonalAnimales(pa);
             setPanel(pa);
         }else if(e.getSource() == m.btnPersonalCuidadores){
+            pc = new PersonalCuidadores();
+            ctrlPC = new ctrlPersonalCuidadores(pc);
             setPanel(pc);
         }else if(e.getSource() == m.btnPersonalVeterinarios){
+            pv = new PersonalVeterinarios();
+            ctrlPV = new ctrlPersonalVeterinarios(pv);
             setPanel(pv);
         }
 
@@ -242,6 +264,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
 
         this.h = new Home();
         this.ctrlH = new ctrlHome(h);
+        /*
         this.ha = new HistorialActividades();
         this.hh = new HistorialHabitats();
         this.hv = new HistorialVisitas();
@@ -268,7 +291,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.ctrlPA = new ctrlPersonalAnimales(pa);
         this.ctrlPC = new ctrlPersonalCuidadores(pc);
         this.ctrlPV = new ctrlPersonalVeterinarios(pv);
-        
+        */
 
         this.m.lblBuscar.addMouseListener(this);
         
