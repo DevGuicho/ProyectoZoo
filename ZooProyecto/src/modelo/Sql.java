@@ -298,4 +298,8 @@ public class Sql extends Conexion{
             return false;
         }
     }
+    
+    public static boolean revisarVisitaMedica(){
+        return true;
+    }
 }
