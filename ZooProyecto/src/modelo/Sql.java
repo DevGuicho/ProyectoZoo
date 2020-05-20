@@ -300,7 +300,7 @@ public class Sql extends Conexion{
   }
     
     
-public static boolean registrarVisitaMedica(Veterinario vet){
+public static boolean registrarVisitaMedica(){
 return true; 
 }  
 }
