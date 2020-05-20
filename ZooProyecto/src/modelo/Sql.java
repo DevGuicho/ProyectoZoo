@@ -297,5 +297,10 @@ public class Sql extends Conexion{
                System.out.println(e);
             return false;
         }
-    }
+  }
+    
+    
+public static boolean registrarVisitaMedica(Veterinario vet){
+return true; 
+}  
 }
