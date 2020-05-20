@@ -302,4 +302,7 @@ public class Sql extends Conexion{
     public static boolean revisarVisitaMedica(){
         return true;
     }
+    public static boolean historial(){
+        return true;
+    }
 }
