@@ -176,6 +176,33 @@ CREATE TABLE Revisa_Animal (
         REFERENCES Animal (ANI_AnimalID)
 );
 
+-- ///////////////////////////////////////////////////
+-- VISTAS DE LA BASE DE DATOS ---
+
+create view ultimaVisita as 
+select max(REV_id) as IDRevision, REV_Fecha_Revision VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre  from Revisa_Animal
+inner join Veterinario
+on Veterinario.VET_VeterinarioID = Revisa_Animal.REV_VeterinarioID
+inner join Animal
+on Animal.ANI_AnimalID = Revisa_Animal.REV_AnimalID;
+
+select * from ultimaVisita;
+-- //////////////////////////////////////////////////////
+
+-- //////////////////////////////////////////////////////
+-- PROCEDIMIENTOS ALMACENADOS
+
+delimiter $$
+create procedure ultimaVisita() begin 
+select max(REV_id) as IDRevision, VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre  from Revisa_Animal
+inner join nombreveterinario 
+on nombreveterinario.VET_VeterinarioID = Revisa_Animal.REV_VeterinarioID
+inner join nombreAnimal
+on nombreAnimal.ANI_AnimalID = Revisa_Animal.REV_AnimalID;
+end$$
+delimiter ;
+
+call ultimaVisita();
 
 -- DATOS NECESSARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
 
