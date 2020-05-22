@@ -1,7 +1,7 @@
-ZooProyecto/nbproject/private/
-ZooProyecto/build/
-ZooProyecto/nbbuild/
-ZooProyecto/dist/
-ZooProyecto/nbdist/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
 nbactions.xml
 nb-configuration.xml
