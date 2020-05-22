@@ -54,7 +54,9 @@ CREATE TABLE Habitat (
     HAB_ClimaID INT,
     HAB_CuidadorID INT,
     HAB_Nombre VARCHAR(20) NOT NULL,
+    HAB_Disponibilidad VARCHAR(11) NOT NULL,
     CONSTRAINT pk_HABITAT PRIMARY KEY (HAB_HabitatID),
+    CONSTRAINT HAB_disponibilidad CHECK (HAB_disponibilidad IN ('disponible' , 'ocupado')),
     CONSTRAINT fk_REGISTRA_CLIMA FOREIGN KEY (HAB_ClimaID)
         REFERENCES Clima (CLI_ClimaID)
         ON UPDATE CASCADE ON DELETE SET NULL,
@@ -204,6 +206,39 @@ delimiter ;
 
 call ultimaVisita();
 
+
+-- /////////////////////////////////
+-- CREACION DEL TRIGGER PARA HABITAT
+delimiter $$
+create trigger disponibilidad_habitat after insert on Registro_ONG
+	for each row 
+    begin
+    set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
+    on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad != 'ocupado');
+    update Habitat set HAB_Disponibilidad = 'ocupado' 
+    where HAB_HabitatId = @aux; 
+    end
+;
+$$
+
+drop trigger disponibilidad_habitat;
+
+-- //////////
+-- TRIGGER EN CASO DE QUE SE ELIME ALGUN REGISTRO DE REGISTRO_ONG
+delimiter $$
+create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
+	for each row
+	begin
+    set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
+    on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad = 'ocupado');
+    update Habitat set HAB_Disponibilidad = 'disponible' 
+    where HAB_HabitatId = @aux; 
+	end
+;
+$$
+
+drop trigger eliminar_disponibilidad_habitat;
+
 -- DATOS NECESSARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
 
 insert into clima values (1,'Arido',0,5,40,45),
@@ -213,7 +248,16 @@ insert into clima values (1,'Arido',0,5,40,45),
 
 insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50);
 
-insert into Habitat values (1,4,1,'leones');
+insert into Habitat values (1,4,1,'leones','disponible');
+insert into Habitat values (2,4,1,'aves','disponible');
 
 insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167');
 select max(ANI_AnimalID) as id from Animal;
+
+
+
+-- Pruebas
+select *from Registro_ONG;
+select *from Habitat
+
+

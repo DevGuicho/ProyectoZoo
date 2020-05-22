@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import modelo.*;
@@ -33,7 +34,7 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
     private Habitat h;
     private Sql ch;
     private Sql ca;
- 
+    private ArrayList<Habitat> habitats;
     private Color verdeOn;
     private Color verdePrincipal;
     private Font fontOn;
@@ -52,12 +53,14 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == ra.btnLimpiar){
             limpiar();
+            ComboboxHabitat();
         }else if(ae.getSource() == ra.btnGuardar){
             getActividad();
             getActividadDias();
             if(Sql.registrarActividad(rong,ht)){
                 JOptionPane.showMessageDialog(null, "Registro Exitoso");
                  limpiar();
+                 ComboboxHabitat();
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
             }
@@ -119,6 +122,7 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
 
         iniComboBoxes();
+        ComboboxHabitat();
         
     }
     
@@ -126,26 +130,23 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
         this.ra.cmbAprobacion.addItem("Seleccione una opción");
         this.ra.cmbAprobacion.addItem("Aprobado");
         this.ra.cmbAprobacion.addItem("No Aprobado");
-        
-        DefaultComboBoxModel cmbHabitatAux = new DefaultComboBoxModel();
-        //cmbHabitatAux.addElement("Seleccione habitat");
-        
-        for (int i = 0; i < ch.verHabitat().size(); i++) {
-            cmbHabitatAux.addElement(ch.verHabitat().get(i));
-        }
-        
-        
-       for (int j = 0; j < ca.verActividades().size(); j++) {
-            for (int i = 0; i < ch.verHabitat().size(); i++) {
-                if(ca.verActividades().get(j).getHabitatId() == ch.verHabitat().get(i).getId()){
-                    cmbHabitatAux.removeElementAt(i);
-                }
-            }
-        }
- 
-       this.ra.cmbHabitat.setModel(cmbHabitatAux);   
     }
    
+    
+    private void ComboboxHabitat(){
+        DefaultComboBoxModel cmbHabitatAux = new DefaultComboBoxModel();
+        cmbHabitatAux.addElement("Seleccione habitat");
+        
+        habitats = Sql.verHabitat();
+    
+        for (int i = 0; i < habitats.size(); i++) {
+            if(habitats.get(i).getDisponibilidad().equals("disponible")){
+            cmbHabitatAux.addElement(habitats.get(i));
+            }
+        }
+        
+       this.ra.cmbHabitat.setModel(cmbHabitatAux);
+    }
     
     private void getActividad(){
        Date FechaSolicitud = new Date();
@@ -156,9 +157,12 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
        rong.setAprobacion((String) ra.cmbAprobacion.getSelectedItem());
        rong.setHoraApertura(ra.txtHoraApertura.getText());
        rong.setHoraCierre(ra.txtHoraCierre.getText());
-       h = (Habitat) ra.cmbHabitat.getSelectedItem();
+       
+       if(ra.cmbHabitat.getSelectedIndex()>0){
+            h = (Habitat) ra.cmbHabitat.getSelectedItem();
+        }
+       
        rong.setHabitatId(h.getId());
-       ra.cmbHabitat.removeItem(ra.cmbHabitat.getSelectedItem());
     }
     
     private void getActividadDias(){
