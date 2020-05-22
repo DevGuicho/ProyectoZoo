@@ -10,7 +10,6 @@ FLUSH PRIVILEGES;
 SET GLOBAL time_zone = '+8:00';
 
 -- SCRIPT PARA CREAR LA BBDD
-drop database Zoologico;
 create database Zoologico;
 use Zoologico;
 
@@ -143,6 +142,7 @@ CREATE TABLE Registro_ONG (
     REG_Hora_apertura TIME NOT NULL,
     REG_Hora_cierre TIME NOT NULL,
     REG_HabitatID INT NOT NULL,
+    CONSTRAINT REG_Aprobacion CHECK (REG_Aprobacion IN ('Aprobado' , 'No Aprobado')),
     CONSTRAINT pk_REG_ACTIVIDAD PRIMARY KEY (REG_ActividadID),
     CONSTRAINT fk_ONG_HABITAT FOREIGN KEY (REG_HabitatID)
         REFERENCES Habitat (HAB_HabitatID)
@@ -180,31 +180,35 @@ CREATE TABLE Revisa_Animal (
 -- VISTAS DE LA BASE DE DATOS ---
 
 create view ultimaVisita as 
-select max(REV_id) as IDRevision, REV_Fecha_Revision VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre  from Revisa_Animal
+select  VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre, REV_Fecha_Revision  from Revisa_Animal
 inner join Veterinario
 on Veterinario.VET_VeterinarioID = Revisa_Animal.REV_VeterinarioID
 inner join Animal
-on Animal.ANI_AnimalID = Revisa_Animal.REV_AnimalID;
+on Animal.ANI_AnimalID = Revisa_Animal.REV_AnimalID
+order by REV_id DESC LIMIT 1;
 
-select * from ultimaVisita;
--- //////////////////////////////////////////////////////
+-- //////////////////////////////////////////////////////////////////////////
+create view ultimoRegistro as
+select RHA_temperatura, RHA_humedad, HAB_nombre, RHA_Fecha_Registro from Registra
+inner join Habitat
+on Habitat.HAB_HabitatID = Registra.RHA_RegistroID
+order by RHA_RegistroID DESC LIMIT 1;
+-- //////////////////////////////////////////////////////////////////////////
 
--- //////////////////////////////////////////////////////
+create view ultimaActividad as
+select REG_Nombre_Actividad,REG_Ong_nombre, REG_HabitatID, HAB_nombre from Registro_ONG 
+inner join Habitat
+on Habitat.HAB_HabitatID = Registro_ONG.REG_HabitatID
+order by `REG_actividadID` DESC LIMIT 1;
+-- //////////////////////////////////////////////////////////////////////////
+
+
+
 -- PROCEDIMIENTOS ALMACENADOS
 
-delimiter $$
-create procedure ultimaVisita() begin 
-select max(REV_id) as IDRevision, VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre  from Revisa_Animal
-inner join nombreveterinario 
-on nombreveterinario.VET_VeterinarioID = Revisa_Animal.REV_VeterinarioID
-inner join nombreAnimal
-on nombreAnimal.ANI_AnimalID = Revisa_Animal.REV_AnimalID;
-end$$
-delimiter ;
 
-call ultimaVisita();
 
--- DATOS NECESSARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
+-- DATOS NECESARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
 
 insert into clima values (1,'Arido',0,5,40,45),
 (2,'Frio',0,2,0,5),
@@ -214,6 +218,13 @@ insert into clima values (1,'Arido',0,5,40,45),
 insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50);
 
 insert into Habitat values (1,4,1,'leones');
+insert into Habitat values (2,4,1,'lagartos');
+insert into Habitat values (3,4,1,'anfibios');
 
 insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167');
-select max(ANI_AnimalID) as id from Animal;
+
+insert into Registra values (1,1,35.5,40.5,'2000-05-21');
+insert into Registra values (3,1,35.5,40.5,'2000-05-25 10:50:51');
+
+insert into Revisa_Animal values (2,1,1,'2000-05-01');
+select * from Animal;
