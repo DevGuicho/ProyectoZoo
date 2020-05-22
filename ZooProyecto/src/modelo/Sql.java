@@ -209,6 +209,7 @@ public class Sql extends Conexion{
                 h.setClimaId(rs.getInt(2));
                 h.setCuidadorId(rs.getInt(3));
                 h.setNombre(rs.getString(4));
+                h.setDisponibilidad(rs.getString(5));
            
                 habitats.add(h);
             }

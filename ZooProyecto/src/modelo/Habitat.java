@@ -18,6 +18,7 @@ public class Habitat {
     private int CuidadorId;
     private String nombre;
     private ArrayList<String> diasActividad;
+    private String disponibilidad;
     
     public Habitat(){
         
@@ -62,9 +63,16 @@ public class Habitat {
     public void setDiasActividad(ArrayList<String> diasActividad) {
         this.diasActividad = diasActividad;
     }
-    
-    
 
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+    
+    
     @Override
     public String toString() {
         return "" + nombre ;
