@@ -210,11 +210,12 @@ order by `REG_actividadID` DESC LIMIT 1;
 
 
 
-<<<<<<< HEAD
+
+
 
 -- /////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
-delimiter $$
+delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
 	for each row 
     begin
@@ -222,15 +223,14 @@ create trigger disponibilidad_habitat after insert on Registro_ONG
     on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad != 'ocupado');
     update Habitat set HAB_Disponibilidad = 'ocupado' 
     where HAB_HabitatId = @aux; 
-    end
-;
-$$
+    end ; //
+    delimiter ;
 
-drop trigger disponibilidad_habitat;
+-- drop trigger disponibilidad_habitat;
 
 -- //////////
 -- TRIGGER EN CASO DE QUE SE ELIME ALGUN REGISTRO DE REGISTRO_ONG
-delimiter $$
+delimiter //
 create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
 	for each row
 	begin
@@ -238,48 +238,60 @@ create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
     on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad = 'ocupado');
     update Habitat set HAB_Disponibilidad = 'disponible' 
     where HAB_HabitatId = @aux; 
-	end
-;
-$$
+	end ;  //
+    delimiter ;
+    
 
-drop trigger eliminar_disponibilidad_habitat;
+-- drop trigger eliminar_disponibilidad_habitat;
 
--- DATOS NECESSARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
-=======
--- DATOS NECESARIOS QUE NO PUEDEN SER REGISTRADOS EN LA APLICACION 
->>>>>>> upstream/master
-
+-- ////////////////////////////////////////////////////////////////////////////
+-- ////////////////////// ALTAS PARA PROBAR PROGRAMA //////////////////////////
+-- ////////////////////////////////////////////////////////////////////////////
 insert into clima values (1,'Arido',0,5,40,45),
-(2,'Frio',0,2,0,5),
-(3,'Templado',10,15,20,25),
-(4,'Tropical',50,60,30,35);
+						 (2,'Frio',0,2,0,5),
+						 (3,'Templado',10,15,20,25),
+						 (4,'Tropical',50,60,30,35);
 
-insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50);
-
-<<<<<<< HEAD
-insert into Habitat values (1,4,1,'leones','disponible');
-insert into Habitat values (2,4,1,'aves','disponible');
-
-insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167');
-select max(ANI_AnimalID) as id from Animal;
+insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50),
+							(2,'Luis','Angel','Vazquez','Padilla',2000.50),
+                            (3,'Rosa','Jazmin','Portillo','Sanchez',5000.50);
 
 
+insert into Habitat values (1,4,1,'leones','disponible'),
+						   (2,3,2,'aves','disponible'),
+                           (3,4,3,'reptiliario','disponible'),
+                           (4,4,1,'anfibios','disponible');
 
--- Pruebas
-select *from Registro_ONG;
-select *from Habitat
+insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167'),
+							  (2,'Leo','Alfonso','Ramirez','Gonzales','leo@gmail.com','CED12347','5519548761'),
+                              (3,'Carlo','Alberto','Ramirez','Gonzalez','algo@gmail.com','CED12477','5519548761');
 
 
-=======
-insert into Habitat values (1,4,1,'leones');
-insert into Habitat values (2,4,1,'lagartos');
-insert into Habitat values (3,4,1,'anfibios');
+insert into Registra values (1,1,35.5,40.5,'2000-05-21'),
+						    (3,1,35.5,40.5,'2000-05-25 10:50:51');
+insert into Animal values (1,1,1,'Alex','Carne','2000','Leon','M',15,120.5,'En buen estado'),
+						  (2,2,1,'Gloria','Vegetales','2000','Hippopotamo','H',15,200.5,'En buen estado'),
+                          (3,3,1,'Melman','Vegetales','2000','Jirafa','M',15,200.5,'En buen estado');
+insert into procedencia_foranea values (1,'Madagascar','2000-01-01'),
+									   (2,'Madagascar','2000-01-01'),
+                                       (3,'Madagascar','2000-01-01');
 
-insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167');
+insert into Revisa_Animal values (1,1,1,'2000-05-01');
+insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
+							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','10:50:50','06:00:00',1),
+								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','10:50:50','06:00:00',2),
+                                (4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
+insert into ong_realiza values (1,'martes'),
+							   (1,'viernes'),
+							   (2,'martes'),
+							   (2,'miercoles'),
+                               (3,'jueves'),
+                               (3,'viernes'),
+                               (4,'martes'),
+                               (4,'domingo');
+select * from ong_realiza;
 
-insert into Registra values (1,1,35.5,40.5,'2000-05-21');
-insert into Registra values (3,1,35.5,40.5,'2000-05-25 10:50:51');
 
-insert into Revisa_Animal values (2,1,1,'2000-05-01');
-select * from Animal;
->>>>>>> upstream/master
+
+
+
