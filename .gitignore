@@ -5,3 +5,4 @@ ZooProyecto/dist/
 ZooProyecto/nbdist/
 nbactions.xml
 nb-configuration.xml
+*.xml
