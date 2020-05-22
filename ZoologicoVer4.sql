@@ -222,7 +222,7 @@ create trigger disponibilidad_habitat after insert on Registro_ONG
     set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
     on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad != 'ocupado');
     update Habitat set HAB_Disponibilidad = 'ocupado' 
-    where HAB_HabitatId = @aux; 
+    where HAB_HabitatId != @aux; 
     end ; //
     delimiter ;
 
@@ -234,10 +234,9 @@ delimiter //
 create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
 	for each row
 	begin
-    set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
-    on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad = 'ocupado');
-    update Habitat set HAB_Disponibilidad = 'disponible' 
-    where HAB_HabitatId = @aux; 
+    set @aux:= old.reg_habitatid;
+    update Habitat set HAB_Disponibilidad = 'disponible'
+    where HAB_HabitatId = @aux;
 	end ;  //
     delimiter ;
     
@@ -290,8 +289,11 @@ insert into ong_realiza values (1,'martes'),
                                (4,'martes'),
                                (4,'domingo');
 select * from ong_realiza;
+<<<<<<< HEAD
 select * from ultimavisita;
 
 
 
+=======
+>>>>>>> 669e3008f20ad678e9207cc3afc85ae6f8bee7e8
 
