@@ -300,6 +300,70 @@ public class Sql extends Conexion{
         }
     }
     
+    public static UltimosRegistros ultimaVisitaMedica(UltimosRegistros ur){
+        
+        try {
+            sql = " select * from ultimaVisita";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+                ur.setNombreVeterinario(rs.getString(1));
+                ur.setApellido1Veterinario(rs.getString(2));
+                ur.setApellido2Veterinario(rs.getString(3));
+                ur.setNombreAnimal(rs.getString(4));
+                ur.setFechaRevision(rs.getDate(5));
+            }
+            return ur;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            return ur;
+        }
+       
+    }
+    public static UltimosRegistros ultimoRegistroTempHum(UltimosRegistros ur){
+        try {
+            sql = "select * from ultimoRegistro";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                ur.setTemperatura(rs.getFloat(1));
+                ur.setHumedad(rs.getFloat(2));
+                ur.setNombreHabitat(rs.getString(3));
+                ur.setFechaRegistro(rs.getDate(4));
+            }
+            return ur;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            return ur;
+        }
+        
+    }
+    
+    public static UltimosRegistros ultimaActividad(UltimosRegistros ur){
+        
+        
+        try {
+            sql = "select * from ultimaActividad";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                ur.setNombreActividad(rs.getString(1));
+                ur.setNombreONG(rs.getString(2));
+                ur.setNombreActHabitat(rs.getString(4));
+            }
+            
+            return ur;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            return ur;
+        }
+    }
     public static boolean revisarVisitaMedica(){
         return true;
     }
