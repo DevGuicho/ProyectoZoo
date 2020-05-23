@@ -204,15 +204,34 @@ on Habitat.HAB_HabitatID = Registro_ONG.REG_HabitatID
 order by `REG_actividadID` DESC LIMIT 1;
 -- //////////////////////////////////////////////////////////////////////////
 
-
+create view verAnimales as 
+select ANI_AnimalID, CUI_nombre as Cuidador, HAB_nombre as Habitat, ANI_Nombre, ANI_Alimentacion, ANI_Anyo_cautiverio, ANI_Especie, ANI_Sexo, ANI_Edad, ANI_Peso, ANI_Observaciones from animal
+inner join cuidador
+on cuidador.CUI_CuidadorID = ANI_CuidadorID
+inner join Habitat
+on habitat.HAB_HabitatID = ANI_HabitatID;
 
 -- PROCEDIMIENTOS ALMACENADOS
+DELIMITER //
+CREATE PROCEDURE filtroAnimales
+(IN con CHAR(30))
+BEGIN
+  SELECT * FROM verAnimales
+  WHERE Habitat = con;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE filtroAnimalesEspecie
+(IN con CHAR(30))
+BEGIN
+  SELECT * FROM verAnimales
+  WHERE ANI_Especie = con;
+END //
+DELIMITER ;
 
-
-
-
-
+call filtroAnimalesEspecie('jirafa');
+call filtroAnimales('leones');
 -- /////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
@@ -270,10 +289,13 @@ insert into Registra values (1,1,35.5,40.5,'2000-05-21'),
 						    (3,1,35.5,40.5,'2000-05-25 10:50:51');
 insert into Animal values (1,1,1,'Alex','Carne','2000','Leon','M',15,120.5,'En buen estado'),
 						  (2,2,1,'Gloria','Vegetales','2000','Hippopotamo','H',15,200.5,'En buen estado'),
-                          (3,3,1,'Melman','Vegetales','2000','Jirafa','M',15,200.5,'En buen estado');
+                          (3,3,1,'Melman','Vegetales','2000','Jirafa','M',15,200.5,'En buen estado'),
+                          (4,3,4,'Cabo','Peces','2000','Pingúinos','M',15,200.5,'En buen estado');
+                          
 insert into procedencia_foranea values (1,'Madagascar','2000-01-01'),
 									   (2,'Madagascar','2000-01-01'),
-                                       (3,'Madagascar','2000-01-01');
+                                       (3,'Madagascar','2000-01-01'),
+                                       (4,'Abtartida','2002-05-15');
 
 insert into Revisa_Animal values (1,1,1,'2000-05-01');
 insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
@@ -289,11 +311,11 @@ insert into ong_realiza values (1,'martes'),
                                (4,'martes'),
                                (4,'domingo');
 select * from ong_realiza;
-<<<<<<< HEAD
 select * from ultimavisita;
+select * from Veterinario;	
+select * from Animal;	 
+select * from verAnimales;	
 
 
 
-=======
->>>>>>> 669e3008f20ad678e9207cc3afc85ae6f8bee7e8
 
