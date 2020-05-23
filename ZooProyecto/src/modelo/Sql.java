@@ -7,6 +7,7 @@ package modelo;
 
 
 import java.awt.List;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -194,6 +195,109 @@ public class Sql extends Conexion{
         }
     }
 
+    public static ArrayList<Animal> verAnimales(String selector, int sel) {
+
+        ArrayList<Animal> animales = new ArrayList<>();
+        Animal a = new Animal();
+        switch (selector) {
+            case "todos":
+                try {
+                    sql = "select * from verAnimales";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+
+                    while (rs.next()) {
+                        a = new Animal();
+                        a.setId(rs.getInt(1));
+                        a.setNombreCuidador(rs.getString(2));
+                        a.setNombreHabitat(rs.getString(3));
+                        a.setNombre(rs.getString(4));
+                        a.setAlimentacion(rs.getString(5));
+                        a.setAnyoCautiverio(rs.getInt(6));
+                        a.setEspecie(rs.getString(7));
+                        a.setSexo(rs.getString(8));
+                        a.setEdad(rs.getInt(9));
+                        a.setPeso(rs.getFloat(10));
+                        a.setObservaciones(rs.getString(11));
+                        animales.add(a);
+                        a = null;
+                    }
+                    return animales;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    System.out.println(e);
+                    return animales;
+                }
+
+            default:
+                if(sel == 2){
+                    try {
+                    sql = "call filtroAnimales(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, selector);
+                    sp.execute();
+                    rs = sp.getResultSet();
+
+                    while (rs.next()) {
+                        a = new Animal();
+                        a.setId(rs.getInt(1));
+                        a.setNombreCuidador(rs.getString(2));
+                        a.setNombreHabitat(rs.getString(3));
+                        a.setNombre(rs.getString(4));
+                        a.setAlimentacion(rs.getString(5));
+                        a.setAnyoCautiverio(rs.getInt(6));
+                        a.setEspecie(rs.getString(7));
+                        a.setSexo(rs.getString(8));
+                        a.setEdad(rs.getInt(9));
+                        a.setPeso(rs.getFloat(10));
+                        a.setObservaciones(rs.getString(11));
+                        animales.add(a);
+                        a = null;
+                    }
+                    return animales;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    System.out.println(e);
+                    return animales;
+                }
+                }else{
+                    try {
+                    sql = "call filtroAnimalesEspecie(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, selector);
+                    sp.execute();
+                    rs = sp.getResultSet();
+
+                    while (rs.next()) {
+                        a = new Animal();
+                        a.setId(rs.getInt(1));
+                        a.setNombreCuidador(rs.getString(2));
+                        a.setNombreHabitat(rs.getString(3));
+                        a.setNombre(rs.getString(4));
+                        a.setAlimentacion(rs.getString(5));
+                        a.setAnyoCautiverio(rs.getInt(6));
+                        a.setEspecie(rs.getString(7));
+                        a.setSexo(rs.getString(8));
+                        a.setEdad(rs.getInt(9));
+                        a.setPeso(rs.getFloat(10));
+                        a.setObservaciones(rs.getString(11));
+                        animales.add(a);
+                        a = null;
+                    }
+                    return animales;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    System.out.println(e);
+                    return animales;
+                }
+                }
+                
+        }
+    }
+    
     public static ArrayList<Habitat> verHabitat() {
         ArrayList<Habitat> habitats = new ArrayList<>();
         Habitat h = new Habitat();
@@ -364,10 +468,48 @@ public class Sql extends Conexion{
             return ur;
         }
     }
+    
+    
     public static boolean revisarVisitaMedica(){
         return true;
     }
-    public static boolean historial(){
-        return true;
+   
+    public static ArrayList<String> filtros(int selectedFiltro){
+        ArrayList<String> opciones = new ArrayList<>();
+        switch (selectedFiltro){
+            case 1:
+                try {
+                    sql = "select distinct(ANI_especie) from Animal";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                        opciones.add(rs.getString(1));
+                    }
+                    
+                    return opciones;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return opciones;
+                }
+            case 2:
+                try {
+                    
+                    sql = "select distinct(HAB_nombre) from Habitat";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                        opciones.add(rs.getString(1));
+                    }
+                    return opciones;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return opciones;
+                }
+            default:
+                return opciones;
+        }
     }
+       
 }

@@ -15,6 +15,8 @@ public class Animal {
     
     private int id;
     private String nombre;
+    private String nombreCuidador;
+    private String nombreHabitat;
     private float peso;
     private int edad;
     private String sexo;
@@ -196,6 +198,22 @@ public class Animal {
 
     public void setIdHabitat(int idHabitat) {
         this.idHabitat = idHabitat;
+    }
+
+    public String getNombreCuidador() {
+        return nombreCuidador;
+    }
+
+    public void setNombreCuidador(String nombreCuidador) {
+        this.nombreCuidador = nombreCuidador;
+    }
+
+    public String getNombreHabitat() {
+        return nombreHabitat;
+    }
+
+    public void setNombreHabitat(String nombreHabitat) {
+        this.nombreHabitat = nombreHabitat;
     }
     
     

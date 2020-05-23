@@ -84,6 +84,7 @@ public class menu extends javax.swing.JFrame {
         btnClose.setBorder(null);
         btnClose.setBorderPainted(false);
         btnClose.setContentAreaFilled(false);
+        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClose.setDefaultCapable(false);
         btnClose.setFocusPainted(false);
         btnClose.setFocusable(false);
@@ -103,6 +104,7 @@ public class menu extends javax.swing.JFrame {
         btnMinimize.setBorder(null);
         btnMinimize.setBorderPainted(false);
         btnMinimize.setContentAreaFilled(false);
+        btnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMinimize.setFocusable(false);
         btnMinimize.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizarClicked.png"))); // NOI18N
         btnMinimize.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizarOn.png"))); // NOI18N

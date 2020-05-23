@@ -30,6 +30,7 @@ public class Home extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblClock = new javax.swing.JLabel();
         lblEstadoZoologico = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -38,7 +39,11 @@ public class Home extends javax.swing.JPanel {
         lblFechaVisita = new javax.swing.JLabel();
         lblAnimalRevisado = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        lblBackground = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -47,6 +52,8 @@ public class Home extends javax.swing.JPanel {
         lblTemperatura = new javax.swing.JLabel();
         lblFechaRegistro = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        lblBackground2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -55,9 +62,9 @@ public class Home extends javax.swing.JPanel {
         lblNombreONG = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         lblNombreHabAct = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
@@ -65,152 +72,212 @@ public class Home extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblClock.setBackground(new java.awt.Color(102, 255, 102));
         lblClock.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblClock.setForeground(new java.awt.Color(255, 255, 255));
         lblClock.setText("00:00:00 PM");
+        jPanel1.add(lblClock, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         lblEstadoZoologico.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblEstadoZoologico.setForeground(new java.awt.Color(255, 255, 255));
         lblEstadoZoologico.setText("Abierto");
+        jPanel1.add(lblEstadoZoologico, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(301, Short.MAX_VALUE)
-                .addComponent(lblClock)
-                .addGap(290, 290, 290))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(388, 388, 388)
-                .addComponent(lblEstadoZoologico)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lblClock)
-                .addGap(18, 18, 18)
-                .addComponent(lblEstadoZoologico)
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/jumbotronBg.jpg"))); // NOI18N
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -30, -1, 420));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 180));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 140));
 
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ultima Visita Medica");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Realizad por: ");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        lblVeterinario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblVeterinario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblVeterinario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 105, 160, 25));
+        jPanel2.add(lblVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 160, 25));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("El dia:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        lblFechaVisita.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblFechaVisita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaVisita.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblFechaVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 160, 25));
+        jPanel2.add(lblFechaVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 160, 25));
 
-        lblAnimalRevisado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblAnimalRevisado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAnimalRevisado.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblAnimalRevisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 235, 116, 20));
+        jPanel2.add(lblAnimalRevisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 160, 25));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Animal Revisado:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 250, 300));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salud.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(51, 204, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sign.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 400, 40, 40));
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg1.jpg"))); // NOI18N
+        jPanel2.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, 0, 500, 460));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 250, 460));
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/temperatura.png"))); // NOI18N
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ultimo Registro de Temperatura");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Ultimo Registro de Humedad");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Habitat");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
-        lblHumedad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(lblHumedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 105, 160, 25));
+        lblHumedad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblHumedad.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(lblHumedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 160, 25));
 
-        lblHabitat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(lblHabitat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 160, 25));
+        lblHabitat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblHabitat.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(lblHabitat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 160, 25));
 
-        lblTemperatura.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(lblTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 160, 25));
+        lblTemperatura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTemperatura.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(lblTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 160, 25));
 
-        lblFechaRegistro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(lblFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 235, 160, 25));
+        lblFechaRegistro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(lblFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 160, 25));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Fecha Registro");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, -1, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 250, 280));
+        jButton1.setText("Ir a Historial de Visitas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
+
+        lblBackground2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg2.jpg"))); // NOI18N
+        jPanel3.add(lblBackground2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-340, 0, 590, 460));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 250, 460));
 
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Actividades ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Actividad");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, -1, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
-        lblNombreActividad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel4.add(lblNombreActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 105, 160, 25));
+        lblNombreActividad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreActividad.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(lblNombreActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 160, 25));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("ONG");
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
-        lblNombreONG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel4.add(lblNombreONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 160, 25));
+        lblNombreONG.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreONG.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(lblNombreONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 160, 25));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Habitat");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, -1, -1));
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
-        lblNombreHabAct.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel4.add(lblNombreHabAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 235, 160, 25));
-
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 250, 270));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salud.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/temperatura.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+        lblNombreHabAct.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombreHabAct.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(lblNombreHabAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 160, 25));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/actividades.png"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jButton3.setText("Ir a Historial de Visitas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg3.jpg"))); // NOI18N
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(-240, 0, 490, 780));
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 250, 460));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background2.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 850, 650));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -219,6 +286,8 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -232,6 +301,8 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public javax.swing.JLabel lblAnimalRevisado;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblBackground2;
     public javax.swing.JLabel lblClock;
     private javax.swing.JLabel lblEstadoZoologico;
     public javax.swing.JLabel lblFechaRegistro;
