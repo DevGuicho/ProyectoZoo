@@ -89,6 +89,7 @@ public class RegistroAnimales extends javax.swing.JPanel {
         btnProcedenciaForanea = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
@@ -100,8 +101,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Nombre ");
-        pnlRegistro1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        pnlRegistro1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 150, -1));
 
         txtNombre.setBackground(new java.awt.Color(212, 255, 204));
         txtNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -123,8 +125,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Edad");
-        pnlRegistro1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        pnlRegistro1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 150, -1));
 
         txtEdad.setBackground(new java.awt.Color(212, 255, 204));
         txtEdad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -146,8 +149,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Sexo");
-        pnlRegistro1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 40, -1));
+        pnlRegistro1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 150, -1));
 
         txtEspecie.setBackground(new java.awt.Color(212, 255, 204));
         txtEspecie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -168,8 +172,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Especie");
-        pnlRegistro1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
+        pnlRegistro1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 150, -1));
 
         txtPeso.setBackground(new java.awt.Color(212, 255, 204));
         txtPeso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -186,8 +191,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Peso");
-        pnlRegistro1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, 25));
+        pnlRegistro1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 150, 25));
 
         jSeparator2.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator2.setForeground(new java.awt.Color(0, 179, 61));
@@ -207,14 +213,16 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Años en Cautiverio");
-        pnlRegistro1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        pnlRegistro1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 150, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Alimentacion");
-        pnlRegistro1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 110, 25));
+        pnlRegistro1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 150, 25));
 
         txtAlimentacion.setBackground(new java.awt.Color(212, 255, 204));
         txtAlimentacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -235,8 +243,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Habitat");
-        pnlRegistro1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 30));
+        pnlRegistro1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 150, 30));
 
         pnlRegistro1.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 170, -1));
 
@@ -245,8 +254,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Observaciones");
-        pnlRegistro1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, 30));
+        pnlRegistro1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 150, 30));
 
         pnlRegistro1.add(cmbHabitat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 170, -1));
 
@@ -262,8 +272,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("Cuidador");
-        pnlRegistro1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, 30));
+        pnlRegistro1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 150, 30));
 
         add(pnlRegistro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 100, 340, 540));
 
@@ -276,27 +287,30 @@ public class RegistroAnimales extends javax.swing.JPanel {
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Fecha de Nacimiento");
-        pnlLocal.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        pnlLocal.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 60, 170, -1));
 
-        pnlLocal.add(cmbVeterinarioNacimeinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 220, -1));
-        pnlLocal.add(cldFechaNacimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 220, 20));
+        pnlLocal.add(cmbVeterinarioNacimeinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 220, 25));
+        pnlLocal.add(cldFechaNacimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 220, 25));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Veterinario");
-        pnlLocal.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        pnlLocal.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 170, -1));
 
         jSeparator3.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator3.setForeground(new java.awt.Color(0, 179, 61));
-        pnlLocal.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 220, 14));
+        pnlLocal.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 220, 14));
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel20.setText("Peso");
-        pnlLocal.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 50, -1));
+        pnlLocal.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 110, 170, -1));
 
         txtPesoNacimiento.setBackground(new java.awt.Color(212, 255, 204));
         txtPesoNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -308,9 +322,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
                 txtPesoNacimientoActionPerformed(evt);
             }
         });
-        pnlLocal.add(txtPesoNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 220, 25));
+        pnlLocal.add(txtPesoNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, 25));
 
-        pnlRegistro2.add(pnlLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 200));
+        pnlRegistro2.add(pnlLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 420, 170));
 
         pnlForanea.setBackground(new java.awt.Color(212, 255, 204));
         pnlForanea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -390,7 +404,7 @@ public class RegistroAnimales extends javax.swing.JPanel {
 
         pnlRegistro2.add(pnlRescate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 200));
 
-        add(pnlRegistro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 550));
+        add(pnlRegistro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 200));
 
         pnlBarraTitulo.setBackground(new java.awt.Color(0, 179, 61));
         pnlBarraTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -500,6 +514,9 @@ public class RegistroAnimales extends javax.swing.JPanel {
         pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 100, 40));
 
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/animales.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 400, 267));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -577,6 +594,7 @@ public class RegistroAnimales extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

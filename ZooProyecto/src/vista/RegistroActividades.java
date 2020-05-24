@@ -147,6 +147,7 @@ public class RegistroActividades extends javax.swing.JPanel {
 
         pnlPrincipal1.setBackground(new java.awt.Color(212, 255, 204));
         pnlPrincipal1.setMinimumSize(new java.awt.Dimension(0, 0));
+        pnlPrincipal1.setOpaque(false);
         pnlPrincipal1.setPreferredSize(new java.awt.Dimension(850, 850));
         pnlPrincipal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -289,6 +290,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(212, 255, 204));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -359,7 +361,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         });
         jPanel1.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 100, 33));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 290, 240));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 290, 250));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
