@@ -60,6 +60,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         ckbSabado = new javax.swing.JCheckBox();
         ckbJueves = new javax.swing.JCheckBox();
         ckbDomingo = new javax.swing.JCheckBox();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -361,7 +362,10 @@ public class RegistroActividades extends javax.swing.JPanel {
         });
         jPanel1.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 100, 33));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 290, 250));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 350, 250));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg5.jpg"))); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 350, 234));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -425,6 +429,7 @@ public class RegistroActividades extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;

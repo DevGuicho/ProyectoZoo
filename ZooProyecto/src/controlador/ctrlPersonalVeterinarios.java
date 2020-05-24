@@ -42,8 +42,9 @@ public class ctrlPersonalVeterinarios {
             vec.add(vets.get(i).getApellido1());
             vec.add(vets.get(i).getApellido2());
             vec.add(vets.get(i).getCorreo());
-            vec.add(vets.get(i).getCedulaProfesional());
             vec.add(vets.get(i).getTelefono());
+            vec.add(vets.get(i).getCedulaProfesional());
+            
             
             dtm.addRow(vec);
             vec = new Vector();
