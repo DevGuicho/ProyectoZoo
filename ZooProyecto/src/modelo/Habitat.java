@@ -75,7 +75,7 @@ public class Habitat {
     
     @Override
     public String toString() {
-        return "" + nombre ;
+        return "" + nombre;
     }
     
     

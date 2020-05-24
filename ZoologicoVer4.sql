@@ -291,9 +291,9 @@ insert into ong_realiza values (1,'martes'),
 select * from ong_realiza;
 select * from animal;
 select *from revisa_animal;
+select *from registro_ong;
 <<<<<<< HEAD
 select * from ultimavisita;
-
 
 
 =======
