@@ -107,6 +107,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         }else if(e.getSource() == m.btnReporteVisitaMedica){
             /*rvm = new ReporteVisitaMedica();
             ctrlRVM = new ctrlReporteVisitaMedica(rvm);*/
+            
             setPanel(rvm);
         }else if(e.getSource() == m.btnReporteHabitat){
             /*rh = new ReporteHabitats();

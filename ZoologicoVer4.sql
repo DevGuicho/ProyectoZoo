@@ -311,6 +311,11 @@ insert into ong_realiza values (1,'martes'),
                                (4,'martes'),
                                (4,'domingo');
 select * from ong_realiza;
+
+select * from animal;
+select *from revisa_animal;
+select *from registro_ong;
+
 select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
