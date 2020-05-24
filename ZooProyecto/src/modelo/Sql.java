@@ -187,6 +187,7 @@ public class Sql extends Conexion{
             }
 
             return veterinarios;
+           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error de consulta");
             System.out.println(e);
@@ -364,8 +365,63 @@ public class Sql extends Conexion{
             return ur;
         }
     }
-    public static boolean revisarVisitaMedica(){
-        return true;
+    
+    public static ArrayList<Animal> verAnimales() {
+        ArrayList<Animal> animales = new ArrayList<>();
+        Animal a = new Animal();
+        try {
+            sql = "SELECT * FROM Animal";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                a = new Animal();
+                a.setId(rs.getInt(1));
+                a.setIdCuidador(rs.getInt(2));
+                a.setIdHabitat(rs.getInt(3));
+                a.setNombre(rs.getString(4));
+                a.setAlimentacion(rs.getString(5));
+                a.setAnyoCautiverio(rs.getInt(6));
+                a.setEspecie(rs.getString(7));
+                a.setSexo(rs.getString(8));
+                a.setEdad(rs.getInt(9));
+                a.setPeso(rs.getFloat(10));
+                a.setObservaciones(rs.getString(11));
+           
+                animales.add(a);
+            }
+
+            return animales;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            System.out.println(e);
+            return animales;
+        }
+    }
+    
+    
+    public static boolean reporteVisitaMedica(RevisaAnimal ra){
+       long d = ra.getFechaRevision().getTime();
+        java.sql.Date FechaRevision = new java.sql.Date(d);
+        
+        try {
+            sql = "INSERT INTO Revisa_Animal (REV_VeterinarioID, REV_AnimalID, REV_Fecha_Revision) VALUES (?,?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, ra.getVeterinarioId());
+            ps.setInt(2, ra.getAnimalId());
+            ps.setDate(3, FechaRevision);
+            
+            ps.execute();
+            ps.close();
+            con.close();
+            return true;
+        } catch (SQLException e) {
+               System.out.println(e);
+            return false;
+        }
     }
     public static boolean historial(){
         return true;

@@ -289,4 +289,13 @@ insert into ong_realiza values (1,'martes'),
                                (4,'martes'),
                                (4,'domingo');
 select * from ong_realiza;
+select * from animal;
+select *from revisa_animal;
+<<<<<<< HEAD
+select * from ultimavisita;
+
+
+
+=======
+>>>>>>> 669e3008f20ad678e9207cc3afc85ae6f8bee7e8
 

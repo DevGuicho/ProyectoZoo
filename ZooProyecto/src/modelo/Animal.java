@@ -198,7 +198,10 @@ public class Animal {
         this.idHabitat = idHabitat;
     }
     
-    
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
     
 }
