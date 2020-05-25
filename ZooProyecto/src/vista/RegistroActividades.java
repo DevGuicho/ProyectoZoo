@@ -52,7 +52,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         txtHoraCierre = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
+        pnlSelDias = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         ckbMartes = new javax.swing.JCheckBox();
         ckbMiercoles = new javax.swing.JCheckBox();
@@ -286,18 +286,16 @@ public class RegistroActividades extends javax.swing.JPanel {
         jSeparator6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pnlPrincipal1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 230, 26));
 
-        add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 450, 530));
-
-        jPanel1.setBackground(new java.awt.Color(212, 255, 204));
-        jPanel1.setAlignmentX(0.0F);
-        jPanel1.setAlignmentY(0.0F);
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlSelDias.setBackground(new java.awt.Color(212, 255, 204));
+        pnlSelDias.setAlignmentX(0.0F);
+        pnlSelDias.setAlignmentY(0.0F);
+        pnlSelDias.setOpaque(false);
+        pnlSelDias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 179, 61));
         jLabel10.setText("Días ");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
+        pnlSelDias.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
 
         ckbMartes.setBackground(new java.awt.Color(212, 255, 204));
         ckbMartes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -305,7 +303,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         ckbMartes.setText("Martes");
         ckbMartes.setBorder(null);
         ckbMartes.setContentAreaFilled(false);
-        jPanel1.add(ckbMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 100, 33));
+        pnlSelDias.add(ckbMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 100, 33));
 
         ckbMiercoles.setBackground(new java.awt.Color(212, 255, 204));
         ckbMiercoles.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -318,7 +316,7 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbMiercolesActionPerformed(evt);
             }
         });
-        jPanel1.add(ckbMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 100, 33));
+        pnlSelDias.add(ckbMiercoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 100, 33));
 
         ckbViernes.setBackground(new java.awt.Color(212, 255, 204));
         ckbViernes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -326,7 +324,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         ckbViernes.setText("Viernes");
         ckbViernes.setBorder(null);
         ckbViernes.setContentAreaFilled(false);
-        jPanel1.add(ckbViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 100, 33));
+        pnlSelDias.add(ckbViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 100, 33));
 
         ckbSabado.setBackground(new java.awt.Color(212, 255, 204));
         ckbSabado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -339,7 +337,7 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbSabadoActionPerformed(evt);
             }
         });
-        jPanel1.add(ckbSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 100, 33));
+        pnlSelDias.add(ckbSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 100, 33));
 
         ckbJueves.setBackground(new java.awt.Color(212, 255, 204));
         ckbJueves.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -347,7 +345,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         ckbJueves.setText("Jueves");
         ckbJueves.setBorder(null);
         ckbJueves.setContentAreaFilled(false);
-        jPanel1.add(ckbJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, 33));
+        pnlSelDias.add(ckbJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, 33));
 
         ckbDomingo.setBackground(new java.awt.Color(212, 255, 204));
         ckbDomingo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -360,9 +358,11 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbDomingoActionPerformed(evt);
             }
         });
-        jPanel1.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 100, 33));
+        pnlSelDias.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 100, 33));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 350, 250));
+        pnlPrincipal1.add(pnlSelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 350, 250));
+
+        add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 830, 530));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg5.jpg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 350, 234));
@@ -430,7 +430,6 @@ public class RegistroActividades extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
@@ -439,6 +438,7 @@ public class RegistroActividades extends javax.swing.JPanel {
     private javax.swing.JPanel pnlBarraOpciones;
     private javax.swing.JPanel pnlBarraTitulo;
     private javax.swing.JPanel pnlPrincipal1;
+    private javax.swing.JPanel pnlSelDias;
     public javax.swing.JTextArea txtDescripcion;
     public javax.swing.JTextField txtHoraApertura;
     public javax.swing.JTextField txtHoraCierre;
