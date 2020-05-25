@@ -303,7 +303,7 @@ create trigger vistaMedicaObservaciones after insert on Revisa_Animal
 for each row 
 begin 
 update Animal set ani_observaciones = new.rev_observaciones
-where ani_id= new.rev_animalid;
+where ani_Animalid= new.rev_animalid;
 end; //
 delimiter ;
 -- drop trigger vistaMedicaObservaciones;
