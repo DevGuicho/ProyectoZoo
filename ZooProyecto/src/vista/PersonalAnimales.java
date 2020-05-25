@@ -27,15 +27,20 @@ public class PersonalAnimales extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAnimales = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cmbFiltro = new javax.swing.JComboBox<>();
         cmbSeleccion = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(212, 255, 204));
-        setPreferredSize(new java.awt.Dimension(850, 640));
+        setPreferredSize(new java.awt.Dimension(850, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAnimales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -50,17 +55,26 @@ public class PersonalAnimales extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblAnimales);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 760, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 770, 380));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 810, 440));
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel2.setForeground(new java.awt.Color(0, 153, 102));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Filtro");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         cmbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 160, -1));
+        jPanel2.add(cmbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 160, -1));
 
         cmbSeleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 160, -1));
+        jPanel2.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 160, -1));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -68,6 +82,8 @@ public class PersonalAnimales extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> cmbFiltro;
     public javax.swing.JComboBox<String> cmbSeleccion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblAnimales;
     // End of variables declaration//GEN-END:variables

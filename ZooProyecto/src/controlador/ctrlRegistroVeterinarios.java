@@ -11,8 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.*;
+import vista.PersonalVeterinarios;
 import vista.RegistroVeterinarios;
 
 /**
@@ -23,7 +25,8 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
     
     private RegistroVeterinarios rv;
     private Veterinario vet;
-    
+    private PersonalVeterinarios pv;
+    private ctrlPersonalVeterinarios ctrlPv;
     private Color verdeOn;
     private Color verdePrincipal;
     private Font fontOn;
@@ -47,6 +50,8 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
             }
+        }else if(e.getSource() == rv.btnSelector){
+            setSelector();
         }
     }
 
@@ -79,6 +84,8 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
             rv.btnGuardar.setBackground(verdeOn);
         }else if(e.getSource() == rv.btnLimpiar){
             rv.btnLimpiar.setBackground(verdeOn);
+        }else if(e.getSource() == rv.btnSelector){
+            rv.btnSelector.setBackground(verdeOn);
         }
     }
 
@@ -88,15 +95,20 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
             rv.btnGuardar.setBackground(verdePrincipal);
         }else if(e.getSource() == rv.btnLimpiar){
             rv.btnLimpiar.setBackground(verdePrincipal);
+        }else if(e.getSource() == rv.btnSelector){
+            rv.btnSelector.setBackground(verdePrincipal);
         }
     }
     
     private void iniComponents(){
+        
         this.rv.btnGuardar.addActionListener(this);
         this.rv.btnLimpiar.addActionListener(this);
+        this.rv.btnSelector.addActionListener(this);
         
         this.rv.btnGuardar.addMouseListener(this);
         this.rv.btnLimpiar.addMouseListener(this);
+        this.rv.btnSelector.addMouseListener(this);
         
         this.verdeOn = new Color(0, 212, 72);
         this.verdePrincipal = new Color(0, 179, 61);
@@ -123,5 +135,27 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
         rv.txtNombre.setText(null);
         rv.txtNombre2.setText(null);
         rv.txtTelefono.setText(null);
+    }
+    
+    public void setSelector(){
+        
+        if(rv.btnSelector.isSelected()){
+            pv = new PersonalVeterinarios();
+            ctrlPv = new ctrlPersonalVeterinarios(pv);
+            pv.setVisible(true);
+            this.rv.pnlVerVeterinario.removeAll();
+            this.rv.pnlVerVeterinario.add(pv);
+            this.rv.pnlVerVeterinario.repaint();
+            this.rv.pnlVerVeterinario.revalidate();
+            this.rv.pnlVerVeterinario.setVisible(true);
+            this.rv.pnlPrincipal.setVisible(false);
+            this.rv.btnSelector.setText("Registrar");
+            this.rv.btnSelector.setIcon(new ImageIcon("src/img/addAni.png"));
+        }else{
+            rv.pnlVerVeterinario.setVisible(false);
+            rv.pnlPrincipal.setVisible(true);
+            this.rv.btnSelector.setText("Ver Veterinario");
+            this.rv.btnSelector.setIcon(new ImageIcon("src/img/vision.png"));
+        }
     }
 }

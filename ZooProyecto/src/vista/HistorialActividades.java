@@ -28,17 +28,17 @@ public class HistorialActividades extends javax.swing.JPanel {
     private void initComponents() {
 
         setBackground(new java.awt.Color(212, 255, 204));
-        setPreferredSize(new java.awt.Dimension(850, 640));
+        setPreferredSize(new java.awt.Dimension(850, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

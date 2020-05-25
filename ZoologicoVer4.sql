@@ -211,6 +211,8 @@ on cuidador.CUI_CuidadorID = ANI_CuidadorID
 inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
+select distinct RHA_HabitatID from registra;
+-- ///////////////////////////////////////////////////////////////////////
 -- PROCEDIMIENTOS ALMACENADOS
 DELIMITER //
 CREATE PROCEDURE filtroAnimales
@@ -232,7 +234,7 @@ DELIMITER ;
 
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
--- /////////////////////////////////
+-- ///////////////////////////////////////////////////////////////////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
@@ -313,14 +315,15 @@ insert into ong_realiza values (1,'martes'),
 select * from ong_realiza;
 
 select * from animal;
-select *from revisa_animal;
-select *from registro_ong;
+select * from revisa_animal;
+select * from registro_ong;
 
 select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
-
+select * from Habitat;
+select * from registra;
 
 
 

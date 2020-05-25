@@ -32,9 +32,10 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlBarraOpciones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        pnlRegistroActividad = new javax.swing.JPanel();
         pnlImagen = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        btnVerActividades = new javax.swing.JToggleButton();
+        pnlRegistroActividad = new javax.swing.JPanel();
         pnlSelDias = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         ckbMartes = new javax.swing.JCheckBox();
@@ -63,6 +64,9 @@ public class RegistroActividades extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         txtHoraCierre = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
+        pnlImagen = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        pnlVerActividades = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -146,6 +150,19 @@ public class RegistroActividades extends javax.swing.JPanel {
         btnLimpiar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiarOn.png"))); // NOI18N
         pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 100, 40));
 
+        btnVerActividades.setBackground(new java.awt.Color(0, 179, 61));
+        btnVerActividades.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVerActividades.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerActividades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/vision.png"))); // NOI18N
+        btnVerActividades.setText("Ver Actividades");
+        btnVerActividades.setBorder(null);
+        btnVerActividades.setBorderPainted(false);
+        btnVerActividades.setContentAreaFilled(false);
+        btnVerActividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerActividades.setFocusable(false);
+        btnVerActividades.setOpaque(true);
+        pnlBarraOpciones.add(btnVerActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 150, 40));
+
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
 
         pnlRegistroActividad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,29 +191,30 @@ public class RegistroActividades extends javax.swing.JPanel {
         );
 
         pnlRegistroActividad.add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
+        pnlRegistroActividad.setOpaque(false);
+        pnlRegistroActividad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSelDias.setBackground(new java.awt.Color(212, 255, 204));
+        pnlSelDias.setBackground(new java.awt.Color(0, 153, 102));
         pnlSelDias.setAlignmentX(0.0F);
         pnlSelDias.setAlignmentY(0.0F);
-        pnlSelDias.setOpaque(false);
         pnlSelDias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 179, 61));
-        jLabel10.setText("Días ");
-        pnlSelDias.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 130, -1));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Selecciones los dias");
+        pnlSelDias.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 190, -1));
 
         ckbMartes.setBackground(new java.awt.Color(212, 255, 204));
         ckbMartes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbMartes.setForeground(new java.awt.Color(0, 179, 61));
+        ckbMartes.setForeground(new java.awt.Color(255, 255, 255));
         ckbMartes.setText("Martes");
         ckbMartes.setBorder(null);
         ckbMartes.setContentAreaFilled(false);
-        pnlSelDias.add(ckbMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 100, 33));
+        pnlSelDias.add(ckbMartes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 100, 33));
 
         ckbMiercoles.setBackground(new java.awt.Color(212, 255, 204));
         ckbMiercoles.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbMiercoles.setForeground(new java.awt.Color(0, 179, 61));
+        ckbMiercoles.setForeground(new java.awt.Color(255, 255, 255));
         ckbMiercoles.setText("Miércoles");
         ckbMiercoles.setBorder(null);
         ckbMiercoles.setContentAreaFilled(false);
@@ -209,15 +227,15 @@ public class RegistroActividades extends javax.swing.JPanel {
 
         ckbViernes.setBackground(new java.awt.Color(212, 255, 204));
         ckbViernes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbViernes.setForeground(new java.awt.Color(0, 179, 61));
+        ckbViernes.setForeground(new java.awt.Color(255, 255, 255));
         ckbViernes.setText("Viernes");
         ckbViernes.setBorder(null);
         ckbViernes.setContentAreaFilled(false);
-        pnlSelDias.add(ckbViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 100, 33));
+        pnlSelDias.add(ckbViernes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 100, 33));
 
         ckbSabado.setBackground(new java.awt.Color(212, 255, 204));
         ckbSabado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbSabado.setForeground(new java.awt.Color(0, 179, 61));
+        ckbSabado.setForeground(new java.awt.Color(255, 255, 255));
         ckbSabado.setText("Sábado");
         ckbSabado.setBorder(null);
         ckbSabado.setContentAreaFilled(false);
@@ -226,19 +244,21 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbSabadoActionPerformed(evt);
             }
         });
-        pnlSelDias.add(ckbSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 100, 33));
+
+        pnlSelDias.add(ckbSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 33));
 
         ckbJueves.setBackground(new java.awt.Color(212, 255, 204));
         ckbJueves.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbJueves.setForeground(new java.awt.Color(0, 179, 61));
+        ckbJueves.setForeground(new java.awt.Color(255, 255, 255));
         ckbJueves.setText("Jueves");
         ckbJueves.setBorder(null);
         ckbJueves.setContentAreaFilled(false);
-        pnlSelDias.add(ckbJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, 33));
+        pnlSelDias.add(ckbJueves, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 33));
 
         ckbDomingo.setBackground(new java.awt.Color(212, 255, 204));
         ckbDomingo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        ckbDomingo.setForeground(new java.awt.Color(0, 179, 61));
+        ckbDomingo.setForeground(new java.awt.Color(255, 255, 255));
+
         ckbDomingo.setText("Domingo");
         ckbDomingo.setBorder(null);
         ckbDomingo.setContentAreaFilled(false);
@@ -247,25 +267,25 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbDomingoActionPerformed(evt);
             }
         });
-        pnlSelDias.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 100, 33));
+        pnlSelDias.add(ckbDomingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 100, 33));
 
-        pnlRegistroActividad.add(pnlSelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 350, 250));
+        pnlRegistroActividad.add(pnlSelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 340, 210));
 
-        pnlPrincipal1.setBackground(new java.awt.Color(212, 255, 204));
+        pnlPrincipal1.setBackground(new java.awt.Color(0, 153, 102));
+
         pnlPrincipal1.setMinimumSize(new java.awt.Dimension(0, 0));
-        pnlPrincipal1.setOpaque(false);
         pnlPrincipal1.setPreferredSize(new java.awt.Dimension(850, 850));
         pnlPrincipal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Aprobación");
-        pnlPrincipal1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 120, -1));
+        pnlPrincipal1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 26));
 
         txtNombreActividad.setBackground(new java.awt.Color(212, 255, 204));
         txtNombreActividad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtNombreActividad.setForeground(new java.awt.Color(0, 204, 51));
+        txtNombreActividad.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreActividad.setToolTipText("");
         txtNombreActividad.setBorder(null);
         txtNombreActividad.setOpaque(false);
@@ -274,40 +294,40 @@ public class RegistroActividades extends javax.swing.JPanel {
                 txtNombreActividadActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(txtNombreActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 230, 25));
+        pnlPrincipal1.add(txtNombreActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, 25));
 
         jSeparator2.setBackground(new java.awt.Color(0, 179, 61));
-        jSeparator2.setForeground(new java.awt.Color(0, 179, 61));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlPrincipal1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 230, 26));
+        pnlPrincipal1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 200, 26));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("ONG");
-        pnlPrincipal1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
+        pnlPrincipal1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 120, 26));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Actividad");
-        pnlPrincipal1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 120, -1));
+        pnlPrincipal1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 120, 26));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        pnlPrincipal1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 330, 80));
+        pnlPrincipal1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 310, 90));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Descripción");
-        pnlPrincipal1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 120, -1));
+        pnlPrincipal1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 120, 26));
 
         txtHoraApertura.setBackground(new java.awt.Color(212, 255, 204));
         txtHoraApertura.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtHoraApertura.setForeground(new java.awt.Color(0, 204, 51));
+        txtHoraApertura.setForeground(new java.awt.Color(255, 255, 255));
         txtHoraApertura.setToolTipText("");
         txtHoraApertura.setBorder(null);
         txtHoraApertura.setOpaque(false);
@@ -316,48 +336,48 @@ public class RegistroActividades extends javax.swing.JPanel {
                 txtHoraAperturaActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(txtHoraApertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 25));
+        pnlPrincipal1.add(txtHoraApertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 200, 25));
 
         jSeparator4.setBackground(new java.awt.Color(0, 179, 61));
-        jSeparator4.setForeground(new java.awt.Color(0, 179, 61));
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlPrincipal1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 230, 25));
+        pnlPrincipal1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 200, 25));
 
         cmbAprobacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAprobacionActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(cmbAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 230, 30));
+        pnlPrincipal1.add(cmbAprobacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Habitat");
-        pnlPrincipal1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 120, -1));
+        pnlPrincipal1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 120, 26));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Hora Apertura");
-        pnlPrincipal1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 120, -1));
+        pnlPrincipal1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 120, 26));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Hora Cierre");
-        pnlPrincipal1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 120, -1));
+        pnlPrincipal1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 120, 26));
 
         cmbHabitat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbHabitatActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(cmbHabitat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 30));
+        pnlPrincipal1.add(cmbHabitat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 200, 30));
 
         txtNombreONG.setBackground(new java.awt.Color(212, 255, 204));
         txtNombreONG.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtNombreONG.setForeground(new java.awt.Color(0, 204, 51));
+        txtNombreONG.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreONG.setToolTipText("");
         txtNombreONG.setBorder(null);
         txtNombreONG.setOpaque(false);
@@ -366,16 +386,16 @@ public class RegistroActividades extends javax.swing.JPanel {
                 txtNombreONGActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(txtNombreONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 230, 25));
+        pnlPrincipal1.add(txtNombreONG, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 200, 25));
 
         jSeparator5.setBackground(new java.awt.Color(0, 179, 61));
-        jSeparator5.setForeground(new java.awt.Color(0, 179, 61));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlPrincipal1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 230, 26));
+        pnlPrincipal1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 200, 26));
 
         txtHoraCierre.setBackground(new java.awt.Color(212, 255, 204));
         txtHoraCierre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtHoraCierre.setForeground(new java.awt.Color(0, 204, 51));
+        txtHoraCierre.setForeground(new java.awt.Color(255, 255, 255));
         txtHoraCierre.setToolTipText("");
         txtHoraCierre.setBorder(null);
         txtHoraCierre.setOpaque(false);
@@ -384,16 +404,30 @@ public class RegistroActividades extends javax.swing.JPanel {
                 txtHoraCierreActionPerformed(evt);
             }
         });
-        pnlPrincipal1.add(txtHoraCierre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 230, 25));
+        pnlPrincipal1.add(txtHoraCierre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 200, 25));
 
         jSeparator6.setBackground(new java.awt.Color(0, 179, 61));
-        jSeparator6.setForeground(new java.awt.Color(0, 179, 61));
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlPrincipal1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 230, 26));
+        jSeparator6.setVerifyInputWhenFocusTarget(false);
+        pnlPrincipal1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 200, 26));
 
-        pnlRegistroActividad.add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 530));
+        pnlRegistroActividad.add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 400, 520));
+
+        pnlImagen.setBackground(new java.awt.Color(0, 153, 102));
+        pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg6.jpg"))); // NOI18N
+        pnlImagen.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, 310, 207));
+
+        pnlRegistroActividad.add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 340, 240));
 
         add(pnlRegistroActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 850, 560));
+
+        pnlVerActividades.setOpaque(false);
+        pnlVerActividades.setLayout(new java.awt.BorderLayout());
+        add(pnlVerActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 850, 560));
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -440,6 +474,7 @@ public class RegistroActividades extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnLimpiar;
+    public javax.swing.JToggleButton btnVerActividades;
     public javax.swing.JCheckBox ckbDomingo;
     public javax.swing.JCheckBox ckbJueves;
     public javax.swing.JCheckBox ckbMartes;
@@ -467,8 +502,9 @@ public class RegistroActividades extends javax.swing.JPanel {
     private javax.swing.JPanel pnlBarraTitulo;
     private javax.swing.JPanel pnlImagen;
     private javax.swing.JPanel pnlPrincipal1;
-    private javax.swing.JPanel pnlRegistroActividad;
+    public javax.swing.JPanel pnlRegistroActividad;
     private javax.swing.JPanel pnlSelDias;
+    public javax.swing.JPanel pnlVerActividades;
     public javax.swing.JTextArea txtDescripcion;
     public javax.swing.JTextField txtHoraApertura;
     public javax.swing.JTextField txtHoraCierre;

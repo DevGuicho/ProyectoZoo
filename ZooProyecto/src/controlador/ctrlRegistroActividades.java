@@ -15,8 +15,10 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.*;
+import vista.HistorialActividades;
 import vista.RegistroActividades;
 
 /**
@@ -36,8 +38,8 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
     private Color verdePrincipal;
     private Font fontOn;
     private Font fontNormal;
-    
-    
+    private HistorialActividades ha;
+    private ctrlHistorialActividades ctrlHa;
 
     public ctrlRegistroActividades(RegistroActividades ra) {
         this.ra = ra;
@@ -61,6 +63,8 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
             }
+        }else if(ae.getSource() == ra.btnVerActividades){
+            setPanel();
         }
     }
 
@@ -93,6 +97,8 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             ra.btnGuardar.setBackground(verdeOn);
         }else if(me.getSource() == ra.btnLimpiar){
             ra.btnLimpiar.setBackground(verdeOn);
+        }else if(me.getSource() == ra.btnVerActividades){
+            ra.btnVerActividades.setBackground(verdeOn);
         }
     }
 
@@ -102,15 +108,19 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             ra.btnGuardar.setBackground(verdePrincipal);
         }else if(me.getSource() == ra.btnLimpiar){
             ra.btnLimpiar.setBackground(verdePrincipal);
+        }else if(me.getSource() == ra.btnVerActividades){
+            ra.btnVerActividades.setBackground(verdePrincipal);
         }
     }
     
      private void iniComponents(){
         this.ra.btnGuardar.addActionListener(this);
         this.ra.btnLimpiar.addActionListener(this);
+        this.ra.btnVerActividades.addActionListener(this);
         
         this.ra.btnGuardar.addMouseListener(this);
         this.ra.btnLimpiar.addMouseListener(this);
+        this.ra.btnVerActividades.addMouseListener(this);
         
         this.verdeOn = new Color(0, 212, 72);
         this.verdePrincipal = new Color(0, 179, 61);
@@ -203,4 +213,26 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
     ra.ckbSabado.setSelected(false);
     }
     
+    public void setPanel() {
+
+        if (ra.btnVerActividades.isSelected()) {
+            ha = new HistorialActividades();
+            ctrlHa = new ctrlHistorialActividades(ha);
+            ha.setVisible(true);
+            ra.pnlVerActividades.removeAll();
+            ra.pnlVerActividades.add(ha);
+            ra.pnlVerActividades.repaint();
+            ra.pnlVerActividades.revalidate();
+            ra.btnVerActividades.setText("Registrar");
+            this.ra.btnVerActividades.setIcon(new ImageIcon("src/img/addAni.png"));
+            ra.pnlVerActividades.setVisible(true);
+            ra.pnlRegistroActividad.setVisible(false);
+        } else {
+            ra.btnVerActividades.setText("Ver Actividades");
+            this.ra.btnVerActividades.setIcon(new ImageIcon("src/img/vision.png"));
+            ra.pnlVerActividades.setVisible(false);
+            ra.pnlRegistroActividad.setVisible(true);
+        }
+    }
+
 }
