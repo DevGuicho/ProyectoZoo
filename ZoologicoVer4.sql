@@ -352,7 +352,7 @@ select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
-select *from Actividades;
+
 
 
 
