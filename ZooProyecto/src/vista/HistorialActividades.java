@@ -27,22 +27,121 @@ public class HistorialActividades extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlBarraTitulo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnlBarraOpciones = new javax.swing.JPanel();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pnlBarraTitulo.setBackground(new java.awt.Color(0, 179, 61));
+        pnlBarraTitulo.setMinimumSize(new java.awt.Dimension(0, 0));
+        pnlBarraTitulo.setPreferredSize(new java.awt.Dimension(850, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Historial Actividades");
+        jLabel1.setMaximumSize(new java.awt.Dimension(282, 33));
+        jLabel1.setMinimumSize(new java.awt.Dimension(282, 33));
+        jLabel1.setPreferredSize(new java.awt.Dimension(282, 33));
+
+        javax.swing.GroupLayout pnlBarraTituloLayout = new javax.swing.GroupLayout(pnlBarraTitulo);
+        pnlBarraTitulo.setLayout(pnlBarraTituloLayout);
+        pnlBarraTituloLayout.setHorizontalGroup(
+            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraTituloLayout.createSequentialGroup()
+                .addContainerGap(315, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(286, 286, 286))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pnlBarraTituloLayout.setVerticalGroup(
+            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraTituloLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        add(pnlBarraTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
+
+        pnlBarraOpciones.setBackground(new java.awt.Color(0, 179, 61));
+        pnlBarraOpciones.setAlignmentX(0.0F);
+        pnlBarraOpciones.setAlignmentY(0.0F);
+        pnlBarraOpciones.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pnlBarraOpciones.setMinimumSize(new java.awt.Dimension(200, 40));
+        pnlBarraOpciones.setPreferredSize(new java.awt.Dimension(200, 40));
+        pnlBarraOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnEliminar.setBackground(new java.awt.Color(0, 179, 61));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Eliminar.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setDefaultCapable(false);
+        btnEliminar.setFocusable(false);
+        btnEliminar.setMaximumSize(new java.awt.Dimension(86, 32));
+        btnEliminar.setMinimumSize(new java.awt.Dimension(86, 32));
+        btnEliminar.setOpaque(true);
+        btnEliminar.setPreferredSize(new java.awt.Dimension(86, 32));
+        btnEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/EliminarOn.png"))); // NOI18N
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
+
+        btnLimpiar.setBackground(new java.awt.Color(0, 179, 61));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiar.png"))); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(null);
+        btnLimpiar.setBorderPainted(false);
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setDefaultCapable(false);
+        btnLimpiar.setFocusPainted(false);
+        btnLimpiar.setFocusable(false);
+        btnLimpiar.setMaximumSize(new java.awt.Dimension(81, 32));
+        btnLimpiar.setMinimumSize(new java.awt.Dimension(81, 32));
+        btnLimpiar.setPreferredSize(new java.awt.Dimension(81, 32));
+        btnLimpiar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiarOn.png"))); // NOI18N
+        pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 100, 40));
+
+        add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setText("Filtro: ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 230, 30));
+
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 230, 30));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel pnlBarraOpciones;
+    private javax.swing.JPanel pnlBarraTitulo;
     // End of variables declaration//GEN-END:variables
 }
