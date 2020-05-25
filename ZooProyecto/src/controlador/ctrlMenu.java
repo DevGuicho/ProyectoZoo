@@ -40,9 +40,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
     private ctrlHistorialActividades ctrlHA;
     private ctrlHistorialHabitats ctrlHH;
     private ctrlHistorialVisitas ctrlHV;
-    private ctrlPersonalAnimales ctrlPA;
     private ctrlPersonalCuidadores ctrlPC;
-    private ctrlPersonalVeterinarios ctrlPV;
     private ctrlRegistroActividades ctrlRA;
     private ctrlRegistroAnimales ctrlRAni;
     private ctrlRegistroCuidadores ctrlRC;
@@ -55,9 +53,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
     private HistorialActividades ha;
     private HistorialHabitats hh;
     private HistorialVisitas hv;
-    private PersonalAnimales pa;
     private PersonalCuidadores pc;
-    private PersonalVeterinarios pv;
     private RegistroActividades ra;
     private RegistroAnimales rani;
     private RegistroCuidadores rc;
@@ -87,11 +83,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.pnlMainMenu.add(h);
             m.pnlMainMenu.repaint();
             m.pnlMainMenu.revalidate();
-        } else if (e.getSource() == m.btnRegistroVeterinario) {
-            /*rv = new RegistroVeterinarios();
-            ctrlRV = new ctrlRegistroVeterinarios(rv);
-            */
-            setPanel(rv);
         } else if (e.getSource() == m.btnRegistroCuidador) {
             /*rc = new RegistroCuidadores();
             ctrlRC = new ctrlRegistroCuidadores(rc);*/
@@ -125,18 +116,8 @@ public class ctrlMenu implements ActionListener, MouseListener {
             /*ha = new HistorialActividades();
             ctrlHA = new ctrlHistorialActividades(ha);*/
             setPanel(ha);
-        }else if(e.getSource() == m.btnPersonalAnimales){
-            /*pa = new PersonalAnimales();
-            ctrlPA = new ctrlPersonalAnimales(pa);*/
-            setPanel(pa);
-        }else if(e.getSource() == m.btnPersonalCuidadores){
-            /*pc = new PersonalCuidadores();
-            ctrlPC = new ctrlPersonalCuidadores(pc);*/
-            setPanel(pc);
-        }else if(e.getSource() == m.btnPersonalVeterinarios){
-            /*pv = new PersonalVeterinarios();
-            ctrlPV = new ctrlPersonalVeterinarios(pv);*/
-            setPanel(pv);
+        }else if(e.getSource() == m.btnRegistroVeterinario){
+            setPanel(rv);
         }
 
     }
@@ -148,9 +129,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if (e.getSource() == m.btnRegistroVeterinario) {
-            m.btnRegistroVeterinario.setFont(fontClick);
-        } else if (e.getSource() == m.btnRegistroCuidador) {
+        if (e.getSource() == m.btnRegistroCuidador) {
             m.btnRegistroCuidador.setFont(fontClick);
         } else if (e.getSource() == m.btnRegistroAnimales) {
             m.btnRegistroAnimales.setFont(fontClick);
@@ -166,22 +145,16 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.btnHistorialHabitats.setFont(fontClick);
         }else if(e.getSource() == m.btnHistorialActividades){
             m.btnHistorialActividades.setFont(fontClick);
-        }else if(e.getSource() == m.btnPersonalAnimales){
-            m.btnPersonalAnimales.setFont(fontClick);
-        }else if(e.getSource() == m.btnPersonalCuidadores){
-            m.btnPersonalCuidadores.setFont(fontClick);
-        }else if(e.getSource() == m.btnPersonalVeterinarios){
-            m.btnPersonalVeterinarios.setFont(fontClick);
         }else if(e.getSource() == m.lblBuscar){
             m.lblBuscar.setText(null);
+        }else if(e.getSource() == m.btnRegistroVeterinario){
+            m.btnRegistroVeterinario.setFont(fontClick);
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (e.getSource() == m.btnRegistroVeterinario) {
-            m.btnRegistroVeterinario.setFont(fontNormal);
-        } else if (e.getSource() == m.btnRegistroCuidador) {
+       if (e.getSource() == m.btnRegistroCuidador) {
             m.btnRegistroCuidador.setFont(fontNormal);
         } else if (e.getSource() == m.btnRegistroAnimales) {
             m.btnRegistroAnimales.setFont(fontNormal);
@@ -197,12 +170,8 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.btnHistorialHabitats.setFont(fontNormal);
         }else if(e.getSource() == m.btnHistorialActividades){
             m.btnHistorialActividades.setFont(fontNormal);
-        }else if(e.getSource() == m.btnPersonalAnimales){
-            m.btnPersonalAnimales.setFont(fontNormal);
-        }else if(e.getSource() == m.btnPersonalCuidadores){
-            m.btnPersonalCuidadores.setFont(fontNormal);
-        }else if(e.getSource() == m.btnPersonalVeterinarios){
-            m.btnPersonalVeterinarios.setFont(fontNormal);
+        }else if(e.getSource() == m.btnRegistroVeterinario){
+            m.btnRegistroVeterinario.setFont(fontNormal);
         }
     }
 
@@ -210,6 +179,8 @@ public class ctrlMenu implements ActionListener, MouseListener {
     public void mouseEntered(MouseEvent e) {
         if(e.getSource()== m.btnHome){
             m.btnHome.setBackground(verdeOn);
+        }else if (e.getSource() == m.btnRegistroVeterinario){
+            m.btnRegistroVeterinario.setBackground(verdeOn);
         }
     }
 
@@ -217,6 +188,8 @@ public class ctrlMenu implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
         if(e.getSource()== m.btnHome){
             m.btnHome.setBackground(verdePrincipal);
+        }else if (e.getSource() == m.btnRegistroVeterinario){
+            m.btnRegistroVeterinario.setBackground(verdePrincipal);
         }
     }
 
@@ -240,9 +213,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.m.btnHistorialActividades.addActionListener(this);
         this.m.btnHistorialHabitats.addActionListener(this);
         this.m.btnHistorialVisitas.addActionListener(this);
-        this.m.btnPersonalAnimales.addActionListener(this);
-        this.m.btnPersonalCuidadores.addActionListener(this);
-        this.m.btnPersonalVeterinarios.addActionListener(this);
+        
         this.m.btnRegistroActividades.addActionListener(this);
         this.m.btnRegistroAnimales.addActionListener(this);
         this.m.btnRegistroCuidador.addActionListener(this);
@@ -254,9 +225,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.m.btnHistorialActividades.addMouseListener(this);
         this.m.btnHistorialHabitats.addMouseListener(this);
         this.m.btnHistorialVisitas.addMouseListener(this);
-        this.m.btnPersonalAnimales.addMouseListener(this);
-        this.m.btnPersonalCuidadores.addMouseListener(this);
-        this.m.btnPersonalVeterinarios.addMouseListener(this);
+        
         this.m.btnRegistroActividades.addMouseListener(this);
         this.m.btnRegistroAnimales.addMouseListener(this);
         this.m.btnRegistroCuidador.addMouseListener(this);
@@ -276,9 +245,9 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.rv = new RegistroVeterinarios();
         this.rh = new ReporteHabitats();
         this.rvm = new ReporteVisitaMedica();
-        this.pa = new PersonalAnimales();
+        
         this.pc = new PersonalCuidadores();
-        this.pv = new PersonalVeterinarios();
+        
         
         
         this.ctrlHA = new ctrlHistorialActividades(ha);
@@ -290,9 +259,9 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.ctrlRV = new ctrlRegistroVeterinarios(rv);
         this.ctrlRH = new ctrlReporteHabitats(rh);
         this.ctrlRVM = new ctrlReporteVisitaMedica(rvm);
-        this.ctrlPA = new ctrlPersonalAnimales(pa);
+        
         this.ctrlPC = new ctrlPersonalCuidadores(pc);
-        this.ctrlPV = new ctrlPersonalVeterinarios(pv);
+        
         
 
         this.m.lblBuscar.addMouseListener(this);

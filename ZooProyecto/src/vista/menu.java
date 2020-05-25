@@ -52,7 +52,6 @@ public class menu extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
         pnlMenuLateral = new javax.swing.JPanel();
-        btnRegistroVeterinario = new javax.swing.JButton();
         btnRegistroAnimales = new javax.swing.JButton();
         btnRegistroCuidador = new javax.swing.JButton();
         btnRegistroActividades = new javax.swing.JButton();
@@ -61,13 +60,10 @@ public class menu extends javax.swing.JFrame {
         btnHistorialVisitas = new javax.swing.JButton();
         btnHistorialActividades = new javax.swing.JButton();
         btnHistorialHabitats = new javax.swing.JButton();
-        btnPersonalAnimales = new javax.swing.JButton();
-        btnPersonalVeterinarios = new javax.swing.JButton();
-        btnPersonalCuidadores = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnRegistroVeterinario = new javax.swing.JToggleButton();
         pnlMainMenu = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,28 +153,6 @@ public class menu extends javax.swing.JFrame {
 
         pnlMenuLateral.setBackground(new java.awt.Color(0, 179, 61));
         pnlMenuLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnRegistroVeterinario.setBackground(new java.awt.Color(0, 179, 61));
-        btnRegistroVeterinario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRegistroVeterinario.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistroVeterinario.setText("Veterinario");
-        btnRegistroVeterinario.setBorder(null);
-        btnRegistroVeterinario.setBorderPainted(false);
-        btnRegistroVeterinario.setContentAreaFilled(false);
-        btnRegistroVeterinario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistroVeterinario.setDefaultCapable(false);
-        btnRegistroVeterinario.setFocusPainted(false);
-        btnRegistroVeterinario.setFocusable(false);
-        btnRegistroVeterinario.setOpaque(true);
-        btnRegistroVeterinario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRegistroVeterinarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRegistroVeterinarioMouseExited(evt);
-            }
-        });
-        pnlMenuLateral.add(btnRegistroVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 250, 40));
 
         btnRegistroAnimales.setBackground(new java.awt.Color(0, 179, 61));
         btnRegistroAnimales.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -366,83 +340,6 @@ public class menu extends javax.swing.JFrame {
         });
         pnlMenuLateral.add(btnHistorialHabitats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 250, 40));
 
-        btnPersonalAnimales.setBackground(new java.awt.Color(0, 179, 61));
-        btnPersonalAnimales.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPersonalAnimales.setForeground(new java.awt.Color(255, 255, 255));
-        btnPersonalAnimales.setText("Animales");
-        btnPersonalAnimales.setBorder(null);
-        btnPersonalAnimales.setBorderPainted(false);
-        btnPersonalAnimales.setContentAreaFilled(false);
-        btnPersonalAnimales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPersonalAnimales.setDefaultCapable(false);
-        btnPersonalAnimales.setFocusPainted(false);
-        btnPersonalAnimales.setFocusable(false);
-        btnPersonalAnimales.setOpaque(true);
-        btnPersonalAnimales.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPersonalAnimalesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPersonalAnimalesMouseExited(evt);
-            }
-        });
-        pnlMenuLateral.add(btnPersonalAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 250, 40));
-
-        btnPersonalVeterinarios.setBackground(new java.awt.Color(0, 179, 61));
-        btnPersonalVeterinarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPersonalVeterinarios.setForeground(new java.awt.Color(255, 255, 255));
-        btnPersonalVeterinarios.setText("Veterinarios");
-        btnPersonalVeterinarios.setBorder(null);
-        btnPersonalVeterinarios.setBorderPainted(false);
-        btnPersonalVeterinarios.setContentAreaFilled(false);
-        btnPersonalVeterinarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPersonalVeterinarios.setDefaultCapable(false);
-        btnPersonalVeterinarios.setFocusPainted(false);
-        btnPersonalVeterinarios.setFocusable(false);
-        btnPersonalVeterinarios.setOpaque(true);
-        btnPersonalVeterinarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPersonalVeterinariosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPersonalVeterinariosMouseExited(evt);
-            }
-        });
-        pnlMenuLateral.add(btnPersonalVeterinarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 250, 40));
-
-        btnPersonalCuidadores.setBackground(new java.awt.Color(0, 179, 61));
-        btnPersonalCuidadores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPersonalCuidadores.setForeground(new java.awt.Color(255, 255, 255));
-        btnPersonalCuidadores.setText("Cuidadores");
-        btnPersonalCuidadores.setBorder(null);
-        btnPersonalCuidadores.setBorderPainted(false);
-        btnPersonalCuidadores.setContentAreaFilled(false);
-        btnPersonalCuidadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPersonalCuidadores.setDefaultCapable(false);
-        btnPersonalCuidadores.setFocusPainted(false);
-        btnPersonalCuidadores.setFocusable(false);
-        btnPersonalCuidadores.setOpaque(true);
-        btnPersonalCuidadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPersonalCuidadoresMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPersonalCuidadoresMouseExited(evt);
-            }
-        });
-        pnlMenuLateral.add(btnPersonalCuidadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 250, 40));
-
-        jLabel1.setBackground(new java.awt.Color(0, 179, 61));
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personal.png"))); // NOI18N
-        jLabel1.setText("Personal");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setIconTextGap(10);
-        jLabel1.setOpaque(true);
-        jLabel1.setVerifyInputWhenFocusTarget(false);
-        pnlMenuLateral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 200, 40));
-
         jLabel3.setBackground(new java.awt.Color(0, 179, 61));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -476,6 +373,19 @@ public class menu extends javax.swing.JFrame {
         jLabel5.setVerifyInputWhenFocusTarget(false);
         pnlMenuLateral.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 200, 40));
 
+        btnRegistroVeterinario.setBackground(new java.awt.Color(0, 179, 61));
+        btnRegistroVeterinario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegistroVeterinario.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistroVeterinario.setText("Veterinarios");
+        btnRegistroVeterinario.setBorder(null);
+        btnRegistroVeterinario.setBorderPainted(false);
+        btnRegistroVeterinario.setContentAreaFilled(false);
+        btnRegistroVeterinario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistroVeterinario.setFocusPainted(false);
+        btnRegistroVeterinario.setFocusable(false);
+        btnRegistroVeterinario.setOpaque(true);
+        pnlMenuLateral.add(btnRegistroVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 250, 40));
+
         getContentPane().add(pnlMenuLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 250, 640));
 
         pnlMainMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -495,16 +405,6 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnReporteVisitaMedicaActionPerformed
-
-    private void btnRegistroVeterinarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVeterinarioMouseEntered
-        // TODO add your handling code here:
-        btnRegistroVeterinario.setBackground(VerdeOn);
-    }//GEN-LAST:event_btnRegistroVeterinarioMouseEntered
-
-    private void btnRegistroVeterinarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVeterinarioMouseExited
-        // TODO add your handling code here:
-        btnRegistroVeterinario.setBackground(VerdePrincipal);
-    }//GEN-LAST:event_btnRegistroVeterinarioMouseExited
 
     private void btnRegistroCuidadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroCuidadorMouseEntered
         // TODO add your handling code here:
@@ -584,36 +484,6 @@ public class menu extends javax.swing.JFrame {
         btnHistorialActividades.setBackground(VerdePrincipal);
     }//GEN-LAST:event_btnHistorialActividadesMouseExited
 
-    private void btnPersonalAnimalesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalAnimalesMouseExited
-        // TODO add your handling code here:
-        btnPersonalAnimales.setBackground(VerdePrincipal);
-    }//GEN-LAST:event_btnPersonalAnimalesMouseExited
-
-    private void btnPersonalAnimalesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalAnimalesMouseEntered
-        // TODO add your handling code here:
-        btnPersonalAnimales.setBackground(VerdeOn);
-    }//GEN-LAST:event_btnPersonalAnimalesMouseEntered
-
-    private void btnPersonalVeterinariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalVeterinariosMouseEntered
-        // TODO add your handling code here:
-        btnPersonalVeterinarios.setBackground(VerdeOn);
-    }//GEN-LAST:event_btnPersonalVeterinariosMouseEntered
-
-    private void btnPersonalVeterinariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalVeterinariosMouseExited
-        // TODO add your handling code here:
-        btnPersonalVeterinarios.setBackground(VerdePrincipal);
-    }//GEN-LAST:event_btnPersonalVeterinariosMouseExited
-
-    private void btnPersonalCuidadoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalCuidadoresMouseEntered
-        // TODO add your handling code here:
-        btnPersonalCuidadores.setBackground(VerdeOn);
-    }//GEN-LAST:event_btnPersonalCuidadoresMouseEntered
-
-    private void btnPersonalCuidadoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalCuidadoresMouseExited
-        // TODO add your handling code here:
-        btnPersonalCuidadores.setBackground(VerdePrincipal);
-    }//GEN-LAST:event_btnPersonalCuidadoresMouseExited
-
     private void lblBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblBuscarActionPerformed
@@ -667,16 +537,12 @@ public class menu extends javax.swing.JFrame {
     public javax.swing.JButton btnHistorialVisitas;
     public javax.swing.JButton btnHome;
     public javax.swing.JButton btnMinimize;
-    public javax.swing.JButton btnPersonalAnimales;
-    public javax.swing.JButton btnPersonalCuidadores;
-    public javax.swing.JButton btnPersonalVeterinarios;
     public javax.swing.JButton btnRegistroActividades;
     public javax.swing.JButton btnRegistroAnimales;
     public javax.swing.JButton btnRegistroCuidador;
-    public javax.swing.JButton btnRegistroVeterinario;
+    public javax.swing.JToggleButton btnRegistroVeterinario;
     public javax.swing.JButton btnReporteHabitat;
     public javax.swing.JButton btnReporteVisitaMedica;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
