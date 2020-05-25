@@ -269,10 +269,10 @@ delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
 	for each row 
     begin
-    set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
-    on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad != 'ocupado');
+    if new.reg_aprobacion = 'Aprobado' then
     update Habitat set HAB_Disponibilidad = 'ocupado' 
-    where HAB_HabitatId != @aux; 
+    where HAB_HabitatId = new.reg_habitatid; 
+    end if;
     end ; //
     delimiter ;
 
@@ -332,7 +332,7 @@ insert into Revisa_Animal values (1,1,1,'2000-05-01');
 insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
 							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','10:50:50','06:00:00',1),
 								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','10:50:50','06:00:00',2),
-                                (4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
+								(4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
 insert into ong_realiza values (1,'martes'),
 							   (1,'viernes'),
 							   (2,'martes'),
@@ -352,7 +352,3 @@ select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
-
-
-
-
