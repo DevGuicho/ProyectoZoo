@@ -232,6 +232,33 @@ DELIMITER ;
 
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
+
+
+-- ////////////////////////////////////
+delimiter //
+create procedure filtroDiasActividad (in dia varchar(10))
+begin
+	select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from ong_realiza 
+    inner join registro_ong on ong_realiza.rea_actividadid = registro_ong.reg_actividadid
+    inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid
+	where ong_realiza.rea_dia = dia;
+end //
+delimiter ;   
+-- /////////////////////////////////////
+
+-- /////////////////////////////////////
+delimiter //
+create procedure filtroHabitatActividad (in habitat varchar(20))
+begin
+	select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre from registro_ong
+    inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid
+	where habitat.hab_nombre = habitat;
+end //
+delimiter ;   
+
+call filtroHabitatActividad("aves");
+-- //////////////////////////////////////
+
 -- /////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
@@ -315,6 +342,7 @@ select * from ong_realiza;
 select * from animal;
 select *from revisa_animal;
 select *from registro_ong;
+select *from habitat;
 
 select * from ultimavisita;
 select * from Veterinario;	
