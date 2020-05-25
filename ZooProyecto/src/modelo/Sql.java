@@ -139,7 +139,7 @@ public class Sql extends Conexion{
         ArrayList<Cuidador> cuidadores = new ArrayList<>();
         Cuidador c = new Cuidador();
         try {
-            sql = "SELECT * FROM cuidador";
+            sql = "SELECT * FROM cuidador order by CUI_nombre";
             con = getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -149,12 +149,14 @@ public class Sql extends Conexion{
                 c.setId(rs.getInt(1));
                 c.setNombre(rs.getString(2));
                 c.setNombre2(rs.getString(3));
+                if(rs.wasNull()){
+                    c.setNombre2(" ");
+                }
                 c.setApellido1(rs.getString(4));
                 c.setApellido2(rs.getString(5));
                 c.setSueldo(rs.getFloat(6));
                 cuidadores.add(c);
             
-               
             }
             
             return cuidadores;
@@ -567,4 +569,28 @@ public class Sql extends Conexion{
         }
     }
        
+    public static boolean registrarCuidadores(Cuidador c){
+        try {
+            sql = "insert into Cuidador (CUI_nombre,CUI_nombre2,CUI_Apellido1,CUI_Apellido2,CUI_sueldo) values (?,?,?,?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, c.getNombre());
+            if(c.getNombre2().equals(""))
+                ps.setNull(2, 0);
+            else 
+                ps.setString(2, c.getNombre2());
+            ps.setString(3, c.getApellido1());
+            ps.setString(4, c.getApellido2());
+            ps.setFloat(5, c.getSueldo());
+            ps.execute();
+            
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Registro Fallido");
+            return false;
+        }
+       
+    }
+    
+    
 }

@@ -8,7 +8,7 @@ FLUSH PRIVILEGES;
 -- LA SIGUIENTE INSTRUCCION SE TIENE QUE EJECUTAR SIEMPRE QUE SE EJECUTE LA BBDD POR PRIMERA VEZ 
 -- ES DECIR CADA VEZ QUE ENCIENDES LA PC 
 SET GLOBAL time_zone = '+8:00';
-
+drop database Zoologico;
 -- SCRIPT PARA CREAR LA BBDD
 create database Zoologico;
 use Zoologico;
@@ -324,6 +324,7 @@ select * from Animal;
 select * from verAnimales;	
 select * from Habitat;
 select * from registra;
+select * from cuidador;
 
 
 

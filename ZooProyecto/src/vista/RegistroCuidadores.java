@@ -53,7 +53,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCuidadores = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
@@ -246,7 +246,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(0, 153, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCuidadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -257,7 +257,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCuidadores);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 770, 200));
 
@@ -311,10 +311,10 @@ public class RegistroCuidadores extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlOpciones;
     public javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlTitulo;
+    public javax.swing.JTable tblCuidadores;
     public javax.swing.JTextField txt2doNombre;
     public javax.swing.JTextField txtApellidoMaterno;
     public javax.swing.JTextField txtApellidoPaterno;
