@@ -170,6 +170,7 @@ CREATE TABLE Revisa_Animal (
     REV_id INT NOT NULL AUTO_INCREMENT,
     REV_VeterinarioID INT NOT NULL,
     REV_AnimalID INT NOT NULL,
+    REV_Observaciones varchar(50) NOT NULL,
     REV_Fecha_Revision DATE NOT NULL,
     CONSTRAINT pk_REVISA_ANIMAL PRIMARY KEY (REV_id),
     CONSTRAINT fk_REVISA_VETERINARIO FOREIGN KEY (REV_VeterinarioID)
@@ -211,8 +212,16 @@ on cuidador.CUI_CuidadorID = ANI_CuidadorID
 inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
-select distinct RHA_HabitatID from registra;
+
+
 -- ///////////////////////////////////////////////////////////////////////
+
+
+create view Actividades as
+select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from registro_ong
+inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid;
+
+
 -- PROCEDIMIENTOS ALMACENADOS
 DELIMITER //
 CREATE PROCEDURE filtroAnimales
@@ -234,16 +243,41 @@ DELIMITER ;
 
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
+
 -- ///////////////////////////////////////////////////////////////////////////////////////////////
+
+delimiter //
+create procedure filtroDiasActividad (in dia varchar(10))
+begin
+	select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from ong_realiza 
+    inner join registro_ong on ong_realiza.rea_actividadid = registro_ong.reg_actividadid
+    inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid
+	where ong_realiza.rea_dia = dia;
+end //
+delimiter ;   
+-- /////////////////////////////////////
+
+-- /////////////////////////////////////
+delimiter //
+create procedure filtroHabitatActividad (in habitat varchar(20))
+begin
+	select *from Actividades
+	where hab_nombre = habitat;
+end //
+delimiter ;   
+-- drop procedure filtrodiasactividad;
+-- drop procedure filtrohabitatactividad;
+-- //////////////////////////////////////
+
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
 	for each row 
     begin
-    set @aux:= (select REG_HabitatId from Registro_ONG inner join Habitat
-    on Registro_ONG.REG_HabitatID = Habitat.HAB_HabitatId where Habitat.HAB_Disponibilidad != 'ocupado');
+    if new.reg_aprobacion = 'Aprobado' then
     update Habitat set HAB_Disponibilidad = 'ocupado' 
-    where HAB_HabitatId != @aux; 
+    where HAB_HabitatId = new.reg_habitatid; 
+    end if;
     end ; //
     delimiter ;
 
@@ -263,7 +297,16 @@ create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
     
 
 -- drop trigger eliminar_disponibilidad_habitat;
-
+-- TRIGGER PARA ACTUALIZAR LAS OBSERVACIONES DEL ANIMAL
+delimiter //
+create trigger vistaMedicaObservaciones after insert on Revisa_Animal
+for each row 
+begin 
+update Animal set ani_observaciones = new.rev_observaciones
+where ani_id= new.rev_animalid;
+end; //
+delimiter ;
+-- drop trigger vistaMedicaObservaciones;
 -- ////////////////////////////////////////////////////////////////////////////
 -- ////////////////////// ALTAS PARA PROBAR PROGRAMA //////////////////////////
 -- ////////////////////////////////////////////////////////////////////////////
@@ -299,11 +342,11 @@ insert into procedencia_foranea values (1,'Madagascar','2000-01-01'),
                                        (3,'Madagascar','2000-01-01'),
                                        (4,'Abtartida','2002-05-15');
 
-insert into Revisa_Animal values (1,1,1,'2000-05-01');
+insert into Revisa_Animal values (1,1,1,'En buen estado','2000-05-01');
 insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
 							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','10:50:50','06:00:00',1),
 								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','10:50:50','06:00:00',2),
-                                (4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
+								(4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
 insert into ong_realiza values (1,'martes'),
 							   (1,'viernes'),
 							   (2,'martes'),
@@ -317,14 +360,18 @@ select * from ong_realiza;
 select * from animal;
 select * from revisa_animal;
 select * from registro_ong;
+select *from habitat;
+
 
 select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
+
 select * from verAnimales;	
 select * from Habitat;
 select * from registra;
 select * from cuidador;
+
 
 
 

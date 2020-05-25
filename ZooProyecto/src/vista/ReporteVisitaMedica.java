@@ -37,6 +37,10 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
         cmbVeterinario = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         cmbAnimal = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtObservaciones = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
@@ -137,6 +141,20 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
 
         pnlPrincipal.add(cmbAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 220, 30));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 179, 61));
+        jLabel4.setText("Observaciones: ");
+        pnlPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 140, -1));
+
+        txtObservaciones.setColumns(20);
+        txtObservaciones.setRows(5);
+        jScrollPane1.setViewportView(txtObservaciones);
+
+        pnlPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 290, 70));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/veterinario_zoo.jpg"))); // NOI18N
+        pnlPrincipal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+
         add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 840, 530));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,8 +167,12 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlBarraOpciones;
     private javax.swing.JPanel pnlBarraTitulo;
     private javax.swing.JPanel pnlPrincipal;
+    public javax.swing.JTextArea txtObservaciones;
     // End of variables declaration//GEN-END:variables
 }

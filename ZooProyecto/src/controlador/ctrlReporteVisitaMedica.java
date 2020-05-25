@@ -151,11 +151,14 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         ra.setAnimalId(a.getId());
         
         Date FechaRevision = new Date(); 
-        ra.setFechaRevision(FechaRevision);  
+        ra.setFechaRevision(FechaRevision); 
+        
+        ra.setObservaciones(rvm.txtObservaciones.getText());
     }
     
     private void limpiar(){
     rvm.cmbAnimal.setSelectedIndex(0);
     rvm.cmbVeterinario.setSelectedIndex(0);
+    rvm.txtObservaciones.setText(null);
     }
 }
