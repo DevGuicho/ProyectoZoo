@@ -211,6 +211,11 @@ on cuidador.CUI_CuidadorID = ANI_CuidadorID
 inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
+
+create view Actividades as
+select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from registro_ong
+inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid;
+
 -- PROCEDIMIENTOS ALMACENADOS
 DELIMITER //
 CREATE PROCEDURE filtroAnimales
@@ -250,13 +255,12 @@ delimiter ;
 delimiter //
 create procedure filtroHabitatActividad (in habitat varchar(20))
 begin
-	select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre from registro_ong
-    inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid
-	where habitat.hab_nombre = habitat;
+	select *from Actividades
+	where hab_nombre = habitat;
 end //
 delimiter ;   
-
-call filtroHabitatActividad("aves");
+-- drop procedure filtrodiasactividad;
+-- drop procedure filtrohabitatactividad;
 -- //////////////////////////////////////
 
 -- /////////////////////////////////
@@ -348,7 +352,7 @@ select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
-
+select *from Actividades;
 
 
 
