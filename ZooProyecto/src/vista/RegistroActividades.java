@@ -32,8 +32,6 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlBarraOpciones = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        pnlImagen = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         btnVerActividades = new javax.swing.JToggleButton();
         pnlRegistroActividad = new javax.swing.JPanel();
         pnlSelDias = new javax.swing.JPanel();
@@ -165,32 +163,6 @@ public class RegistroActividades extends javax.swing.JPanel {
 
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
 
-        pnlRegistroActividad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg5.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout pnlImagenLayout = new javax.swing.GroupLayout(pnlImagen);
-        pnlImagen.setLayout(pnlImagenLayout);
-        pnlImagenLayout.setHorizontalGroup(
-            pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-            .addGroup(pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlImagenLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        pnlImagenLayout.setVerticalGroup(
-            pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
-            .addGroup(pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlImagenLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel9)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        pnlRegistroActividad.add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, -1, -1));
         pnlRegistroActividad.setOpaque(false);
         pnlRegistroActividad.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -244,7 +216,6 @@ public class RegistroActividades extends javax.swing.JPanel {
                 ckbSabadoActionPerformed(evt);
             }
         });
-
         pnlSelDias.add(ckbSabado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 33));
 
         ckbJueves.setBackground(new java.awt.Color(212, 255, 204));
@@ -258,7 +229,6 @@ public class RegistroActividades extends javax.swing.JPanel {
         ckbDomingo.setBackground(new java.awt.Color(212, 255, 204));
         ckbDomingo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         ckbDomingo.setForeground(new java.awt.Color(255, 255, 255));
-
         ckbDomingo.setText("Domingo");
         ckbDomingo.setBorder(null);
         ckbDomingo.setContentAreaFilled(false);
@@ -272,7 +242,6 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlRegistroActividad.add(pnlSelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 340, 210));
 
         pnlPrincipal1.setBackground(new java.awt.Color(0, 153, 102));
-
         pnlPrincipal1.setMinimumSize(new java.awt.Dimension(0, 0));
         pnlPrincipal1.setPreferredSize(new java.awt.Dimension(850, 850));
         pnlPrincipal1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -427,7 +396,6 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlVerActividades.setOpaque(false);
         pnlVerActividades.setLayout(new java.awt.BorderLayout());
         add(pnlVerActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 850, 560));
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
