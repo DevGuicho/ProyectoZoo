@@ -16,6 +16,7 @@ public class RevisaAnimal {
     private int id;
     private int veterinarioId;
     private int animalId;
+    private String observaciones;
     private Date fechaRevision;
     
     public RevisaAnimal(){
@@ -54,6 +55,16 @@ public class RevisaAnimal {
         this.fechaRevision = fechaRevision;
     }
 
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "RevisaAnimal{" + "id=" + id + ", veterinarioId=" + veterinarioId + ", animalId=" + animalId + ", fechaRevision=" + fechaRevision + '}';

@@ -510,13 +510,14 @@ public class Sql extends Conexion{
         java.sql.Date FechaRevision = new java.sql.Date(d);
         
         try {
-            sql = "INSERT INTO Revisa_Animal (REV_VeterinarioID, REV_AnimalID, REV_Fecha_Revision) VALUES (?,?,?)";
+            sql = "INSERT INTO Revisa_Animal (REV_VeterinarioID, REV_AnimalID, REV_Observaciones, REV_Fecha_Revision) VALUES (?,?,?,?)";
             con = getConnection();
             ps = con.prepareStatement(sql);
             
             ps.setInt(1, ra.getVeterinarioId());
             ps.setInt(2, ra.getAnimalId());
-            ps.setDate(3, FechaRevision);
+            ps.setString(3, ra.getObservaciones());
+            ps.setDate(4, FechaRevision);
             
             ps.execute();
             ps.close();

@@ -170,6 +170,7 @@ CREATE TABLE Revisa_Animal (
     REV_id INT NOT NULL AUTO_INCREMENT,
     REV_VeterinarioID INT NOT NULL,
     REV_AnimalID INT NOT NULL,
+    REV_Observaciones varchar(50) NOT NULL,
     REV_Fecha_Revision DATE NOT NULL,
     CONSTRAINT pk_REVISA_ANIMAL PRIMARY KEY (REV_id),
     CONSTRAINT fk_REVISA_VETERINARIO FOREIGN KEY (REV_VeterinarioID)
@@ -292,7 +293,16 @@ create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
     
 
 -- drop trigger eliminar_disponibilidad_habitat;
-
+-- TRIGGER PARA ACTUALIZAR LAS OBSERVACIONES DEL ANIMAL
+delimiter //
+create trigger vistaMedicaObservaciones after insert on Revisa_Animal
+for each row 
+begin 
+update Animal set ani_observaciones = new.rev_observaciones
+where ani_id= new.rev_animalid;
+end; //
+delimiter ;
+-- drop trigger vistaMedicaObservaciones;
 -- ////////////////////////////////////////////////////////////////////////////
 -- ////////////////////// ALTAS PARA PROBAR PROGRAMA //////////////////////////
 -- ////////////////////////////////////////////////////////////////////////////
@@ -328,7 +338,7 @@ insert into procedencia_foranea values (1,'Madagascar','2000-01-01'),
                                        (3,'Madagascar','2000-01-01'),
                                        (4,'Abtartida','2002-05-15');
 
-insert into Revisa_Animal values (1,1,1,'2000-05-01');
+insert into Revisa_Animal values (1,1,1,'En buen estado','2000-05-01');
 insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
 							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','10:50:50','06:00:00',1),
 								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','10:50:50','06:00:00',2),
