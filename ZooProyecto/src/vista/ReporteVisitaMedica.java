@@ -33,14 +33,18 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         pnlPrincipal = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cmbVeterinario = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         cmbAnimal = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObservaciones = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblRevisionMedica = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
@@ -121,41 +125,138 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
         pnlPrincipal.setPreferredSize(new java.awt.Dimension(850, 850));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 179, 61));
-        jLabel2.setText("Veterinario: ");
-        jLabel2.setMaximumSize(new java.awt.Dimension(39, 25));
-        jLabel2.setMinimumSize(new java.awt.Dimension(39, 25));
-        jLabel2.setPreferredSize(new java.awt.Dimension(39, 25));
-        pnlPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 220, 30));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setForeground(new java.awt.Color(0, 153, 102));
+        jPanel1.setAlignmentX(0.0F);
+        jPanel1.setAlignmentY(0.0F);
+        jPanel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jPanel1.setMinimumSize(new java.awt.Dimension(693, 165));
 
-        pnlPrincipal.add(cmbVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 220, 30));
-
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 179, 61));
-        jLabel3.setText("Animal: ");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Animal ");
         jLabel3.setMaximumSize(new java.awt.Dimension(39, 25));
         jLabel3.setMinimumSize(new java.awt.Dimension(39, 25));
         jLabel3.setPreferredSize(new java.awt.Dimension(39, 25));
-        pnlPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 90, 30));
 
-        pnlPrincipal.add(cmbAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 220, 30));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Veterinario");
+        jLabel2.setMaximumSize(new java.awt.Dimension(39, 25));
+        jLabel2.setMinimumSize(new java.awt.Dimension(39, 25));
+        jLabel2.setPreferredSize(new java.awt.Dimension(39, 25));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 179, 61));
-        jLabel4.setText("Observaciones: ");
-        pnlPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 140, -1));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Observaciones");
 
         txtObservaciones.setColumns(20);
         txtObservaciones.setRows(5);
         jScrollPane1.setViewportView(txtObservaciones);
 
-        pnlPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 290, 70));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
+        );
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/veterinario_zoo.jpg"))); // NOI18N
-        pnlPrincipal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+        pnlPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 180));
 
-        add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 840, 530));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 102));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 810, 60));
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel3.setAlignmentX(0.0F);
+        jPanel3.setAlignmentY(0.0F);
+        jPanel3.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jPanel3.setMinimumSize(new java.awt.Dimension(790, 220));
+
+        tblRevisionMedica.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblRevisionMedica);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+
+        pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 810, 240));
+
+        add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 840, 560));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -168,11 +269,15 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlBarraOpciones;
     private javax.swing.JPanel pnlBarraTitulo;
     private javax.swing.JPanel pnlPrincipal;
+    public javax.swing.JTable tblRevisionMedica;
     public javax.swing.JTextArea txtObservaciones;
     // End of variables declaration//GEN-END:variables
 }

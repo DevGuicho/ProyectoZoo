@@ -8,7 +8,7 @@ FLUSH PRIVILEGES;
 -- LA SIGUIENTE INSTRUCCION SE TIENE QUE EJECUTAR SIEMPRE QUE SE EJECUTE LA BBDD POR PRIMERA VEZ 
 -- ES DECIR CADA VEZ QUE ENCIENDES LA PC 
 SET GLOBAL time_zone = '+8:00';
-drop database Zoologico;
+
 -- SCRIPT PARA CREAR LA BBDD
 create database Zoologico;
 use Zoologico;
@@ -213,14 +213,15 @@ inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
 
-
--- ///////////////////////////////////////////////////////////////////////
-
-
 create view Actividades as
 select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from registro_ong
 inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid;
 
+create view VisitasMedicas as
+select vet_nombre, vet_nombre2,vet_apellido1, vet_apellido2, ani_nombre, ani_especie, ani_peso, rev_observaciones, rev_fecha_revision from revisa_animal
+inner join veterinario on revisa_animal.rev_veterinarioid = vet_veterinarioid
+inner join animal on revisa_animal.rev_animalid = animal.ani_animalid;
+-- drop view VisitasMedicas;
 
 -- PROCEDIMIENTOS ALMACENADOS
 DELIMITER //
@@ -244,8 +245,8 @@ DELIMITER ;
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
 
--- ///////////////////////////////////////////////////////////////////////////////////////////////
 
+-- ////////////////////////////////////
 delimiter //
 create procedure filtroDiasActividad (in dia varchar(10))
 begin
@@ -269,6 +270,7 @@ delimiter ;
 -- drop procedure filtrohabitatactividad;
 -- //////////////////////////////////////
 
+-- /////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
@@ -303,7 +305,7 @@ create trigger vistaMedicaObservaciones after insert on Revisa_Animal
 for each row 
 begin 
 update Animal set ani_observaciones = new.rev_observaciones
-where ani_Animalid= new.rev_animalid;
+where ani_animalid= new.rev_animalid;
 end; //
 delimiter ;
 -- drop trigger vistaMedicaObservaciones;
@@ -358,20 +360,11 @@ insert into ong_realiza values (1,'martes'),
 select * from ong_realiza;
 
 select * from animal;
-select * from revisa_animal;
-select * from registro_ong;
+select *from revisa_animal;
+select *from registro_ong;
 select *from habitat;
-
 
 select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
-
 select * from verAnimales;	
-select * from Habitat;
-select * from registra;
-select * from cuidador;
-
-
-
-
