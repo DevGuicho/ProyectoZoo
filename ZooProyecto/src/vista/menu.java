@@ -59,7 +59,6 @@ public class menu extends javax.swing.JFrame {
         btnReporteVisitaMedica = new javax.swing.JButton();
         btnHistorialVisitas = new javax.swing.JButton();
         btnHistorialActividades = new javax.swing.JButton();
-        btnHistorialHabitats = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -316,29 +315,7 @@ public class menu extends javax.swing.JFrame {
                 btnHistorialActividadesMouseExited(evt);
             }
         });
-        pnlMenuLateral.add(btnHistorialActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 250, 40));
-
-        btnHistorialHabitats.setBackground(new java.awt.Color(0, 179, 61));
-        btnHistorialHabitats.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnHistorialHabitats.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistorialHabitats.setText("Habitats");
-        btnHistorialHabitats.setBorder(null);
-        btnHistorialHabitats.setBorderPainted(false);
-        btnHistorialHabitats.setContentAreaFilled(false);
-        btnHistorialHabitats.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnHistorialHabitats.setDefaultCapable(false);
-        btnHistorialHabitats.setFocusPainted(false);
-        btnHistorialHabitats.setFocusable(false);
-        btnHistorialHabitats.setOpaque(true);
-        btnHistorialHabitats.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHistorialHabitatsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHistorialHabitatsMouseExited(evt);
-            }
-        });
-        pnlMenuLateral.add(btnHistorialHabitats, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 250, 40));
+        pnlMenuLateral.add(btnHistorialActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 250, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 179, 61));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -464,16 +441,6 @@ public class menu extends javax.swing.JFrame {
         btnHistorialVisitas.setBackground(VerdePrincipal);
     }//GEN-LAST:event_btnHistorialVisitasMouseExited
 
-    private void btnHistorialHabitatsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialHabitatsMouseExited
-        // TODO add your handling code here:
-        btnHistorialHabitats.setBackground(VerdePrincipal);
-    }//GEN-LAST:event_btnHistorialHabitatsMouseExited
-
-    private void btnHistorialHabitatsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialHabitatsMouseEntered
-        // TODO add your handling code here:
-        btnHistorialHabitats.setBackground(VerdeOn);
-    }//GEN-LAST:event_btnHistorialHabitatsMouseEntered
-
     private void btnHistorialActividadesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistorialActividadesMouseEntered
         // TODO add your handling code here:
         btnHistorialActividades.setBackground(VerdeOn);
@@ -533,7 +500,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnClose;
     public javax.swing.JButton btnHistorialActividades;
-    public javax.swing.JButton btnHistorialHabitats;
     public javax.swing.JButton btnHistorialVisitas;
     public javax.swing.JButton btnHome;
     public javax.swing.JButton btnMinimize;
