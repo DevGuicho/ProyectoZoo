@@ -270,6 +270,15 @@ delimiter ;
 -- drop procedure filtrohabitatactividad;
 -- //////////////////////////////////////
 
+delimiter //
+create procedure filtroStatus (in estado varchar(12))
+begin
+	select *from Actividades
+    where reg_aprobacion = estado;
+end //
+delimiter;
+-- drop procedure filtrostatus;
+-- ////////////////////////////////////
 -- /////////////////////////////////
 -- CREACION DEL TRIGGER PARA HABITAT
 delimiter //
