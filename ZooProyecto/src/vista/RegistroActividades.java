@@ -75,27 +75,16 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlBarraTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlBarraTitulo.setMinimumSize(new java.awt.Dimension(0, 0));
         pnlBarraTitulo.setPreferredSize(new java.awt.Dimension(850, 40));
+        pnlBarraTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de Actividades");
         jLabel1.setMaximumSize(new java.awt.Dimension(282, 33));
         jLabel1.setMinimumSize(new java.awt.Dimension(282, 33));
         jLabel1.setPreferredSize(new java.awt.Dimension(282, 33));
-
-        javax.swing.GroupLayout pnlBarraTituloLayout = new javax.swing.GroupLayout(pnlBarraTitulo);
-        pnlBarraTitulo.setLayout(pnlBarraTituloLayout);
-        pnlBarraTituloLayout.setHorizontalGroup(
-            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBarraTituloLayout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(299, Short.MAX_VALUE))
-        );
-        pnlBarraTituloLayout.setVerticalGroup(
-            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
+        pnlBarraTitulo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 850, 40));
 
         add(pnlBarraTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
         pnlBarraTitulo.getAccessibleContext().setAccessibleName("");

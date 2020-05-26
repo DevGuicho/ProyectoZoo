@@ -213,15 +213,32 @@ inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
 
+<<<<<<< HEAD
+
+-- ///////////////////////////////////////////////////////////////////////
+
+=======
+>>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9
 create view Actividades as
 select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from registro_ong
 inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid;
 
+<<<<<<< HEAD
+-- ///////////////////////////////////////////////////////////////////////
+
+create view verHabitats as 
+select HAB_nombre, Cui_nombre, Cui_apellido1,cli_nombre from Habitat
+inner join clima
+on clima.CLI_climaId = HAB_ClimaId
+inner join cuidador
+on cuidador.CUI_CuidadorId = HAB_CuidadorId;
+=======
 create view VisitasMedicas as
 select vet_nombre, vet_nombre2,vet_apellido1, vet_apellido2, ani_nombre, ani_especie, ani_peso, rev_observaciones, rev_fecha_revision from revisa_animal
 inner join veterinario on revisa_animal.rev_veterinarioid = vet_veterinarioid
 inner join animal on revisa_animal.rev_animalid = animal.ani_animalid;
 -- drop view VisitasMedicas;
+>>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9
 
 -- PROCEDIMIENTOS ALMACENADOS
 DELIMITER //
@@ -242,6 +259,19 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE verRegistrosHabitats
+(IN con CHAR(30))
+BEGIN
+  SELECT RHA_temperatura, RHA_Humedad, RHA_Fecha_registro FROM Habitat
+  inner join Registra
+  on registra.RHA_HabitatId = Habitat.HAB_HabitatId
+  WHERE HAB_nombre = con;
+END //
+DELIMITER ;
+
+select * from registra;
+call verRegistrosHabitats('aves');
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
 
@@ -343,6 +373,8 @@ insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@
 
 insert into Registra values (1,1,35.5,40.5,'2000-05-21'),
 						    (3,1,35.5,40.5,'2000-05-25 10:50:51');
+insert into Registra values (2,3,5.5,20.5,'2000-05-21'),
+						    (4,2,20.5,50.65,'2000-05-25 10:50:51');
 insert into Animal values (1,1,1,'Alex','Carne','2000','Leon','M',15,120.5,'En buen estado'),
 						  (2,2,1,'Gloria','Vegetales','2000','Hippopotamo','H',15,200.5,'En buen estado'),
                           (3,3,1,'Melman','Vegetales','2000','Jirafa','M',15,200.5,'En buen estado'),
@@ -377,3 +409,14 @@ select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
+<<<<<<< HEAD
+select * from Habitat;
+select * from registra;
+select * from cuidador;
+
+select * from clima;
+
+
+
+=======
+>>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9
