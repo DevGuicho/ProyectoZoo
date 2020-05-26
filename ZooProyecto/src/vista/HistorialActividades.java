@@ -35,9 +35,11 @@ public class HistorialActividades extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
-        setPreferredSize(new java.awt.Dimension(850, 640));
+        setPreferredSize(new java.awt.Dimension(850, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlBarraTitulo.setBackground(new java.awt.Color(0, 179, 61));
@@ -65,7 +67,6 @@ public class HistorialActividades extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraTituloLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-
         );
 
         add(pnlBarraTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
@@ -113,9 +114,6 @@ public class HistorialActividades extends javax.swing.JPanel {
         btnLimpiar.setDefaultCapable(false);
         btnLimpiar.setFocusPainted(false);
         btnLimpiar.setFocusable(false);
-        btnLimpiar.setMaximumSize(new java.awt.Dimension(81, 32));
-        btnLimpiar.setMinimumSize(new java.awt.Dimension(81, 32));
-        btnLimpiar.setPreferredSize(new java.awt.Dimension(81, 32));
         btnLimpiar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiarOn.png"))); // NOI18N
         pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 100, 40));
 
@@ -128,6 +126,21 @@ public class HistorialActividades extends javax.swing.JPanel {
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 230, 30));
 
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 230, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 810, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -142,6 +155,8 @@ public class HistorialActividades extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlBarraOpciones;
     private javax.swing.JPanel pnlBarraTitulo;
     // End of variables declaration//GEN-END:variables
