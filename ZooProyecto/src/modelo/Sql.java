@@ -586,7 +586,7 @@ public class Sql extends Conexion{
             ps.execute();
             
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Registro Fallido");
             return false;
         }
@@ -710,4 +710,60 @@ public class Sql extends Conexion{
         }
                 
     }
+    
+    public static ArrayList<String> OpcionesActividades(int opcion){
+        ArrayList<String> opciones = new ArrayList<>();
+        
+        switch(opcion){
+            case 1:
+            try {
+            sql = "select distinct rea_dia from ong_realiza";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                opciones.add(rs.getString(1));
+            }
+            return opciones;
+             } catch (SQLException e) {
+            return opciones;
+            }
+   
+            case 2:
+            try {
+            sql = "select distinct hab_nombre from habitat";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                opciones.add(rs.getString(1));
+            }
+            return opciones;
+             } catch (SQLException e) {
+            return opciones;
+            }
+            
+            case 3:
+                try {
+                    sql = "select distinct reg_aprobacion from registro_ong";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+            
+                     while(rs.next()){
+                        opciones.add(rs.getString(1));
+                    }
+                    return opciones;
+                } catch (SQLException e) {
+                    return opciones;
+                }
+            
+            default:
+                return opciones;
+        }
+    }
+    
+    //public static 
 }

@@ -33,10 +33,10 @@ public class HistorialActividades extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbSeleccion = new javax.swing.JComboBox<>();
+        cmbOpciones = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblActividades = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 560));
@@ -123,11 +123,11 @@ public class HistorialActividades extends javax.swing.JPanel {
         jLabel2.setText("Filtro: ");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 230, 30));
+        add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 230, 30));
 
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 230, 30));
+        add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 230, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,7 +138,7 @@ public class HistorialActividades extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblActividades);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 810, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -151,13 +151,13 @@ public class HistorialActividades extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnLimpiar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> cmbOpciones;
+    public javax.swing.JComboBox<String> cmbSeleccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnlBarraOpciones;
     private javax.swing.JPanel pnlBarraTitulo;
+    public javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
 }

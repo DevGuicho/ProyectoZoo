@@ -22,6 +22,7 @@ public class RegistroONG {
     private Date fechaSolicitud;
     private String horaApertura;
     private String horaCierre;
+    private String nombreHabitat;
     
     public RegistroONG(){
         
@@ -99,9 +100,19 @@ public class RegistroONG {
         this.horaCierre = horaCierre;
     }
 
+    public String getNombreHabitat() {
+        return nombreHabitat;
+    }
+
+    public void setNombreHabitat(String nombreHabitat) {
+        this.nombreHabitat = nombreHabitat;
+    }
+
+    
+    
     @Override
     public String toString() {
-        return "RegistroONG{" + "ongNombre=" + ongNombre + ", nombreActividad=" + nombreActividad + '}';
+        return nombreActividad;
     }
     
     
