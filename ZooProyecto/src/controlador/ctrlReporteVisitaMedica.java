@@ -13,8 +13,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import vista.ReporteVisitaMedica;
 
@@ -30,6 +32,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     private RevisaAnimal ra;
     private Animal a;
     private Veterinario v;
+    private ArrayList<RevisaAnimal> visitas;
     
     private Color verdeOn;
     private Color verdePrincipal;
@@ -112,6 +115,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
 
         iniComboBoxes();
+        Tabla();
     }
 
     private void iniComboBoxes() {
@@ -154,6 +158,34 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         ra.setFechaRevision(FechaRevision); 
         
         ra.setObservaciones(rvm.txtObservaciones.getText());
+    }
+    
+    private void Tabla(){
+        Vector vec = new Vector();
+        visitas = Sql.verVisitasMedicas();
+        int [] anchos ={200};
+        String [] titulos = {"Veterinario", "Animal", "Especie Animal", "Peso Animal", "Observaciones", "Fecha de Registro"};
+        DefaultTableModel dtm = new DefaultTableModel(null, titulos);
+        
+        for (int i = 0; i < visitas.size(); i++) {
+            vec = new Vector();
+            String nombre1 = visitas.get(i).getNombreVeterinario();
+            String nombre2 = visitas.get(i).getNombre2Veterinario();
+            String apellido1 = visitas.get(i).getApellidoVeterinario();
+            String apellido2 = visitas.get(i).getApellido2Veterinario();
+            
+            vec.add(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
+            vec.add(visitas.get(i).getNombreAnimal());
+            vec.add(visitas.get(i).getEspecieAnimal());
+            vec.add(visitas.get(i).getPesoAnimal());
+            vec.add(visitas.get(i).getObservaciones());
+            vec.add(visitas.get(i).getFechaRevision());
+            
+            dtm.addRow(vec);
+            
+        }
+        this.rvm.tblRevisionMedica.setModel(dtm);
+        this.rvm.tblRevisionMedica.setEnabled(false);
     }
     
     private void limpiar(){

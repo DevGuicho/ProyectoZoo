@@ -593,6 +593,7 @@ public class Sql extends Conexion{
        
     }
     
+
     public static ArrayList<Clima> verClimas(){
         ArrayList<Clima> climas = new ArrayList<>();
         Clima c ;
@@ -601,7 +602,7 @@ public class Sql extends Conexion{
             con = getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+        
             while(rs.next()){
                 c = new Clima();
                 c.setId(rs.getInt(1));
@@ -629,6 +630,37 @@ public class Sql extends Conexion{
         } catch (Exception e) {
             System.out.println(e);
             return false;
+        }
+    }
+    
+    public static ArrayList<RevisaAnimal> verVisitasMedicas(){
+    ArrayList<RevisaAnimal> visitas = new ArrayList<>();
+        RevisaAnimal ra = new RevisaAnimal();
+        try {
+            sql = "SELECT * FROM VisitasMedicas";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ra = new RevisaAnimal();
+                ra.setNombreVeterinario(rs.getString(1));
+                ra.setNombre2Veterinario(rs.getString(2));
+                ra.setApellidoVeterinario(rs.getString(3));
+                ra.setApellido2Veterinario(rs.getString(4));
+                ra.setNombreAnimal(rs.getString(5));
+                ra.setEspecieAnimal(rs.getString(6));
+                ra.setPesoAnimal(rs.getFloat(7));
+                ra.setObservaciones(rs.getString(8));
+                ra.setFechaRevision(rs.getDate(9));
+                visitas.add(ra);
+            }
+
+            return visitas;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            System.out.println(e);
+            return visitas;
+
         }
     }
     
