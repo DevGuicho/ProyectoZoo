@@ -593,5 +593,89 @@ public class Sql extends Conexion{
        
     }
     
+    public static ArrayList<Clima> verClimas(){
+        ArrayList<Clima> climas = new ArrayList<>();
+        Clima c ;
+        try {
+            sql = "select * from clima";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                c = new Clima();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                climas.add(c);
+            }
+            return climas;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Registro Fallido");
+            return climas;
+        }
+    }
     
+    public static boolean registrarHabitat(Habitat h){
+        try {
+            sql = "insert into habitat (HAB_ClimaId, HAB_CuidadorId,HAB_Nombre,HAB_Disponibilidad) values (?,?,?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, h.getClimaId());
+            ps.setInt(2, h.getCuidadorId());
+            ps.setString(3, h.getNombre());
+            ps.setString(4, h.getDisponibilidad());
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static ArrayList<Habitats> verHabitats(){
+        ArrayList<Habitats> habitats = new ArrayList<>();
+        Habitats h;
+        try {
+            sql = "select * from verHabitats";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                h = new Habitats();
+                h.setNombreHabitat(rs.getString(1));
+                h.setNombreCuidador(rs.getString(2));
+                h.setApellidoCuidador(rs.getString(3));
+                h.setClima(rs.getString(4));
+                habitats.add(h);
+                
+            }
+            return habitats;
+        } catch (Exception e) {
+            return habitats;
+        }
+    }
+    public static ArrayList<UltimosRegistros> verRegistrosHabitats(String Habitat){
+        ArrayList<UltimosRegistros> ultReg = new ArrayList<>();
+        UltimosRegistros ultimos;
+        try {
+            sql = "call verRegistrosHabitats(?)";
+            con = getConnection();
+            CallableStatement sp = con.prepareCall(sql);
+            sp.setString(1, Habitat);
+            sp.execute();
+            rs = sp.getResultSet();
+            while(rs.next()){
+                ultimos = new UltimosRegistros();
+                ultimos.setTemperatura(rs.getFloat(1));
+                ultimos.setHumedad(rs.getFloat(2));
+                ultimos.setFechaRegistro(rs.getDate(3));
+                ultReg.add(ultimos);
+            }
+            return ultReg;
+        } catch (Exception e) {
+            return ultReg;
+        }
+                
+    }
 }
