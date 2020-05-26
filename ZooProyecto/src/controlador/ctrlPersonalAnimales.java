@@ -40,7 +40,7 @@ public class ctrlPersonalAnimales implements ActionListener{
             opciones = Sql.filtros(pa.cmbFiltro.getSelectedIndex());
             //dcm2.removeAllElements();
             int l = dcm2.getSize();
-            while(dcm2.getSize()>1){
+            while(dcm2.getSize()>l){
                 dcm2.removeElementAt(1);
             }
             

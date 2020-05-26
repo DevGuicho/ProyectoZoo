@@ -415,7 +415,7 @@ select * from registra;
 select * from cuidador;
 
 select * from clima;
-
+select * from Actividades;
 
 
 =======

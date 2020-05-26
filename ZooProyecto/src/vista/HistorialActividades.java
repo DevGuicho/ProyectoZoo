@@ -31,7 +31,6 @@ public class HistorialActividades extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         pnlBarraOpciones = new javax.swing.JPanel();
         btnEliminar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cmbSeleccion = new javax.swing.JComboBox<>();
         cmbOpciones = new javax.swing.JComboBox<>();
@@ -102,21 +101,6 @@ public class HistorialActividades extends javax.swing.JPanel {
         });
         pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
-        btnLimpiar.setBackground(new java.awt.Color(0, 179, 61));
-        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiar.png"))); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.setBorder(null);
-        btnLimpiar.setBorderPainted(false);
-        btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLimpiar.setDefaultCapable(false);
-        btnLimpiar.setFocusPainted(false);
-        btnLimpiar.setFocusable(false);
-        btnLimpiar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiarOn.png"))); // NOI18N
-        pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 100, 40));
-
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -150,7 +134,6 @@ public class HistorialActividades extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnLimpiar;
     public javax.swing.JComboBox<String> cmbOpciones;
     public javax.swing.JComboBox<String> cmbSeleccion;
     private javax.swing.JLabel jLabel1;

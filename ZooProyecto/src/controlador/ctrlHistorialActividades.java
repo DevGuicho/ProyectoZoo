@@ -5,9 +5,14 @@
  */
 package controlador;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import vista.HistorialActividades;
@@ -18,7 +23,7 @@ import modelo.*;
  *
  * @author beatl
  */
-public class ctrlHistorialActividades implements ActionListener{
+public class ctrlHistorialActividades implements ActionListener, MouseListener{
     
     private HistorialActividades ha;
     private int opcion;
@@ -26,6 +31,12 @@ public class ctrlHistorialActividades implements ActionListener{
     DefaultComboBoxModel comboSeleccionAux;
     DefaultComboBoxModel comboOpcionesAux;
     DefaultTableModel dtm;
+    ArrayList<RegistroONG> actividades;
+    
+    private Color verdeOn;
+    private Color verdePrincipal;
+    private Font fontOn;
+    private Font fontNormal;
 
     public ctrlHistorialActividades(HistorialActividades ha) {
         this.ha = ha;
@@ -37,8 +48,8 @@ public class ctrlHistorialActividades implements ActionListener{
         if(ae.getSource() == ha.cmbSeleccion){
             comboSeleccion();
         }else if(ae.getSource() == ha.cmbOpciones){
-            if(ha.cmbOpciones.getSelectedIndex() > 0){
-                
+            if(ha.cmbOpciones.getSelectedIndex() != 0){
+                TablaActividades(ha.cmbOpciones.getSelectedItem().toString(),ha.cmbSeleccion.getSelectedIndex());
             }
         }else if(ae.getSource() == ha.btnEliminar){
             //Eliminar();
@@ -50,6 +61,7 @@ public class ctrlHistorialActividades implements ActionListener{
         this.ha.cmbSeleccion.addActionListener(this);
         this.ha.cmbOpciones.addActionListener(this);
         this.ha.btnEliminar.addActionListener(this);
+        this.ha.btnEliminar.addMouseListener(this);
         
          comboOpcionesAux = new DefaultComboBoxModel();
          comboSeleccionAux = new DefaultComboBoxModel();
@@ -63,6 +75,14 @@ public class ctrlHistorialActividades implements ActionListener{
         
          comboOpcionesAux.addElement("Seleccione una opcion");
          this.ha.cmbOpciones.setModel(comboOpcionesAux);
+         
+        this.verdeOn = new Color(0, 212, 72);
+        this.verdePrincipal = new Color(0, 179, 61);
+
+        this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
+        this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
+         
+         TablaActividades("todos",0);
     }
     
     private void comboSeleccion(){
@@ -73,6 +93,7 @@ public class ctrlHistorialActividades implements ActionListener{
                 while(comboOpcionesAux.getSize()>1){
                     comboOpcionesAux.removeElementAt(1);
                 } 
+            TablaActividades("todos",0);
         }
     }
     
@@ -89,8 +110,65 @@ public class ctrlHistorialActividades implements ActionListener{
         
         this.ha.cmbOpciones.setModel(comboOpcionesAux);
     }
+    
+    private void TablaActividades(String seleccion, int indice){
+        Vector vec = new Vector();
+        String [] titulos = {"ONG", "Actividad", "Descripción", "Fecha Solicitud", "Hora Apertura", "Hora Cierre", "Habitat", "Status"};
+        dtm = new DefaultTableModel(null, titulos);
+        
+        actividades = Sql.llamarActividades(seleccion,indice);
+        
+        for (int i = 0; i < actividades.size(); i++) {
+            vec = new Vector();
+            vec.add(actividades.get(i).getOngNombre());
+            vec.add(actividades.get(i).getNombreActividad());
+            vec.add(actividades.get(i).getDescripcionActividad());
+            vec.add(actividades.get(i).getFechaSolicitud());
+            vec.add(actividades.get(i).getHoraApertura());
+            vec.add(actividades.get(i).getHoraCierre());
+            vec.add(actividades.get(i).getNombreHabitat());
+            vec.add(actividades.get(i).getAprobacion());
+            
+            dtm.addRow(vec);
+        }
+        
+        this.ha.tblActividades.setModel(dtm);
+    }
 
     private void Eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+      
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource() == ha.btnEliminar){
+            ha.btnEliminar.setFont(fontOn);
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        if (me.getSource() == ha.btnEliminar){
+            ha.btnEliminar.setFont(fontNormal);
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        if (me.getSource() == ha.btnEliminar){
+            ha.btnEliminar.setBackground(verdeOn);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        if (me.getSource() == ha.btnEliminar){
+            ha.btnEliminar.setBackground(verdePrincipal);
+        }
     }
 }
