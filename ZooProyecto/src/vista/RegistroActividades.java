@@ -148,7 +148,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         btnVerActividades.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVerActividades.setFocusable(false);
         btnVerActividades.setOpaque(true);
-        pnlBarraOpciones.add(btnVerActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 150, 40));
+        pnlBarraOpciones.add(btnVerActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 150, 40));
 
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
 

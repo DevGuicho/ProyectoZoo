@@ -617,7 +617,7 @@ public class Sql extends Conexion{
             ps.execute();
             
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Registro Fallido");
             return false;
         }
@@ -740,5 +740,200 @@ public class Sql extends Conexion{
             return ultReg;
         }
                 
+    }
+    
+    public static ArrayList<String> OpcionesActividades(int opcion){
+        ArrayList<String> opciones = new ArrayList<>();
+        
+        switch(opcion){
+            case 1:
+            try {
+                sql = "select distinct rea_dia from ong_realiza";
+                con = getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+            
+                while(rs.next()){
+                    opciones.add(rs.getString(1));
+                }
+                return opciones;
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error de consulta");
+                return opciones;
+            }
+   
+            case 2:
+            try {
+                sql = "select distinct hab_nombre from habitat";
+                con = getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+            
+                while(rs.next()){
+                 opciones.add(rs.getString(1));
+                }
+            
+                return opciones;
+            } catch (SQLException e) {
+                 JOptionPane.showMessageDialog(null, "Error de consulta");
+                 return opciones;
+            }
+            
+            case 3:
+                try {
+                    sql = "select distinct reg_aprobacion from registro_ong";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+            
+                     while(rs.next()){
+                        opciones.add(rs.getString(1));
+                    }
+                    return opciones;
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return opciones;
+                }
+            
+            default:
+                return opciones;
+        }
+    }
+    
+    public static ArrayList<RegistroONG>llamarActividades(String seleccion, int indice){
+        ArrayList<RegistroONG> actividades = new ArrayList<>();
+        RegistroONG r = new RegistroONG();
+        switch(seleccion){
+            case "todos":
+                try {
+                    sql = "select * from actividades";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+            
+                    while(rs.next()){
+                        r = new RegistroONG();
+                        r.setAprobacion(rs.getString(1));
+                        r.setOngNombre(rs.getString(2));
+                        r.setNombreActividad(rs.getString(3));
+                        r.setDescripcionActividad(rs.getString(4));
+                        r.setFechaSolicitud(rs.getDate(5));
+                        r.setHoraApertura(rs.getString(6));
+                        r.setHoraCierre(rs.getString(7));
+                        r.setNombreHabitat(rs.getString(8));
+           
+                        actividades.add(r);
+                    }
+                return actividades;
+                
+             } catch (SQLException e) {
+                 JOptionPane.showMessageDialog(null, "Error de consulta");
+                return actividades;
+            }
+            default:
+            if(indice == 1){
+                try {
+                    sql = "call filtroDiasActividad(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, seleccion);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        r = new RegistroONG();
+                        r.setAprobacion(rs.getString(1));
+                        r.setOngNombre(rs.getString(2));
+                        r.setNombreActividad(rs.getString(3));
+                        r.setDescripcionActividad(rs.getString(4));
+                        r.setFechaSolicitud(rs.getDate(5));
+                        r.setHoraApertura(rs.getString(6));
+                        r.setHoraCierre(rs.getString(7));
+                        r.setNombreHabitat(rs.getString(8));
+           
+                        actividades.add(r);
+                    }
+                    
+                    return actividades;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return actividades;
+            }
+            }else if(indice == 2){
+                try {
+                    sql = "call filtroHabitatActividad(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, seleccion);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        r = new RegistroONG();
+                        r.setAprobacion(rs.getString(1));
+                        r.setOngNombre(rs.getString(2));
+                        r.setNombreActividad(rs.getString(3));
+                        r.setDescripcionActividad(rs.getString(4));
+                        r.setFechaSolicitud(rs.getDate(5));
+                        r.setHoraApertura(rs.getString(6));
+                        r.setHoraCierre(rs.getString(7));
+                        r.setNombreHabitat(rs.getString(8));
+           
+                        actividades.add(r);
+                    }
+                    
+                    return actividades;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return actividades;
+            }
+            
+            }else if(indice == 3){
+                try {
+                    sql = "call filtroStatus(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, seleccion);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        r = new RegistroONG();
+                        r.setAprobacion(rs.getString(1));
+                        r.setOngNombre(rs.getString(2));
+                        r.setNombreActividad(rs.getString(3));
+                        r.setDescripcionActividad(rs.getString(4));
+                        r.setFechaSolicitud(rs.getDate(5));
+                        r.setHoraApertura(rs.getString(6));
+                        r.setHoraCierre(rs.getString(7));
+                        r.setNombreHabitat(rs.getString(8));
+                        actividades.add(r);
+                    }
+                    
+                    return actividades;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return actividades;
+            }
+        }else{
+                return actividades;
+        }
+    }
+    }
+    
+    public static boolean eliminarActividad(RegistroONG rong){
+       try {
+            sql = "delete from registro_ong where reg_nombre_actividad = ?";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            if(rong.getNombreActividad() != null){
+            ps.setString(1, rong.getNombreActividad());
+            }
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+               System.out.println(e);
+            return false;
+        }
     }
 }

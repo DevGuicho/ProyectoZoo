@@ -221,7 +221,7 @@ public class RegistroAnimales extends javax.swing.JPanel {
         btnSelector.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSelector.setFocusable(false);
         btnSelector.setOpaque(true);
-        pnlBarraOpciones.add(btnSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 130, 40));
+        pnlBarraOpciones.add(btnSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 150, 40));
 
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
 

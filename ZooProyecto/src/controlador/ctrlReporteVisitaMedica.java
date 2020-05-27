@@ -163,7 +163,6 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     private void Tabla(){
         Vector vec = new Vector();
         visitas = Sql.verVisitasMedicas();
-        int [] anchos ={200};
         String [] titulos = {"Veterinario", "Animal", "Especie Animal", "Peso Animal", "Observaciones", "Fecha de Registro"};
         DefaultTableModel dtm = new DefaultTableModel(null, titulos);
         
