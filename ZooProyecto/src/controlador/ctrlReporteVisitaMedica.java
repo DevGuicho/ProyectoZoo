@@ -67,6 +67,12 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         }else if(ae.getSource() == rvm.cmbOpcion){
             if(rvm.cmbOpcion.getSelectedIndex() != 0 && rvm.cmbSeleccion.getSelectedIndex() != 3){
                 Tabla(rvm.cmbOpcion.getSelectedItem().toString(),rvm.cmbSeleccion.getSelectedIndex());
+            }else if(rvm.cmbOpcion.getSelectedIndex() != 0 && rvm.cmbSeleccion.getSelectedIndex() == 3){
+                v = (Veterinario) rvm.cmbOpcion.getSelectedItem();
+                ra.setNombreVeterinario(v.getNombre());
+                ra.setNombre2Veterinario(v.getNombre2());
+                ra.setApellidoVeterinario(v.getApellido1());
+                ra.setApellido2Veterinario(v.getApellido2());
             }
         }
     }
@@ -133,8 +139,8 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         
         dcm.addElement("Seleccione Filtro");
         dcm.addElement("Especie");
-        //dcm.addElement("Veterinario");
         dcm.addElement("Fecha Registro");
+        dcm.addElement("Veterinario");
         this.rvm.cmbSeleccion.setModel(dcm);
 
         dcm2.addElement("Seleccione una opcion");
@@ -170,13 +176,15 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     }
     
     private void ComboSeleccion(){
-        if(rvm.cmbSeleccion.getSelectedIndex() > 0){
+        if(rvm.cmbSeleccion.getSelectedIndex() > 0 && rvm.cmbSeleccion.getSelectedIndex() != 3){
             opcion = rvm.cmbSeleccion.getSelectedIndex();
             ComboOpcion(opcion);
         }else if(rvm.cmbSeleccion.getSelectedIndex() == 0){
                 while(dcm2.getSize()>1){
                     dcm2.removeElementAt(1);
                 } 
+        }else if(rvm.cmbSeleccion.getSelectedIndex() == 3){
+            ComboOpcionVeterinario();
         }
         
         Tabla("todos",0);
@@ -191,6 +199,20 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         
         for (int i = 0; i < options.size() ; i++) {
             dcm2.addElement(options.get(i));
+        }
+        
+        this.rvm.cmbOpcion.setModel(dcm2);
+    }
+    
+    private void ComboOpcionVeterinario(){
+        while(dcm2.getSize()>1){
+                dcm2.removeElementAt(1);
+        } 
+        
+        veterinarios = Sql.verVeterinarios();
+        
+        for (int i = 0; i < veterinarios.size(); i++) {
+            dcm2.addElement(veterinarios.get(i));
         }
         
         this.rvm.cmbOpcion.setModel(dcm2);
@@ -244,6 +266,37 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         this.rvm.tblRevisionMedica.setEnabled(false);
     }
     
+     private void Tabla2(String nom1,String nom2,String ap1, String ap2){
+        Vector vec = new Vector();
+
+        String [] titulos = {"Veterinario", "Animal", "Especie Animal", "Peso Animal", "Observaciones", "Fecha de Registro"};
+        DefaultTableModel dtm = new DefaultTableModel(null, titulos);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        visitas = Sql.verVisitas(seleccion, indice);
+        
+        for (int i = 0; i < visitas.size(); i++) {
+            vec = new Vector();
+            String nombre1 = visitas.get(i).getNombreVeterinario();
+            String nombre2 = visitas.get(i).getNombre2Veterinario();
+            String apellido1 = visitas.get(i).getApellidoVeterinario();
+            String apellido2 = visitas.get(i).getApellido2Veterinario();
+            
+            vec.add(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
+            vec.add(visitas.get(i).getNombreAnimal());
+            vec.add(visitas.get(i).getEspecieAnimal());
+            vec.add(visitas.get(i).getPesoAnimal());
+            vec.add(visitas.get(i).getObservaciones());
+            vec.add(sdf.format(visitas.get(i).getFechaRevision()));
+            
+            dtm.addRow(vec);
+            
+        }
+        this.rvm.tblRevisionMedica.setModel(dtm);
+        this.rvm.tblRevisionMedica.setEnabled(false);
+    }
+     
     private void limpiar(){
     rvm.cmbAnimal.setSelectedIndex(0);
     rvm.cmbVeterinario.setSelectedIndex(0);

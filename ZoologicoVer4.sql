@@ -327,6 +327,17 @@ create procedure filtroFechasRevision (in fecha date)
 	end //
 delimiter;
 -- drop procedure filtroFechasRevision;
+
+
+delimiter //
+create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), nom2 varchar(15), ap1 varchar(20), ap2 varchar(20))
+	 begin
+		select * from VisitasMedicas
+        where vet_nombre = nom1 and vet_nombre2 = nom2 and vet_apellido1 = ap1 and vet_apellido2 = ap2;
+	end //
+delimiter;
+
+
 -- ///////////////////////////////////////////////////
 
 select * from registra;
@@ -458,6 +469,7 @@ select * from animal;
 select *from revisa_animal;
 select *from registro_ong;
 select *from habitat;
+select * from visitasmedicas;
 
 select * from ultimavisita;
 select * from Veterinario;	

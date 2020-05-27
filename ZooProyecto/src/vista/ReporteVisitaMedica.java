@@ -212,16 +212,16 @@ public class ReporteVisitaMedica extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Filtro");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
-        jPanel3.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 170, 30));
+        jPanel3.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 170, 30));
 
         cmbOpcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbOpcionActionPerformed(evt);
             }
         });
-        jPanel3.add(cmbOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 170, 30));
+        jPanel3.add(cmbOpcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 220, 30));
 
         pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 810, 270));
 

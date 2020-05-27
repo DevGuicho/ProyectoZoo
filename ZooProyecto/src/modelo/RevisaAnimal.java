@@ -25,7 +25,6 @@ public class RevisaAnimal {
     private String especieAnimal;
     private float pesoAnimal;
     private Date fechaRevision;
-    private String fechaRev;
     
     public RevisaAnimal(){
         
@@ -126,20 +125,7 @@ public class RevisaAnimal {
     public void setFechaRevision(Date fechaRevision) {
         this.fechaRevision = fechaRevision;
     }
-
-    public String getFechaRev() {
-        return fechaRev;
-    }
-
-    public void setFechaRev(String fechaRev) {
-        this.fechaRev = fechaRev;
-    }
-
-   
-
-    
-    
-    
+  
     @Override
     public String toString() {
         return "RevisaAnimal{" + "id=" + id + ", veterinarioId=" + veterinarioId + ", animalId=" + animalId + '}';
