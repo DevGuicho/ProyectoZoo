@@ -296,6 +296,8 @@ begin
 	where hab_nombre = habitat;
 end //
 delimiter ;   
+
+
 -- drop procedure filtrodiasactividad;
 -- drop procedure filtrohabitatactividad;
 -- //////////////////////////////////////
