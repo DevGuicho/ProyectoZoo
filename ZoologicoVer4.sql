@@ -307,27 +307,8 @@ begin
 	where hab_nombre = habitat;
 end //
 delimiter ;   
-<<<<<<< HEAD
 
 -- ///////////////////////////////////////////////////
-
-select * from registra;
-call verRegistrosHabitats('aves');
-call filtroAnimalesEspecie('jirafa');
-call filtroAnimales('leones');
-
--- ///////////////////////////////////////////////////
-
--- ///////////////////////////////////////////////////
--- //////////////////  TRIGGERS   ////////////////////
--- ///////////////////////////////////////////////////
-
-=======
-
-
--- drop procedure filtrodiasactividad;
--- drop procedure filtrohabitatactividad;
--- //////////////////////////////////////
 
 delimiter //
 create procedure filtroStatus (in estado varchar(12))
@@ -335,12 +316,32 @@ begin
 	select *from Actividades
     where reg_aprobacion = estado;
 end //
-delimiter;
+delimiter ;
 -- drop procedure filtrostatus;
+
 -- ////////////////////////////////////
--- /////////////////////////////////
+
+delimiter //
+create procedure control>nimales ( in filtro varchar(30), in busqueda varchar(300))
+begin
+
+
+end //
+delimiter ;
+
+select * from registra;
+call verRegistrosHabitats('aves');
+call filtroAnimalesEspecie('jirafa');
+call filtroAnimales('leones');
+
+
+-- ///////////////////////////////////////////////////
+
+-- ///////////////////////////////////////////////////
+-- //////////////////  TRIGGERS   ////////////////////
+-- ///////////////////////////////////////////////////
+
 -- CREACION DEL TRIGGER PARA HABITAT
->>>>>>> 87062251620c138bb4d81bd39e5f53e061765d6b
 delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
 	for each row 

@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -933,6 +935,23 @@ public class Sql extends Conexion{
             return true;
         } catch (SQLException e) {
                System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean registroTempHum(Registra r){
+        try {
+            sql = "insert into Registra (RHA_HabitatID, RHA_Temperatura, RHA_Humedad, RHA_Fecha_registro) values (?,?,?,?)";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, r.getHabitatId());
+            ps.setFloat(2, r.getTemperatura());
+            ps.setFloat(3, r.getHumedad());
+            ps.setTimestamp(4, new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }

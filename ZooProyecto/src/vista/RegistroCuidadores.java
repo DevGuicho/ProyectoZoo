@@ -50,10 +50,10 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCuidadores = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(850, 640));
@@ -65,7 +65,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Cuidadores ");
+        jLabel1.setText("Control de Cuidadores ");
         pnlTitulo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
 
         add(pnlTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
@@ -236,15 +236,12 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jLabel2.setBackground(new java.awt.Color(0, 51, 51));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Llene todos los campos");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("   Registro");
         jLabel2.setOpaque(true);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
 
         pnlPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 180));
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 102));
-        pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 810, 60));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -262,9 +259,17 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCuidadores);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 770, 200));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 770, 170));
 
-        pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 810, 240));
+        jLabel3.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("   Cuidadores");
+        jLabel3.setOpaque(true);
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
+
+        pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 810, 320));
 
         add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 850, 560));
     }// </editor-fold>//GEN-END:initComponents
@@ -303,10 +308,10 @@ public class RegistroCuidadores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

@@ -13,7 +13,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -22,6 +25,7 @@ import modelo.Clima;
 import modelo.Cuidador;
 import modelo.Habitat;
 import modelo.Habitats;
+import modelo.Registra;
 import modelo.Sql;
 import modelo.UltimosRegistros;
 import vista.ReporteHabitats;
@@ -42,13 +46,22 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
     public ctrlReporteHabitats(ReporteHabitats rh) {
         this.rh = rh;
         iniComponents();
+       
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == rh.btnGuardar){
             guardar();
-        }
+            limpiar();
+        }else if(e.getSource() == rh.btnGuardar1){
+            registrarReporte();
+            limpiar1();
+        }else if(e.getSource() == rh.btnLimpiar)
+            limpiar();
+        else if (e.getSource() == rh.btnLimpiar1)
+            limpiar1();
     }
 
     @Override
@@ -209,6 +222,31 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         }
     }
 
+    public void registrarReporte(){
+        Registra r = new Registra();
+        Habitat h = (Habitat) rh.cmbHabitats.getSelectedItem();
+        System.out.println(h.getId());
+        r.setHabitatId(h.getId());
+        r.setTemperatura(Float.parseFloat(rh.txtTemperatura.getText()));
+        r.setHumedad(Float.parseFloat(rh.txtHumedad.getText()));
+        r.setFechaRegistro(new Date());
+        if(Sql.registroTempHum(r)){
+            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+        }else{
+            JOptionPane.showMessageDialog(null, "Registro Fallido");
+        }
+    }
+    
+    public void limpiar1(){
+        rh.cmbHabitats.setSelectedIndex(0);
+        rh.txtHumedad.setText("Humedad");
+        rh.txtTemperatura.setText("Temperatura");
+    }
+    public void limpiar(){
+        rh.txtNombre.setText(null);
+        rh.cmbClima.setSelectedIndex(0);
+        rh.cmbResponsable.setSelectedIndex(0);
+    }
     public void iniTableRegistros(String habitat){
         Vector vec = new Vector();
         dtm = new DefaultTableModel();

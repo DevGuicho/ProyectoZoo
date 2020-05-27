@@ -57,6 +57,7 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         pnlImagen = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         pnlVerVeterinario = new javax.swing.JPanel();
@@ -69,16 +70,14 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registro de Veterinarios");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Control de Veterinarios");
 
         javax.swing.GroupLayout pnlBarraTituloLayout = new javax.swing.GroupLayout(pnlBarraTitulo);
         pnlBarraTitulo.setLayout(pnlBarraTituloLayout);
         pnlBarraTituloLayout.setHorizontalGroup(
             pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBarraTituloLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(jLabel1)
-                .addContainerGap(290, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
         );
         pnlBarraTituloLayout.setVerticalGroup(
             pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +146,7 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
-        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, 26));
+        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 26));
 
         txtNombre.setBackground(new java.awt.Color(212, 255, 204));
         txtNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -159,17 +158,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtNombreActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 200, 25));
+        pnlRegistro.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 190, 25));
 
         jSeparator1.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 200, 25));
+        pnlRegistro.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 190, 25));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("2do Nombre");
-        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 150, 26));
+        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 26));
 
         txtNombre2.setBackground(new java.awt.Color(212, 255, 204));
         txtNombre2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -181,17 +180,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtNombre2ActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 200, 25));
+        pnlRegistro.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, 25));
 
         jSeparator2.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 200, 25));
+        pnlRegistro.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 190, 25));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido Paterno");
-        pnlRegistro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 150, 26));
+        pnlRegistro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 26));
 
         txtApellido1.setBackground(new java.awt.Color(212, 255, 204));
         txtApellido1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -203,17 +202,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtApellido1ActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 200, 25));
+        pnlRegistro.add(txtApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 190, 25));
 
         jSeparator3.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 200, 25));
+        pnlRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, 25));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellido Materno");
-        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 150, 26));
+        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 26));
 
         txtApellido2.setBackground(new java.awt.Color(212, 255, 204));
         txtApellido2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -225,17 +224,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtApellido2ActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 200, 25));
+        pnlRegistro.add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 190, 25));
 
         jSeparator4.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 200, 25));
+        pnlRegistro.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, 25));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cedula Profesional");
-        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 26));
+        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, 26));
 
         txtCedulaProfesional.setBackground(new java.awt.Color(212, 255, 204));
         txtCedulaProfesional.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -247,17 +246,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtCedulaProfesionalActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtCedulaProfesional, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 200, 25));
+        pnlRegistro.add(txtCedulaProfesional, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 190, 25));
 
         jSeparator5.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 200, 25));
+        pnlRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 190, 25));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Correo Electronico ");
-        pnlRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 150, 26));
+        pnlRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 150, 26));
 
         txtCorreoElectronico.setBackground(new java.awt.Color(212, 255, 204));
         txtCorreoElectronico.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -269,17 +268,17 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtCorreoElectronicoActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 200, 25));
+        pnlRegistro.add(txtCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 190, 25));
 
         jSeparator6.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 200, 25));
+        pnlRegistro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 190, 25));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Telefono ");
-        pnlRegistro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 150, 26));
+        pnlRegistro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 150, 26));
 
         txtTelefono.setBackground(new java.awt.Color(212, 255, 204));
         txtTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -291,19 +290,27 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
                 txtTelefonoActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 200, 25));
+        pnlRegistro.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 190, 25));
 
         jSeparator7.setBackground(new java.awt.Color(0, 179, 61));
         jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pnlRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 200, 25));
+        pnlRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 190, 25));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Llene los todos los campos ");
-        pnlRegistro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("   Registro");
+        jLabel10.setOpaque(true);
+        pnlRegistro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 40));
 
-        pnlPrincipal.add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 400, 500));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Llene todos los campos ");
+        pnlRegistro.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        pnlPrincipal.add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 400, 500));
 
         pnlImagen.setBackground(new java.awt.Color(0, 153, 102));
         pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -311,7 +318,7 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg4.jpg"))); // NOI18N
         pnlImagen.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 15, 270, 470));
 
-        pnlPrincipal.add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 310, 500));
+        pnlPrincipal.add(pnlImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 310, 500));
 
         add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 850, 560));
 
@@ -354,6 +361,7 @@ public class RegistroVeterinarios extends javax.swing.JPanel {
     public javax.swing.JToggleButton btnSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -62,6 +62,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         txtHoraCierre = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
         pnlImagen = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         pnlVerActividades = new javax.swing.JPanel();
@@ -80,7 +81,7 @@ public class RegistroActividades extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de Actividades");
+        jLabel1.setText("Control de Actividades");
         jLabel1.setMaximumSize(new java.awt.Dimension(282, 33));
         jLabel1.setMinimumSize(new java.awt.Dimension(282, 33));
         jLabel1.setPreferredSize(new java.awt.Dimension(282, 33));
@@ -160,10 +161,12 @@ public class RegistroActividades extends javax.swing.JPanel {
         pnlSelDias.setAlignmentY(0.0F);
         pnlSelDias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel10.setBackground(new java.awt.Color(0, 51, 51));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Selecciones los dias");
-        pnlSelDias.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 190, -1));
+        jLabel10.setText("     Seleccione los dias");
+        jLabel10.setOpaque(true);
+        pnlSelDias.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 40));
 
         ckbMartes.setBackground(new java.awt.Color(212, 255, 204));
         ckbMartes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -370,7 +373,14 @@ public class RegistroActividades extends javax.swing.JPanel {
         jSeparator6.setVerifyInputWhenFocusTarget(false);
         pnlPrincipal1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 200, 26));
 
-        pnlRegistroActividad.add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 400, 520));
+        jLabel11.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("   Registro");
+        jLabel11.setOpaque(true);
+        pnlPrincipal1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 40));
+
+        pnlRegistroActividad.add(pnlPrincipal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 400, 520));
 
         pnlImagen.setBackground(new java.awt.Color(0, 153, 102));
         pnlImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -442,6 +452,7 @@ public class RegistroActividades extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> cmbHabitat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

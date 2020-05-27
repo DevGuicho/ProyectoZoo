@@ -38,7 +38,7 @@ public class HistorialActividades extends javax.swing.JPanel {
         tblActividades = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
-        setPreferredSize(new java.awt.Dimension(850, 560));
+        setPreferredSize(new java.awt.Dimension(150, 150));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlBarraTitulo.setBackground(new java.awt.Color(0, 179, 61));
@@ -105,11 +105,18 @@ public class HistorialActividades extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel2.setText("Filtro: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
-        add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 230, 30));
+        cmbSeleccion.setPreferredSize(new java.awt.Dimension(150, 150));
+        cmbSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSeleccionActionPerformed(evt);
+            }
+        });
+        add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 150, 30));
 
-        add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 230, 30));
+        cmbOpciones.setPreferredSize(new java.awt.Dimension(150, 150));
+        add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 150, 30));
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +137,10 @@ public class HistorialActividades extends javax.swing.JPanel {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void cmbSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSeleccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSeleccionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -39,7 +39,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
     
     private ctrlHistorialActividades ctrlHA;
     private ctrlHistorialHabitats ctrlHH;
-    private ctrlHistorialVisitas ctrlHV;
     private ctrlPersonalCuidadores ctrlPC;
     private ctrlRegistroActividades ctrlRA;
     private ctrlRegistroAnimales ctrlRAni;
@@ -52,7 +51,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
     private Home h;
     private HistorialActividades ha;
     private HistorialHabitats hh;
-    private HistorialVisitas hv;
+    
     private PersonalCuidadores pc;
     private RegistroActividades ra;
     private RegistroAnimales rani;
@@ -104,14 +103,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
             /*rh = new ReporteHabitats();
             ctrlRH = new ctrlReporteHabitats(rh);*/
             setPanel(rh);
-        }else if(e.getSource() == m.btnHistorialVisitas){
-            /*hv = new HistorialVisitas();
-            ctrlHV = new ctrlHistorialVisitas(hv);*/
-            setPanel(hv);
-        }else if(e.getSource() == m.btnHistorialActividades){
-            /*ha = new HistorialActividades();
-            ctrlHA = new ctrlHistorialActividades(ha);*/
-            setPanel(ha);
         }else if(e.getSource() == m.btnRegistroVeterinario){
             setPanel(rv);
         }
@@ -135,10 +126,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.btnReporteVisitaMedica.setFont(fontClick);
         }else if(e.getSource() == m.btnReporteHabitat){
             m.btnReporteHabitat.setFont(fontClick);
-        }else if(e.getSource() == m.btnHistorialVisitas){
-            m.btnHistorialVisitas.setFont(fontClick);
-        }else if(e.getSource() == m.btnHistorialActividades){
-            m.btnHistorialActividades.setFont(fontClick);
         }else if(e.getSource() == m.lblBuscar){
             m.lblBuscar.setText(null);
         }else if(e.getSource() == m.btnRegistroVeterinario){
@@ -158,10 +145,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
             m.btnReporteVisitaMedica.setFont(fontNormal);
         }else if(e.getSource() == m.btnReporteHabitat){
             m.btnReporteHabitat.setFont(fontNormal);
-        }else if(e.getSource() == m.btnHistorialVisitas){
-            m.btnHistorialVisitas.setFont(fontNormal);
-        }else if(e.getSource() == m.btnHistorialActividades){
-            m.btnHistorialActividades.setFont(fontNormal);
         }else if(e.getSource() == m.btnRegistroVeterinario){
             m.btnRegistroVeterinario.setFont(fontNormal);
         }
@@ -202,8 +185,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.m.btnClose.addActionListener(this);
 
         this.m.btnHome.addActionListener(this);
-        this.m.btnHistorialActividades.addActionListener(this);
-        this.m.btnHistorialVisitas.addActionListener(this);
+        
         
         this.m.btnRegistroActividades.addActionListener(this);
         this.m.btnRegistroAnimales.addActionListener(this);
@@ -213,8 +195,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.m.btnReporteVisitaMedica.addActionListener(this);
 
         this.m.btnHome.addMouseListener(this);
-        this.m.btnHistorialActividades.addMouseListener(this);
-        this.m.btnHistorialVisitas.addMouseListener(this);
+        
         
         this.m.btnRegistroActividades.addMouseListener(this);
         this.m.btnRegistroAnimales.addMouseListener(this);
@@ -228,7 +209,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
         
         this.ha = new HistorialActividades();
         this.hh = new HistorialHabitats();
-        this.hv = new HistorialVisitas();
         this.ra = new RegistroActividades();
         this.rani = new RegistroAnimales();
         this.rc = new RegistroCuidadores();
@@ -242,7 +222,6 @@ public class ctrlMenu implements ActionListener, MouseListener {
         
         this.ctrlHA = new ctrlHistorialActividades(ha);
         this.ctrlHH = new ctrlHistorialHabitats(hh);
-        this.ctrlHV = new ctrlHistorialVisitas(hv);
         this.ctrlRA = new ctrlRegistroActividades(ra);
         this.ctrlRAni = new ctrlRegistroAnimales(rani);
         this.ctrlRC = new ctrlRegistroCuidadores(rc);
