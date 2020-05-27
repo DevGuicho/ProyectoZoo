@@ -330,13 +330,14 @@ delimiter;
 
 
 delimiter //
-create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), nom2 varchar(15), ap1 varchar(20), ap2 varchar(20))
+create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), in nom2 varchar(15), in ap1 varchar(20), in ap2 varchar(20))
 	 begin
 		select * from VisitasMedicas
         where vet_nombre = nom1 and vet_nombre2 = nom2 and vet_apellido1 = ap1 and vet_apellido2 = ap2;
 	end //
 delimiter;
-
+-- drop procedure filtroVeterinarioVisitas;
+call filtroVeterinarioVisitas('Leo','Alfonso','Ramirez','Gonzales');
 
 -- ///////////////////////////////////////////////////
 

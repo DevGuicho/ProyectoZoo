@@ -1092,5 +1092,55 @@ public class Sql extends Conexion{
         }
     }
     }
+   
+    public static ArrayList<RevisaAnimal>  verVisitaVeterinario(String nom1,String nom2,String ap1, String ap2){
+        ArrayList<RevisaAnimal> revisiones = new ArrayList<>();
+        RevisaAnimal ra = new RevisaAnimal();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+                try {
+                    sql = "call filtroVeterinarioVisitas(?,?,?,?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, nom1);
+                    sp.setString(2, nom2);
+                    sp.setString(3, ap1);
+                    sp.setString(4, ap2);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        ra = new RevisaAnimal();
+                        ra.setNombreVeterinario(rs.getString(1));
+                        ra.setNombre2Veterinario(rs.getString(2));
+                        ra.setApellidoVeterinario(rs.getString(3));
+                        ra.setApellidoVeterinario(rs.getString(4));
+                        ra.setNombreAnimal(rs.getString(5));
+                        ra.setEspecieAnimal(rs.getString(6));
+                        ra.setPesoAnimal(rs.getFloat(7));
+                        ra.setObservaciones(rs.getString(8));
+                        try {
+                        fechaDate = sdf.parse(rs.getString(9));
+                        ra.setFechaRevision(fechaDate);
+                        } 
+                            catch (ParseException ex){
+                        System.out.println(ex);
+                        }
+           
+                        revisiones.add(ra);
+                    }
+                    
+                    return revisiones;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    System.out.println(" "+nom1);
+                    System.out.println(" "+nom2);
+                    System.out.println(" "+ap1);
+                    System.out.println(" "+ap2);
+                    System.out.println(" "+revisiones);
+                    return revisiones;
+            }
+    }
 }
     

@@ -69,10 +69,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
                 Tabla(rvm.cmbOpcion.getSelectedItem().toString(),rvm.cmbSeleccion.getSelectedIndex());
             }else if(rvm.cmbOpcion.getSelectedIndex() != 0 && rvm.cmbSeleccion.getSelectedIndex() == 3){
                 v = (Veterinario) rvm.cmbOpcion.getSelectedItem();
-                ra.setNombreVeterinario(v.getNombre());
-                ra.setNombre2Veterinario(v.getNombre2());
-                ra.setApellidoVeterinario(v.getApellido1());
-                ra.setApellido2Veterinario(v.getApellido2());
+               Tabla2(v.getNombre(),v.getNombre2(),v.getApellido1(),v.getApellido2());
             }
         }
     }
@@ -274,8 +271,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        visitas = Sql.verVisitas(seleccion, indice);
-        
+        visitas = Sql.verVisitaVeterinario(nom1,nom2,ap1,ap2);
         for (int i = 0; i < visitas.size(); i++) {
             vec = new Vector();
             String nombre1 = visitas.get(i).getNombreVeterinario();
