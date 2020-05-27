@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
@@ -36,6 +37,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     DefaultComboBoxModel dcm;
     DefaultComboBoxModel dcm2;
     private int opcion;
+    private ArrayList<String> options;
     
     private Color verdeOn;
     private Color verdePrincipal;
@@ -62,7 +64,11 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
             }
         }else if(ae.getSource() == rvm.cmbSeleccion){
             ComboSeleccion();
-        }  
+        }else if(ae.getSource() == rvm.cmbOpcion){
+            if(rvm.cmbOpcion.getSelectedIndex() != 0 && rvm.cmbSeleccion.getSelectedIndex() != 3){
+                Tabla(rvm.cmbOpcion.getSelectedItem().toString(),rvm.cmbSeleccion.getSelectedIndex());
+            }
+        }
     }
 
     @Override
@@ -127,7 +133,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         
         dcm.addElement("Seleccione Filtro");
         dcm.addElement("Especie");
-        dcm.addElement("Veterinario");
+        //dcm.addElement("Veterinario");
         dcm.addElement("Fecha Registro");
         this.rvm.cmbSeleccion.setModel(dcm);
 
@@ -135,7 +141,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         this.rvm.cmbOpcion.setModel(dcm2);
         
         iniComboBoxes();
-        Tabla();
+        Tabla("todos",0);
     }
 
     private void iniComboBoxes() {
@@ -172,10 +178,22 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
                     dcm2.removeElementAt(1);
                 } 
         }
+        
+        Tabla("todos",0);
     }
     
     private void ComboOpcion(int opcion){
+         while(dcm2.getSize()>1){
+                dcm2.removeElementAt(1);
+        } 
         
+        options = Sql.filtroVisitas(opcion);
+        
+        for (int i = 0; i < options.size() ; i++) {
+            dcm2.addElement(options.get(i));
+        }
+        
+        this.rvm.cmbOpcion.setModel(dcm2);
     }
     
     private void getRevisiones(){
@@ -195,11 +213,15 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         ra.setObservaciones(rvm.txtObservaciones.getText());
     }
     
-    private void Tabla(){
+    private void Tabla(String seleccion, int indice){
         Vector vec = new Vector();
-        visitas = Sql.verVisitasMedicas();
+
         String [] titulos = {"Veterinario", "Animal", "Especie Animal", "Peso Animal", "Observaciones", "Fecha de Registro"};
         DefaultTableModel dtm = new DefaultTableModel(null, titulos);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        visitas = Sql.verVisitas(seleccion, indice);
         
         for (int i = 0; i < visitas.size(); i++) {
             vec = new Vector();
@@ -213,7 +235,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
             vec.add(visitas.get(i).getEspecieAnimal());
             vec.add(visitas.get(i).getPesoAnimal());
             vec.add(visitas.get(i).getObservaciones());
-            vec.add(visitas.get(i).getFechaRevision());
+            vec.add(sdf.format(visitas.get(i).getFechaRevision()));
             
             dtm.addRow(vec);
             

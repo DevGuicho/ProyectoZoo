@@ -326,6 +326,7 @@ create procedure filtroFechasRevision (in fecha date)
      where rev_fecha_revision = fecha;
 	end //
 delimiter;
+-- drop procedure filtroFechasRevision;
 -- ///////////////////////////////////////////////////
 
 select * from registra;
@@ -470,4 +471,4 @@ select * from cuidador;
 select * from clima;
 select * from Actividades;
 
-
+select distinct rev_fecha_revision from revisa_animal;

@@ -13,7 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -664,37 +668,6 @@ public class Sql extends Conexion{
         }
     }
     
-    public static ArrayList<RevisaAnimal> verVisitasMedicas(){
-    ArrayList<RevisaAnimal> visitas = new ArrayList<>();
-        RevisaAnimal ra = new RevisaAnimal();
-        try {
-            sql = "SELECT * FROM VisitasMedicas";
-            con = getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                ra = new RevisaAnimal();
-                ra.setNombreVeterinario(rs.getString(1));
-                ra.setNombre2Veterinario(rs.getString(2));
-                ra.setApellidoVeterinario(rs.getString(3));
-                ra.setApellido2Veterinario(rs.getString(4));
-                ra.setNombreAnimal(rs.getString(5));
-                ra.setEspecieAnimal(rs.getString(6));
-                ra.setPesoAnimal(rs.getFloat(7));
-                ra.setObservaciones(rs.getString(8));
-                ra.setFechaRevision(rs.getDate(9));
-                visitas.add(ra);
-            }
-
-            return visitas;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de consulta");
-            System.out.println(e);
-            return visitas;
-
-        }
-    }
-    
     public static ArrayList<Habitats> verHabitats(){
         ArrayList<Habitats> habitats = new ArrayList<>();
         Habitats h;
@@ -936,4 +909,188 @@ public class Sql extends Conexion{
             return false;
         }
     }
+    
+    public static ArrayList<String> filtroVisitas(int opcion){
+        ArrayList<String> lista = new ArrayList<>();
+        
+        switch(opcion){
+            case 1:
+            try {
+                sql = "select distinct ani_especie from animal";
+                con = getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+            
+                while(rs.next()){
+                    lista.add(rs.getString(1));
+                }
+                return lista;
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error de consulta");
+                return lista;
+            }
+   
+            case 2:
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+            Date fechaDate = null;
+            try {
+                sql = "select distinct rev_fecha_revision from revisa_animal";
+                con = getConnection();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+                                
+                while(rs.next()){
+                    try {
+                        fechaDate = sdf.parse(rs.getString(1));
+                        lista.add(sdf2.format(fechaDate));
+                    } 
+                    catch (ParseException ex){
+                        System.out.println(ex);
+                    }
+                }
+                return lista;
+            } catch (SQLException e) {
+                 JOptionPane.showMessageDialog(null, "Error de consulta");
+                 return lista;
+            }
+            
+            default: 
+                return lista;
+            
+        }
+    }
+    
+   public static ArrayList<RevisaAnimal>  verVisitas(String seleccion, int indice){
+        ArrayList<RevisaAnimal> revisiones = new ArrayList<>();
+        RevisaAnimal ra = new RevisaAnimal();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        switch(seleccion){
+            case "todos":
+                try {
+                    sql = "select * from VisitasMedicas";
+                    con = getConnection();
+                    ps = con.prepareStatement(sql);
+                    rs = ps.executeQuery();
+
+            
+                    while(rs.next()){
+                        ra = new RevisaAnimal();
+                        ra.setNombreVeterinario(rs.getString(1));
+                        ra.setNombre2Veterinario(rs.getString(2));
+                        ra.setApellidoVeterinario(rs.getString(3));
+                        ra.setApellidoVeterinario(rs.getString(4));
+                        ra.setNombreAnimal(rs.getString(5));
+                        ra.setEspecieAnimal(rs.getString(6));
+                        ra.setPesoAnimal(rs.getFloat(7));
+                        ra.setObservaciones(rs.getString(8));
+                        
+                    try {
+                        fechaDate = sdf.parse(rs.getString(9));
+                        ra.setFechaRevision(fechaDate);
+                    } 
+                    catch (ParseException ex){
+                        System.out.println(ex);
+                    }
+                        
+                        revisiones.add(ra);
+                    }
+                return revisiones;
+                
+             } catch (SQLException e) {
+                 JOptionPane.showMessageDialog(null, "Error de consulta");
+                return revisiones;
+            }
+            default:
+            if(indice == 1){
+                try {
+                    sql = "call filtroEspecieVisitas(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setString(1, seleccion);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        ra = new RevisaAnimal();
+                        ra.setNombreVeterinario(rs.getString(1));
+                        ra.setNombre2Veterinario(rs.getString(2));
+                        ra.setApellidoVeterinario(rs.getString(3));
+                        ra.setApellidoVeterinario(rs.getString(4));
+                        ra.setNombreAnimal(rs.getString(5));
+                        ra.setEspecieAnimal(rs.getString(6));
+                        ra.setPesoAnimal(rs.getFloat(7));
+                        ra.setObservaciones(rs.getString(8));
+                        try {
+                        fechaDate = sdf.parse(rs.getString(9));
+                        ra.setFechaRevision(fechaDate);
+                        } 
+                            catch (ParseException ex){
+                        System.out.println(ex);
+                        }
+           
+                        revisiones.add(ra);
+                    }
+                    
+                    return revisiones;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return revisiones;
+            }
+            }else if(indice == 2){
+                try {
+                    sql = "call filtroFechasRevision(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    Date fecha = null;
+                    try {
+                        fecha = sdf2.parse(seleccion);
+                        ra.setFechaRevision(fechaDate);
+                    } 
+                    catch (ParseException ex){
+                        System.out.println(ex);
+                    }
+                    
+                    long d = fecha.getTime();
+                    java.sql.Date FechaNueva = new java.sql.Date(d);
+                    
+                    sp.setDate(1, FechaNueva);
+                    sp.execute();      
+                    rs = sp.executeQuery();
+            
+                    while(rs.next()){
+                        ra = new RevisaAnimal();
+                        ra.setNombreVeterinario(rs.getString(1));
+                        ra.setNombre2Veterinario(rs.getString(2));
+                        ra.setApellidoVeterinario(rs.getString(3));
+                        ra.setApellidoVeterinario(rs.getString(4));
+                        ra.setNombreAnimal(rs.getString(5));
+                        ra.setEspecieAnimal(rs.getString(6));
+                        ra.setPesoAnimal(rs.getFloat(7));
+                        ra.setObservaciones(rs.getString(8));
+                        try {
+                            fechaDate = sdf.parse(rs.getString(9));
+                            ra.setFechaRevision(fechaDate);
+                        } 
+                            catch (ParseException ex){
+                        System.out.println(ex);
+                        }
+           
+                        revisiones.add(ra);
+                    }
+                    
+                    return  revisiones;
+            } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    return  revisiones;
+            }
+            
+        }else{
+                return  revisiones;
+        }
+    }
+    }
 }
+    
