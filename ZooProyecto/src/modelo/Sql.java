@@ -889,4 +889,20 @@ public class Sql extends Conexion{
         }
     }
     }
+    
+    public static boolean eliminarActividad(RegistroONG rong){
+       try {
+            sql = "delete from registro_ong where reg_nombre_actividad = ?";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            if(rong.getNombreActividad() != null){
+            ps.setString(1, rong.getNombreActividad());
+            }
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+               System.out.println(e);
+            return false;
+        }
+    }
 }

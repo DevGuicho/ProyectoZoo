@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.HistorialActividades;
 import modelo.*;
@@ -32,6 +33,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     DefaultComboBoxModel comboOpcionesAux;
     DefaultTableModel dtm;
     ArrayList<RegistroONG> actividades;
+    RegistroONG rong;
     
     private Color verdeOn;
     private Color verdePrincipal;
@@ -41,6 +43,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     public ctrlHistorialActividades(HistorialActividades ha) {
         this.ha = ha;
         iniComponents();
+        this.rong = new RegistroONG();
     }
 
     @Override
@@ -52,8 +55,13 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
                 TablaActividades(ha.cmbOpciones.getSelectedItem().toString(),ha.cmbSeleccion.getSelectedIndex());
             }
         }else if(ae.getSource() == ha.btnEliminar){
-            //Eliminar();
-            ha.cmbSeleccion.setSelectedIndex(0);
+            Eliminar();
+            if(Sql.eliminarActividad(rong)){
+                ha.cmbSeleccion.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Registro Eliminado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al Eliminar");
+            }
         }
     }
     
@@ -81,8 +89,11 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
+        
+        this.ha.tblActividades.getColumnModel().getColumn(1).setResizable(false);
          
          TablaActividades("todos",0);
+ 
     }
     
     private void comboSeleccion(){
@@ -113,15 +124,15 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     
     private void TablaActividades(String seleccion, int indice){
         Vector vec = new Vector();
-        String [] titulos = {"ONG", "Actividad", "Descripción", "Fecha Solicitud", "Hora Apertura", "Hora Cierre", "Habitat", "Status"};
+        String [] titulos = {"Actividad","ONG", "Descripción", "Fecha Solicitud", "Hora Apertura", "Hora Cierre", "Habitat", "Status"};
         dtm = new DefaultTableModel(null, titulos);
         
         actividades = Sql.llamarActividades(seleccion,indice);
         
         for (int i = 0; i < actividades.size(); i++) {
             vec = new Vector();
-            vec.add(actividades.get(i).getOngNombre());
             vec.add(actividades.get(i).getNombreActividad());
+            vec.add(actividades.get(i).getOngNombre());
             vec.add(actividades.get(i).getDescripcionActividad());
             vec.add(actividades.get(i).getFechaSolicitud());
             vec.add(actividades.get(i).getHoraApertura());
@@ -136,6 +147,12 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     }
 
     private void Eliminar() {
+        if(ha.tblActividades.isColumnSelected(0)){
+        rong.setNombreActividad(String.valueOf(dtm.getValueAt(ha.tblActividades.getSelectedRow(), 0)));
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciona una acividad");
+            rong.setNombreActividad(null);
+        }
         
     }
 
