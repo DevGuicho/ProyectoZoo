@@ -167,6 +167,37 @@ public class Sql extends Conexion{
         }
     }
 
+    public static ArrayList<Cuidador> verCuidadores(int sel){
+        ArrayList<Cuidador> cuidadores = new ArrayList<>();
+        Cuidador c = new Cuidador();
+        try {
+            sql = "SELECT * FROM cuidadoresdisponibles order by CUI_nombre";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            int i = 0;
+            while(rs.next()){
+                c = new Cuidador();
+                c.setId(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setNombre2(rs.getString(3));
+                if(rs.wasNull()){
+                    c.setNombre2(" ");
+                }
+                c.setApellido1(rs.getString(4));
+                c.setApellido2(rs.getString(5));
+                c.setSueldo(rs.getFloat(6));
+                cuidadores.add(c);
+            
+            }
+            
+            return cuidadores;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de consulta");
+            System.out.println(e);
+            return cuidadores;
+        }
+    }
     public static ArrayList<Veterinario> verVeterinarios() {
         ArrayList<Veterinario> veterinarios = new ArrayList<>();
         Veterinario v = new Veterinario();

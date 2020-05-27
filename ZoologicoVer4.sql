@@ -180,7 +180,9 @@ CREATE TABLE Revisa_Animal (
 );
 
 -- ///////////////////////////////////////////////////
--- VISTAS DE LA BASE DE DATOS ---
+-- ////////  VISTAS DE LA BASE DE DATOS  /////////////
+-- ///////////////////////////////////////////////////
+
 
 create view ultimaVisita as 
 select  VET_nombre, VET_Apellido1, VET_Apellido2, ANI_nombre, REV_Fecha_Revision  from Revisa_Animal
@@ -191,11 +193,13 @@ on Animal.ANI_AnimalID = Revisa_Animal.REV_AnimalID
 order by REV_id DESC LIMIT 1;
 
 -- //////////////////////////////////////////////////////////////////////////
+
 create view ultimoRegistro as
 select RHA_temperatura, RHA_humedad, HAB_nombre, RHA_Fecha_Registro from Registra
 inner join Habitat
 on Habitat.HAB_HabitatID = Registra.RHA_RegistroID
 order by RHA_RegistroID DESC LIMIT 1;
+
 -- //////////////////////////////////////////////////////////////////////////
 
 create view ultimaActividad as
@@ -203,6 +207,7 @@ select REG_Nombre_Actividad,REG_Ong_nombre, REG_HabitatID, HAB_nombre from Regis
 inner join Habitat
 on Habitat.HAB_HabitatID = Registro_ONG.REG_HabitatID
 order by `REG_actividadID` DESC LIMIT 1;
+
 -- //////////////////////////////////////////////////////////////////////////
 
 create view verAnimales as 
@@ -212,19 +217,22 @@ on cuidador.CUI_CuidadorID = ANI_CuidadorID
 inner join Habitat
 on habitat.HAB_HabitatID = ANI_HabitatID;
 
-
-<<<<<<< HEAD
-
 -- ///////////////////////////////////////////////////////////////////////
 
-=======
->>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9
 create view Actividades as
 select reg_aprobacion, reg_ong_nombre, reg_nombre_actividad, reg_desc_actividad, reg_fecha_solicitud, reg_hora_apertura, reg_hora_cierre, hab_nombre from registro_ong
 inner join habitat on registro_ong.reg_habitatid = habitat.hab_habitatid;
 
-<<<<<<< HEAD
 -- ///////////////////////////////////////////////////////////////////////
+
+create view cuidadoresDisponibles as
+select * from Cuidador
+where CUI_CuidadorId NOT IN
+(select HAB_CuidadorID
+ from habitat
+ where HAB_CuidadorId);
+ 
+ -- //////////////////////////////////////////////////////////////////////
 
 create view verHabitats as 
 select HAB_nombre, Cui_nombre, Cui_apellido1,cli_nombre from Habitat
@@ -232,15 +240,19 @@ inner join clima
 on clima.CLI_climaId = HAB_ClimaId
 inner join cuidador
 on cuidador.CUI_CuidadorId = HAB_CuidadorId;
-=======
+
+-- /////////////////////////////////////////////////////////////////////////
+
 create view VisitasMedicas as
 select vet_nombre, vet_nombre2,vet_apellido1, vet_apellido2, ani_nombre, ani_especie, ani_peso, rev_observaciones, rev_fecha_revision from revisa_animal
 inner join veterinario on revisa_animal.rev_veterinarioid = vet_veterinarioid
 inner join animal on revisa_animal.rev_animalid = animal.ani_animalid;
 -- drop view VisitasMedicas;
->>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9
 
--- PROCEDIMIENTOS ALMACENADOS
+-- ///////////////////////////////////////////////////
+-- //////////  PROCEDIMIENTOS ALMACENADOS  ///////////
+-- ///////////////////////////////////////////////////
+
 DELIMITER //
 CREATE PROCEDURE filtroAnimales
 (IN con CHAR(30))
@@ -250,6 +262,8 @@ BEGIN
 END //
 DELIMITER ;
 
+-- ///////////////////////////////////////////////////
+
 DELIMITER //
 CREATE PROCEDURE filtroAnimalesEspecie
 (IN con CHAR(30))
@@ -258,6 +272,8 @@ BEGIN
   WHERE ANI_Especie = con;
 END //
 DELIMITER ;
+
+-- ///////////////////////////////////////////////////
 
 DELIMITER //
 CREATE PROCEDURE verRegistrosHabitats
@@ -270,13 +286,8 @@ BEGIN
 END //
 DELIMITER ;
 
-select * from registra;
-call verRegistrosHabitats('aves');
-call filtroAnimalesEspecie('jirafa');
-call filtroAnimales('leones');
+-- ///////////////////////////////////////////////////
 
-
--- ////////////////////////////////////
 delimiter //
 create procedure filtroDiasActividad (in dia varchar(10))
 begin
@@ -286,9 +297,9 @@ begin
 	where ong_realiza.rea_dia = dia;
 end //
 delimiter ;   
--- /////////////////////////////////////
 
--- /////////////////////////////////////
+-- ///////////////////////////////////////////////////
+
 delimiter //
 create procedure filtroHabitatActividad (in habitat varchar(20))
 begin
@@ -296,12 +307,20 @@ begin
 	where hab_nombre = habitat;
 end //
 delimiter ;   
--- drop procedure filtrodiasactividad;
--- drop procedure filtrohabitatactividad;
--- //////////////////////////////////////
 
--- /////////////////////////////////
--- CREACION DEL TRIGGER PARA HABITAT
+-- ///////////////////////////////////////////////////
+
+select * from registra;
+call verRegistrosHabitats('aves');
+call filtroAnimalesEspecie('jirafa');
+call filtroAnimales('leones');
+
+-- ///////////////////////////////////////////////////
+
+-- ///////////////////////////////////////////////////
+-- //////////////////  TRIGGERS   ////////////////////
+-- ///////////////////////////////////////////////////
+
 delimiter //
 create trigger disponibilidad_habitat after insert on Registro_ONG
 	for each row 
@@ -315,7 +334,7 @@ create trigger disponibilidad_habitat after insert on Registro_ONG
 
 -- drop trigger disponibilidad_habitat;
 
--- //////////
+-- ///////////////////////////////////////////////////
 -- TRIGGER EN CASO DE QUE SE ELIME ALGUN REGISTRO DE REGISTRO_ONG
 delimiter //
 create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
@@ -326,9 +345,9 @@ create trigger eliminar_disponibilidad_habitat after delete on Registro_ONG
     where HAB_HabitatId = @aux;
 	end ;  //
     delimiter ;
+    -- drop trigger eliminar_disponibilidad_habitat;
     
-
--- drop trigger eliminar_disponibilidad_habitat;
+-- //////////////////////////////////////////////////
 -- TRIGGER PARA ACTUALIZAR LAS OBSERVACIONES DEL ANIMAL
 delimiter //
 create trigger vistaMedicaObservaciones after insert on Revisa_Animal
@@ -339,6 +358,11 @@ where ani_animalid= new.rev_animalid;
 end; //
 delimiter ;
 -- drop trigger vistaMedicaObservaciones;
+
+-- ///////////////////////////////////////////////////
+
+
+
 -- ////////////////////////////////////////////////////////////////////////////
 -- ////////////////////// ALTAS PARA PROBAR PROGRAMA //////////////////////////
 -- ////////////////////////////////////////////////////////////////////////////
@@ -400,7 +424,7 @@ select * from ultimavisita;
 select * from Veterinario;	
 select * from Animal;	 
 select * from verAnimales;	
-<<<<<<< HEAD
+
 select * from Habitat;
 select * from registra;
 select * from cuidador;
@@ -409,5 +433,3 @@ select * from clima;
 
 
 
-=======
->>>>>>> 18c337f68965593395622bca36886d7d1a4d02d9

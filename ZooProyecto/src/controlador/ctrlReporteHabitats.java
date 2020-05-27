@@ -173,7 +173,7 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         }
         rh.cmbClima.setModel(dcb);
         
-        ArrayList<Cuidador> cuidadores = Sql.verCuidadores();
+        ArrayList<Cuidador> cuidadores = Sql.verCuidadores(1);
         dcb = new DefaultComboBoxModel();
         dcb.addElement("Seleccione Cuidador");
         for (int i = 0; i < cuidadores.size(); i++) {
