@@ -89,8 +89,6 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
-        
-        this.ha.tblActividades.getColumnModel().getColumn(1).setResizable(false);
          
          TablaActividades("todos",0);
  
@@ -147,7 +145,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     }
 
     private void Eliminar() {
-        if(ha.tblActividades.isColumnSelected(0)){
+        if(ha.tblActividades.isColumnSelected(0)){ 
         rong.setNombreActividad(String.valueOf(dtm.getValueAt(ha.tblActividades.getSelectedRow(), 0)));
         }else{
             JOptionPane.showMessageDialog(null, "Selecciona una acividad");

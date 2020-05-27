@@ -307,15 +307,33 @@ begin
 	where hab_nombre = habitat;
 end //
 delimiter ;   
-<<<<<<< HEAD
 
+
+--
+delimiter //
+create procedure filtroEspecieVisitas (in  especie varchar(15))
+	 begin
+		select * from VisitasMedicas
+        where ani_especie = especie;
+	end //
+delimiter;
+
+--
+delimiter //
+create procedure filtroFechasRevision (in fecha date)
+	begin
+     select *from VisitasMedicas
+     where rev_fecha_revision = fecha;
+	end //
+delimiter;
 -- ///////////////////////////////////////////////////
 
 select * from registra;
 call verRegistrosHabitats('aves');
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
-
+call filtroEspecieVisitas('jirafa');
+call filtroFechasRevision('2000-05-01');
 -- ///////////////////////////////////////////////////
 
 -- ///////////////////////////////////////////////////

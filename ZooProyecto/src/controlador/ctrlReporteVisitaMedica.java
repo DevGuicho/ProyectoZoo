@@ -33,6 +33,9 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     private Animal a;
     private Veterinario v;
     private ArrayList<RevisaAnimal> visitas;
+    DefaultComboBoxModel dcm;
+    DefaultComboBoxModel dcm2;
+    private int opcion;
     
     private Color verdeOn;
     private Color verdePrincipal;
@@ -57,6 +60,8 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
             }
+        }else if(ae.getSource() == rvm.cmbSeleccion){
+            ComboSeleccion();
         }  
     }
 
@@ -108,12 +113,27 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         this.rvm.btnGuardar.addMouseListener(this);
         this.rvm.btnLimpiar.addMouseListener(this);
         
+        this.rvm.cmbSeleccion.addActionListener(this);
+        this.rvm.cmbOpcion.addActionListener(this);
+        
         this.verdeOn = new Color(0, 212, 72);
         this.verdePrincipal = new Color(0, 179, 61);
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
+        
+        dcm = new DefaultComboBoxModel();
+        dcm2 = new DefaultComboBoxModel();
+        
+        dcm.addElement("Seleccione Filtro");
+        dcm.addElement("Especie");
+        dcm.addElement("Veterinario");
+        dcm.addElement("Fecha Registro");
+        this.rvm.cmbSeleccion.setModel(dcm);
 
+        dcm2.addElement("Seleccione una opcion");
+        this.rvm.cmbOpcion.setModel(dcm2);
+        
         iniComboBoxes();
         Tabla();
     }
@@ -141,6 +161,21 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         }
         
         this.rvm.cmbAnimal.setModel(cmbAnimalAux);
+    }
+    
+    private void ComboSeleccion(){
+        if(rvm.cmbSeleccion.getSelectedIndex() > 0){
+            opcion = rvm.cmbSeleccion.getSelectedIndex();
+            ComboOpcion(opcion);
+        }else if(rvm.cmbSeleccion.getSelectedIndex() == 0){
+                while(dcm2.getSize()>1){
+                    dcm2.removeElementAt(1);
+                } 
+        }
+    }
+    
+    private void ComboOpcion(int opcion){
+        
     }
     
     private void getRevisiones(){
@@ -191,5 +226,8 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     rvm.cmbAnimal.setSelectedIndex(0);
     rvm.cmbVeterinario.setSelectedIndex(0);
     rvm.txtObservaciones.setText(null);
+    rvm.cmbSeleccion.setSelectedIndex(0);
+    rvm.cmbOpcion.setSelectedIndex(0);
     }
+
 }
