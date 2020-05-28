@@ -313,6 +313,37 @@ delimiter ;
 -- ///////////////////////////////////////////////////
 
 delimiter //
+create procedure filtroEspecieVisitas (in  especie varchar(15))
+	 begin
+		select * from VisitasMedicas
+        where ani_especie = especie;
+	end //
+delimiter ;
+
+--
+delimiter //
+create procedure filtroFechasRevision (in fecha date)
+	begin
+     select *from VisitasMedicas
+     where rev_fecha_revision = fecha;
+	end //
+delimiter ;
+-- drop procedure filtroFechasRevision;
+
+
+delimiter //
+create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), in nom2 varchar(15), in ap1 varchar(20), in ap2 varchar(20))
+	 begin
+		select * from VisitasMedicas
+        where vet_nombre = nom1 and vet_nombre2 = nom2 and vet_apellido1 = ap1 and vet_apellido2 = ap2;
+	end //
+delimiter;
+-- drop procedure filtroVeterinarioVisitas;
+call filtroVeterinarioVisitas('Leo','Alfonso','Ramirez','Gonzales');
+
+-- ///////////////////////////////////////////////////
+
+delimiter //
 create procedure filtroStatus (in estado varchar(12))
 begin
 	select *from Actividades
@@ -338,6 +369,8 @@ call verRegistrosHabitats('aves');
 call filtroAnimalesEspecie('jirafa');
 call filtroAnimales('leones');
 
+call filtroEspecieVisitas('jirafa');
+call filtroFechasRevision('2000-05-01');
 
 -- ///////////////////////////////////////////////////
 
@@ -444,6 +477,7 @@ select * from animal;
 select *from revisa_animal;
 select *from registro_ong;
 select *from habitat;
+select * from visitasmedicas;
 
 select * from ultimavisita;
 select * from Veterinario;	
@@ -458,4 +492,7 @@ select * from cuidador;
 select * from clima;
 select * from Actividades;
 
+
 delete from veterinario where vet_veterinarioid = 1;
+select distinct rev_fecha_revision from revisa_animal;
+

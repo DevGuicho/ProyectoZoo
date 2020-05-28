@@ -54,14 +54,6 @@ public class RevisaAnimal {
         this.animalId = animalId;
     }
 
-    public Date getFechaRevision() {
-        return fechaRevision;
-    }
-
-    public void setFechaRevision(Date fechaRevision) {
-        this.fechaRevision = fechaRevision;
-    }
-
     public String getObservaciones() {
         return observaciones;
     }
@@ -126,12 +118,17 @@ public class RevisaAnimal {
         this.apellido2Veterinario = apellido2Veterinario;
     }
 
-    
-    
-    
+    public Date getFechaRevision() {
+        return fechaRevision;
+    }
+
+    public void setFechaRevision(Date fechaRevision) {
+        this.fechaRevision = fechaRevision;
+    }
+  
     @Override
     public String toString() {
-        return "RevisaAnimal{" + "id=" + id + ", veterinarioId=" + veterinarioId + ", animalId=" + animalId + ", fechaRevision=" + fechaRevision + '}';
+        return "RevisaAnimal{" + "id=" + id + ", veterinarioId=" + veterinarioId + ", animalId=" + animalId + '}';
     }
     
     

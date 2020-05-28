@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -89,8 +90,6 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
-        
-        this.ha.tblActividades.getColumnModel().getColumn(1).setResizable(false);
          
          TablaActividades("todos",0);
  
@@ -126,7 +125,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
         Vector vec = new Vector();
         String [] titulos = {"Actividad","ONG", "Descripción", "Fecha Solicitud", "Hora Apertura", "Hora Cierre", "Habitat", "Status"};
         dtm = new DefaultTableModel(null, titulos);
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         actividades = Sql.llamarActividades(seleccion,indice);
         
         for (int i = 0; i < actividades.size(); i++) {
@@ -134,7 +133,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
             vec.add(actividades.get(i).getNombreActividad());
             vec.add(actividades.get(i).getOngNombre());
             vec.add(actividades.get(i).getDescripcionActividad());
-            vec.add(actividades.get(i).getFechaSolicitud());
+            vec.add(sdf.format(actividades.get(i).getFechaSolicitud()));
             vec.add(actividades.get(i).getHoraApertura());
             vec.add(actividades.get(i).getHoraCierre());
             vec.add(actividades.get(i).getNombreHabitat());
@@ -147,7 +146,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     }
 
     private void Eliminar() {
-        if(ha.tblActividades.isColumnSelected(0)){
+        if(ha.tblActividades.isColumnSelected(0)){ 
         rong.setNombreActividad(String.valueOf(dtm.getValueAt(ha.tblActividades.getSelectedRow(), 0)));
         }else{
             JOptionPane.showMessageDialog(null, "Selecciona una acividad");
