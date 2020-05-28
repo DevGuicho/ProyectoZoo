@@ -28,10 +28,10 @@ public class SplashScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         barProgress = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         lblModulo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -39,23 +39,26 @@ public class SplashScreen extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(500, 300));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel1.setBackground(new java.awt.Color(38, 174, 96));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loading-23.gif"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+        barProgress.setBackground(new java.awt.Color(204, 204, 204));
+        barProgress.setForeground(new java.awt.Color(51, 152, 218));
+        barProgress.setBorderPainted(false);
+        jPanel1.add(barProgress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 500, 15));
 
-        barProgress.setForeground(new java.awt.Color(0, 204, 51));
-        jPanel1.add(barProgress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 500, 20));
-
+        jLabel1.setBackground(new java.awt.Color(0, 200, 83));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cargando: ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, 20));
 
         lblModulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblModulo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblModulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 180, 20));
+        jPanel1.add(lblModulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 180, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/screen2.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 290));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 300));
 

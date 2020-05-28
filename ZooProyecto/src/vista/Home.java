@@ -40,7 +40,6 @@ public class Home extends javax.swing.JPanel {
         lblAnimalRevisado = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -52,7 +51,6 @@ public class Home extends javax.swing.JPanel {
         lblTemperatura = new javax.swing.JLabel();
         lblFechaRegistro = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblBackground2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -63,7 +61,6 @@ public class Home extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         lblNombreHabAct = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -134,18 +131,6 @@ public class Home extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salud.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(51, 204, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sign.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 400, 40, 40));
-
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg1.jpg"))); // NOI18N
         jPanel2.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-220, 0, 500, 460));
 
@@ -193,14 +178,6 @@ public class Home extends javax.swing.JPanel {
         jLabel13.setText("Fecha Registro");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        jButton1.setText("Ir a Historial de Visitas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
-
         lblBackground2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg2.jpg"))); // NOI18N
         jPanel3.add(lblBackground2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-340, 0, 590, 460));
 
@@ -244,14 +221,6 @@ public class Home extends javax.swing.JPanel {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/actividades.png"))); // NOI18N
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton3.setText("Ir a Historial de Visitas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, -1, -1));
-
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bg3.jpg"))); // NOI18N
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(-240, 0, 490, 780));
 
@@ -261,23 +230,8 @@ public class Home extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 850, 650));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

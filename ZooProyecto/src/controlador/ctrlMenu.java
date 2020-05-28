@@ -8,6 +8,8 @@ package controlador;
 import java.awt.Color;
 import java.awt.Font;
 import static java.awt.Frame.ICONIFIED;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -62,6 +64,8 @@ public class ctrlMenu implements ActionListener, MouseListener {
 
     public ctrlMenu(menu m) {
         this.m = m;
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/isotipo1.png"));
+        this.m.setIconImage(icon);
         iniPrograma();
     }
 

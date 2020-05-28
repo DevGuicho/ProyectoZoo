@@ -5,7 +5,11 @@
  */
 package controlador;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Thread.sleep;
+import javax.swing.ImageIcon;
+
 import vista.SplashScreen;
 
 /**
@@ -25,6 +29,9 @@ public class ctrlSplashScreen implements Runnable {
         this.ss = ss;
         this.ss.setVisible(true);
         this.ss.setLocationRelativeTo(null);
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/isotipo1.png"));
+        this.ss.setIconImage(icon);
+        
         flag = true;
         this.ss.barProgress.setMaximum(1000);
         progress = 0;

@@ -17,16 +17,27 @@ import vista.Home;
  *
  * @author beatl
  */
-public class ctrlHome implements ActionListener{
+public class ctrlHome implements ActionListener {
+
     private Home h;
     private Reloj r;
     private UltimosRegistros ur = new UltimosRegistros();
-    public ctrlHome(Home h){
+
+    public ctrlHome(Home h) {
         this.h = h;
         this.r = new Reloj(h.lblClock);
+        iniComponents();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    public void iniComponents() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Sql.ultimaVisitaMedica(ur);
-        h.lblVeterinario.setText(ur.getNombreVeterinario()+" "+ur.getApellido1Veterinario()+" "+ur.getApellido2Veterinario());
+        h.lblVeterinario.setText(ur.getNombreVeterinario() + " " + ur.getApellido1Veterinario() + " " + ur.getApellido2Veterinario());
         h.lblAnimalRevisado.setText(ur.getNombreAnimal());
         h.lblFechaVisita.setText(sdf.format(ur.getFechaRevision()));
         Sql.ultimoRegistroTempHum(ur);
@@ -40,11 +51,6 @@ public class ctrlHome implements ActionListener{
         h.lblNombreHabAct.setText(ur.getNombreActHabitat());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-    }
-
     public Reloj getR() {
         return r;
     }
@@ -52,6 +58,5 @@ public class ctrlHome implements ActionListener{
     public void setR(Reloj r) {
         this.r = r;
     }
-    
-    
+
 }
