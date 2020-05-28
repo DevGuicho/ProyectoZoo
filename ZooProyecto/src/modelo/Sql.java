@@ -39,7 +39,11 @@ public class Sql extends Conexion{
             ps.setString(2, vet.getCorreo());
             ps.setString(3, vet.getTelefono());
             ps.setString(4, vet.getNombre());
-            ps.setString(5, vet.getNombre2());
+            if(vet.getNombre2().equals(""))
+                ps.setNull(5, 0);
+            else 
+                ps.setString(5, vet.getNombre2());
+            
             ps.setString(6, vet.getApellido1());
             ps.setString(7, vet.getApellido2());
            
@@ -152,7 +156,7 @@ public class Sql extends Conexion{
                 c.setNombre(rs.getString(2));
                 c.setNombre2(rs.getString(3));
                 if(rs.wasNull()){
-                    c.setNombre2(" ");
+                    c.setNombre2("");
                 }
                 c.setApellido1(rs.getString(4));
                 c.setApellido2(rs.getString(5));
@@ -184,7 +188,7 @@ public class Sql extends Conexion{
                 c.setNombre(rs.getString(2));
                 c.setNombre2(rs.getString(3));
                 if(rs.wasNull()){
-                    c.setNombre2(" ");
+                    c.setNombre2("");
                 }
                 c.setApellido1(rs.getString(4));
                 c.setApellido2(rs.getString(5));
@@ -214,6 +218,8 @@ public class Sql extends Conexion{
                 v.setId(rs.getInt(1));
                 v.setNombre(rs.getString(2));
                 v.setNombre2(rs.getString(3));
+                if(rs.wasNull())
+                    v.setNombre2("");
                 v.setApellido1(rs.getString(4));
                 v.setApellido2(rs.getString(5));
                 v.setCorreo(rs.getString(6));
@@ -712,6 +718,7 @@ public class Sql extends Conexion{
                 h.setNombreCuidador(rs.getString(2));
                 h.setApellidoCuidador(rs.getString(3));
                 h.setClima(rs.getString(4));
+                h.setId(rs.getInt(5));
                 habitats.add(h);
                 
             }
@@ -940,7 +947,40 @@ public class Sql extends Conexion{
     }
     
     public static boolean registroTempHum(Registra r){
+        Clima c = new Clima();
         try {
+            sql = "call validacionRegistro(?)";
+            con = getConnection();
+            CallableStatement sp = con.prepareCall(sql);
+            sp.setInt(1, r.getHabitatId());
+            sp.execute();      
+            rs = sp.executeQuery();
+                    
+            
+            while(rs.next()){
+                
+                c.setHumedadMin(rs.getInt(1));
+                c.setHumedadMax(rs.getInt(2));
+                c.setTemperaturaMin(rs.getInt(3));
+                c.setTemperaturaMax(rs.getInt(4));
+            }
+            System.out.println(c.getHumedadMax());
+            System.out.println(c.getHumedadMin());
+            if(r.getHumedad()< c.getHumedadMin() ){
+                JOptionPane.showMessageDialog(null, "Humedad no valida");
+                return false;
+            }else if(r.getHumedad()> c.getHumedadMax()){
+                JOptionPane.showMessageDialog(null, "Humedad no valida");
+                return false;
+            }
+            else if(r.getTemperatura()<c.getTemperaturaMin() ){
+                JOptionPane.showMessageDialog(null, "Temperatura no valida");
+                return false;
+            }else if(r.getTemperatura()>c.getTemperaturaMax()){
+                JOptionPane.showMessageDialog(null, "Temperatura no valida");
+                return false;
+            }
+            
             sql = "insert into Registra (RHA_HabitatID, RHA_Temperatura, RHA_Humedad, RHA_Fecha_registro) values (?,?,?,?)";
             con = getConnection();
             ps = con.prepareStatement(sql);
@@ -949,6 +989,63 @@ public class Sql extends Conexion{
             ps.setFloat(3, r.getHumedad());
             ps.setTimestamp(4, new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
             ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean actualizarVeterinario(Veterinario v){
+        try {
+            sql = "update Veterinario set vet_nombre = ?, vet_apellido1 = ?, vet_apellido2 = ?, vet_correo = ?,vet_cedula = ?, vet_telefono = ? where vet_veterinarioid = ?";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, v.getNombre());
+            ps.setString(2, v.getApellido1());
+            ps.setString(3, v.getApellido2());
+            ps.setString(4, v.getCorreo());
+            ps.setString(5, v.getCedulaProfesional());
+            ps.setString(6, v.getTelefono());
+            ps.setInt(7, v.getId());
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean actualizarCuidador(Cuidador c){
+        try {
+            sql = "update cuidador set CUI_nombre = ?, CUI_nombre2 = ?, CUI_apellido1 = ?, CUI_apellido2 = ?, CUI_sueldo = ? where CUI_CuidadorId = ?";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, c.getNombre());
+            if(c.getNombre2().equals(""))
+                ps.setNull(2, 0);
+            else
+                ps.setString(2, c.getNombre2());
+            ps.setString(3, c.getApellido1());
+            ps.setString(4, c.getApellido2());
+            ps.setFloat(5, c.getSueldo());
+            ps.setInt(6, c.getId());
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+     public static boolean actualizarHabitat(Habitat h) {
+        try {
+            sql = "update habitat set HAB_nombre = ?, HAB_climaId = ? where HAB_HabitatId = ?";
+            con = getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, h.getNombre());
+            ps.setInt(2, h.getClimaId());
+            ps.setInt(3, h.getId());
             return true;
         } catch (Exception e) {
             System.out.println(e);

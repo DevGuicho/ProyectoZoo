@@ -70,6 +70,9 @@ public class Clima {
         this.temperaturaMax = temperaturaMax;
     }
 
+   
+    
+
     @Override
     public String toString() {
         return ""+ nombre ;

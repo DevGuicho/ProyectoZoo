@@ -39,7 +39,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
     
     private ctrlHistorialActividades ctrlHA;
     private ctrlHistorialHabitats ctrlHH;
-    private ctrlPersonalCuidadores ctrlPC;
+    
     private ctrlRegistroActividades ctrlRA;
     private ctrlRegistroAnimales ctrlRAni;
     private ctrlRegistroCuidadores ctrlRC;
@@ -52,7 +52,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
     private HistorialActividades ha;
     private HistorialHabitats hh;
     
-    private PersonalCuidadores pc;
+    
     private RegistroActividades ra;
     private RegistroAnimales rani;
     private RegistroCuidadores rc;
@@ -216,7 +216,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.rh = new ReporteHabitats();
         this.rvm = new ReporteVisitaMedica();
         
-        this.pc = new PersonalCuidadores();
+        
         
         
         
@@ -229,7 +229,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.ctrlRH = new ctrlReporteHabitats(rh);
         this.ctrlRVM = new ctrlReporteVisitaMedica(rvm);
         
-        this.ctrlPC = new ctrlPersonalCuidadores(pc);
+        
         
         
 

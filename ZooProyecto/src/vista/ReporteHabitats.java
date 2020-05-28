@@ -121,7 +121,7 @@ public class ReporteHabitats extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
-        pnlBarraOpciones.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 100, 40));
+        pnlBarraOpciones.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 100, 40));
 
         btnLimpiar.setBackground(new java.awt.Color(0, 51, 51));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -137,7 +137,7 @@ public class ReporteHabitats extends javax.swing.JPanel {
         btnLimpiar.setFocusable(false);
         btnLimpiar.setOpaque(true);
         btnLimpiar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limpiarOn.png"))); // NOI18N
-        pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 100, 40));
+        pnlBarraOpciones.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 100, 40));
 
         pnlRegistroHabitat.add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
 

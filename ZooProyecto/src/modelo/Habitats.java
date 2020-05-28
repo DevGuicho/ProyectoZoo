@@ -15,7 +15,7 @@ public class Habitats {
     private String nombreCuidador;
     private String apellidoCuidador;
     private String clima;
-
+    private int id;
     public String getNombreHabitat() {
         return nombreHabitat;
     }
@@ -46,6 +46,14 @@ public class Habitats {
 
     public void setClima(String clima) {
         this.clima = clima;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

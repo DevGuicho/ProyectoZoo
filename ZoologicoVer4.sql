@@ -170,13 +170,15 @@ CREATE TABLE Revisa_Animal (
     REV_id INT NOT NULL AUTO_INCREMENT,
     REV_VeterinarioID INT NOT NULL,
     REV_AnimalID INT NOT NULL,
-    REV_Observaciones varchar(50) NOT NULL,
+    REV_Observaciones VARCHAR(50) NOT NULL,
     REV_Fecha_Revision DATE NOT NULL,
     CONSTRAINT pk_REVISA_ANIMAL PRIMARY KEY (REV_id),
     CONSTRAINT fk_REVISA_VETERINARIO FOREIGN KEY (REV_VeterinarioID)
-        REFERENCES Veterinario (VET_VeterinarioID),
+        REFERENCES Veterinario (VET_VeterinarioID)
+        ON DELETE restrict ,
     CONSTRAINT fk_REVISA_ANIMAL FOREIGN KEY (REV_AnimalID)
         REFERENCES Animal (ANI_AnimalID)
+        ON DELETE NO ACTION
 );
 
 -- ///////////////////////////////////////////////////
@@ -235,7 +237,7 @@ where CUI_CuidadorId NOT IN
  -- //////////////////////////////////////////////////////////////////////
 
 create view verHabitats as 
-select HAB_nombre, Cui_nombre, Cui_apellido1,cli_nombre from Habitat
+select HAB_nombre, Cui_nombre, Cui_apellido1,cli_nombre, hab_habitatId from Habitat
 inner join clima
 on clima.CLI_climaId = HAB_ClimaId
 inner join cuidador
@@ -322,12 +324,14 @@ delimiter ;
 -- ////////////////////////////////////
 
 delimiter //
-create procedure control>nimales ( in filtro varchar(30), in busqueda varchar(300))
-begin
-
-
-end //
-delimiter ;
+create procedure validacionRegistro(in idHab int)
+begin 
+	select CLI_humedad_min, cli_humedad_max, cli_temp_min, cli_temp_max from habitat
+    inner join clima
+    on clima.cli_climaId = hab_ClimaId
+    where hab_habitatID = idHab;
+    end //
+    delimiter ;
 
 select * from registra;
 call verRegistrosHabitats('aves');
@@ -446,6 +450,7 @@ select * from Veterinario;
 select * from Animal;	 
 select * from verAnimales;	
 
+select * from verHabitats;
 select * from Habitat;
 select * from registra;
 select * from cuidador;
@@ -453,4 +458,4 @@ select * from cuidador;
 select * from clima;
 select * from Actividades;
 
-
+delete from veterinario where vet_veterinarioid = 1;

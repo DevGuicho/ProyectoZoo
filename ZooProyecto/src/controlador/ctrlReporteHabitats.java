@@ -18,8 +18,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clima;
 import modelo.Cuidador;
@@ -43,6 +46,7 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
     private Font click;
     private DefaultTableModel dtm;
     private DefaultComboBoxModel dcb;
+    private JComboBox comboBox;
     public ctrlReporteHabitats(ReporteHabitats rh) {
         this.rh = rh;
         iniComponents();
@@ -62,6 +66,8 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
             limpiar();
         else if (e.getSource() == rh.btnLimpiar1)
             limpiar1();
+      
+               
     }
 
     @Override
@@ -73,9 +79,11 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
             if(rh.txtHumedad.getText().equals("Humedad"))
                 rh.txtHumedad.setText(null);
         }else if(e.getSource() == rh.tblHabitats){
-            String habitat=rh.tblHabitats.getValueAt(rh.tblHabitats.getSelectedRow(), 0).toString();
+            String habitat = rh.tblHabitats.getValueAt(rh.tblHabitats.getSelectedRow(), 1).toString();
             iniTableRegistros(habitat);
+            
         }
+            
     }
 
     @Override
@@ -89,6 +97,7 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         }else if(e.getSource() == rh.btnLimpiar1){
             rh.btnLimpiar1.setFont(click);
         }
+            
     }
 
     @Override
@@ -160,6 +169,8 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         this.rh.btnLimpiar.addActionListener(this);
         this.rh.btnGuardar1.addActionListener(this);
         this.rh.btnLimpiar1.addActionListener(this);
+        
+        
           
         this.rh.btnGuardar.addMouseListener(this);
         this.rh.btnLimpiar.addMouseListener(this);
@@ -167,6 +178,8 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         this.rh.btnLimpiar1.addMouseListener(this);
         this.rh.txtHumedad.addMouseListener(this);
         this.rh.txtTemperatura.addMouseListener(this);
+        this.rh.tblHabitats.addMouseListener(this);
+        
         this.rh.tblHabitats.addMouseListener(this);
         
         this.rh.txtTemperatura.addFocusListener(this);
@@ -271,19 +284,30 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         Vector vec;
         ArrayList<Habitats> h = Sql.verHabitats();
         dtm = new DefaultTableModel();
+        dtm.addColumn("Id");
         dtm.addColumn("Habitat");
         dtm.addColumn("Responsable");
         dtm.addColumn("Clima");
         
         for (int i = 0; i < h.size(); i++) {
             vec = new Vector();
+            vec.add(h.get(i).getId());
             vec.add(h.get(i).getNombreHabitat());
             vec.add(h.get(i).getNombreCuidador()+" "+h.get(i).getApellidoCuidador());
             vec.add(h.get(i).getClima());
             dtm.addRow(vec);
         }
+        
         rh.tblHabitats.setModel(dtm);
+        rh.tblHabitats.setRowHeight(20);
+        rh.tblHabitats.getColumnModel().getColumn(0).setMinWidth(0);
+        rh.tblHabitats.getColumnModel().getColumn(0).setMaxWidth(0);
+        rh.tblHabitats.getColumnModel().getColumn(0).setWidth(0);
+        rh.tblHabitats.getColumnModel().getColumn(0).setPreferredWidth(0);
+        rh.tblHabitats.getColumnModel().getColumn(0).setResizable(false);
+              
     }
     
+   
     
 }

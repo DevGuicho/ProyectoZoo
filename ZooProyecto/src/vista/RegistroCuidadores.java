@@ -53,6 +53,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCuidadores = new javax.swing.JTable();
+        btnEditar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
@@ -259,7 +260,22 @@ public class RegistroCuidadores extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblCuidadores);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 770, 170));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 770, 240));
+
+        btnEditar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lazo.png"))); // NOI18N
+        btnEditar.setText("Actualizar ");
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setFocusPainted(false);
+        btnEditar.setFocusable(false);
+        btnEditar.setOpaque(true);
+        btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lazo (1).png"))); // NOI18N
+        jPanel3.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 0, 120, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 51, 51));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -301,6 +317,7 @@ public class RegistroCuidadores extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;

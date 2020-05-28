@@ -71,7 +71,10 @@ public class Cuidador {
 
     @Override
     public String toString() {
-        return nombre+" "+nombre2+" "+apellido1+" "+apellido2;
+        if(nombre2.equals(""))
+            return nombre+" "+apellido1+" "+apellido2;
+        else
+            return nombre+" "+nombre2+" "+apellido1+" "+apellido2;
     }
     
     

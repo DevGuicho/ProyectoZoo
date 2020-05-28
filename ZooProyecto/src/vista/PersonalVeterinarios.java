@@ -30,7 +30,9 @@ public class PersonalVeterinarios extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVeterianrios = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setMinimumSize(new java.awt.Dimension(850, 560));
@@ -53,18 +55,44 @@ public class PersonalVeterinarios extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblVeterianrios);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 770, 380));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 770, 380));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 810, 440));
+        btnEditar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lazo.png"))); // NOI18N
+        btnEditar.setText("Actualizar ");
+        btnEditar.setBorder(null);
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setFocusPainted(false);
+        btnEditar.setFocusable(false);
+        btnEditar.setOpaque(true);
+        btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lazo (1).png"))); // NOI18N
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 0, 120, 40));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 102));
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 60));
+        jLabel1.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("   Veterinarios");
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Seleccione un veterinario para editar informacion");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 520));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnEditar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tblVeterianrios;
     // End of variables declaration//GEN-END:variables

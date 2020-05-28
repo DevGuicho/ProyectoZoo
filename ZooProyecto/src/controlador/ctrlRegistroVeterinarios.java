@@ -151,11 +151,15 @@ public class ctrlRegistroVeterinarios implements ActionListener, MouseListener{
             this.rv.pnlPrincipal.setVisible(false);
             this.rv.btnSelector.setText("Registrar");
             this.rv.btnSelector.setIcon(new ImageIcon("src/img/addAni.png"));
+            this.rv.btnGuardar.setEnabled(false);
+            this.rv.btnLimpiar.setEnabled(false);
         }else{
             rv.pnlVerVeterinario.setVisible(false);
             rv.pnlPrincipal.setVisible(true);
             this.rv.btnSelector.setText("Ver Veterinario");
             this.rv.btnSelector.setIcon(new ImageIcon("src/img/vision.png"));
+            this.rv.btnGuardar.setEnabled(true);
+            this.rv.btnLimpiar.setEnabled(true);
         }
     }
 }
