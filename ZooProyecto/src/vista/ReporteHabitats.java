@@ -96,9 +96,9 @@ public class ReporteHabitats extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Registro");
+        jLabel4.setText("   Registro");
         jLabel4.setOpaque(true);
-        pnlBarraOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 0, 90, 40));
+        pnlBarraOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         btnGuardar.setBackground(new java.awt.Color(0, 51, 51));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
