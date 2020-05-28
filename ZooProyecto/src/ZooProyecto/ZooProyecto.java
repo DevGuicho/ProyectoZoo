@@ -15,7 +15,7 @@ import vista.menu;
 public class ZooProyecto {
     public static void main(String[] args) {
         menu m = new menu();
-        m.setVisible(true);
+        m.setVisible(false);
         ctrlMenu ctrM = new ctrlMenu(m);
     }
 }
