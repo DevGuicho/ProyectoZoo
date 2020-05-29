@@ -55,12 +55,14 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         if(ae.getSource() == rvm.btnLimpiar){
             limpiar();
         }else if(ae.getSource() == rvm.btnGuardar){
+            if(verificarCampos()){
             getRevisiones();
             if(Sql.reporteVisitaMedica(ra)){
                 JOptionPane.showMessageDialog(null, "Registro Exitoso");
                  limpiar();
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
+            }
             }
         }else if(ae.getSource() == rvm.cmbSeleccion){
             ComboSeleccion();
@@ -299,6 +301,21 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
     rvm.txtObservaciones.setText(null);
     rvm.cmbSeleccion.setSelectedIndex(0);
     rvm.cmbOpcion.setSelectedIndex(0);
+    }
+    
+    public boolean verificarCampos(){
+        if(rvm.cmbAnimal.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Selecciona un animal");
+            return false;
+        }else if(rvm.cmbVeterinario.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Selecciona un veterinario");
+            return false;
+        }else if(rvm.txtObservaciones.getText() == null){
+            JOptionPane.showMessageDialog(null, "Ingresa las observaciones");
+            return false;
+        }else{
+            return false;
+        }
     }
 
 }

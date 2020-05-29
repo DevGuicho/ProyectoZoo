@@ -238,5 +238,9 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             ra.btnLimpiar.setVisible(true);
         }
     }
+    
+    private void verificarCampos(){
+        
+    }
 
 }
