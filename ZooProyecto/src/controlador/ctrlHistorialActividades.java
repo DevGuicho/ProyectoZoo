@@ -18,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.HistorialActividades;
+import controlador.ctrlRegistroActividades;
 import modelo.*;
 
 
@@ -56,12 +57,14 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
                 TablaActividades(ha.cmbOpciones.getSelectedItem().toString(),ha.cmbSeleccion.getSelectedIndex());
             }
         }else if(ae.getSource() == ha.btnEliminar){
+            if(validarEliminar()){
             Eliminar();
             if(Sql.eliminarActividad(rong)){
                 ha.cmbSeleccion.setSelectedIndex(0);
                 JOptionPane.showMessageDialog(null, "Registro Eliminado");
             }else{
                 JOptionPane.showMessageDialog(null, "Error al Eliminar");
+            }
             }
         }
     }
@@ -146,13 +149,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     }
 
     private void Eliminar() {
-        if(ha.tblActividades.isColumnSelected(0)){ 
         rong.setNombreActividad(String.valueOf(dtm.getValueAt(ha.tblActividades.getSelectedRow(), 0)));
-        }else{
-            JOptionPane.showMessageDialog(null, "Selecciona una acividad");
-            rong.setNombreActividad(null);
-        }
-        
     }
 
     @Override
@@ -185,6 +182,15 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     public void mouseExited(MouseEvent me) {
         if (me.getSource() == ha.btnEliminar){
             ha.btnEliminar.setBackground(verdePrincipal);
+        }
+    }
+    
+    private boolean validarEliminar(){
+        if(ha.tblActividades.isColumnSelected(0) || ha.tblActividades.isColumnSelected(1) || ha.tblActividades.isColumnSelected(2) || ha.tblActividades.isColumnSelected(3) || ha.tblActividades.isColumnSelected(4) || ha.tblActividades.isColumnSelected(5)){
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciona una actividad");
+            return false;
         }
     }
 }

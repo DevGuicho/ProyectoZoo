@@ -246,7 +246,7 @@ on cuidador.CUI_CuidadorId = HAB_CuidadorId;
 -- /////////////////////////////////////////////////////////////////////////
 
 create view VisitasMedicas as
-select vet_nombre, vet_nombre2,vet_apellido1, vet_apellido2, ani_nombre, ani_especie, ani_peso, rev_observaciones, rev_fecha_revision from revisa_animal
+select vet_nombre, vet_nombre2,vet_apellido1, vet_apellido2, ani_nombre, ani_especie, ani_peso, rev_observaciones, rev_fecha_revision, vet_veterinarioid from revisa_animal
 inner join veterinario on revisa_animal.rev_veterinarioid = vet_veterinarioid
 inner join animal on revisa_animal.rev_animalid = animal.ani_animalid;
 -- drop view VisitasMedicas;
@@ -332,14 +332,14 @@ delimiter ;
 
 
 delimiter //
-create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), in nom2 varchar(15), in ap1 varchar(20), in ap2 varchar(20))
+create procedure filtroVeterinarioVisitas (in id int)
 	 begin
 		select * from VisitasMedicas
-        where vet_nombre = nom1 and vet_nombre2 = nom2 and vet_apellido1 = ap1 and vet_apellido2 = ap2;
+        where vet_veterinarioid = id;
 	end //
 delimiter;
 -- drop procedure filtroVeterinarioVisitas;
--- call filtroVeterinarioVisitas('Leo','Alfonso','Ramirez','Gonzales');
+-- call filtroVeterinarioVisitas(1);
 
 -- ///////////////////////////////////////////////////
 

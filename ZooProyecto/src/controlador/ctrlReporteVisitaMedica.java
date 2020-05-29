@@ -71,7 +71,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
                 Tabla(rvm.cmbOpcion.getSelectedItem().toString(),rvm.cmbSeleccion.getSelectedIndex());
             }else if(rvm.cmbOpcion.getSelectedIndex() != 0 && rvm.cmbSeleccion.getSelectedIndex() == 3){
                 v = (Veterinario) rvm.cmbOpcion.getSelectedItem();
-               Tabla2(v.getNombre(),v.getNombre2(),v.getApellido1(),v.getApellido2());
+               Tabla2(v.getId());
             }
         }
     }
@@ -265,7 +265,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         this.rvm.tblRevisionMedica.setEnabled(false);
     }
     
-     private void Tabla2(String nom1,String nom2,String ap1, String ap2){
+     private void Tabla2(int id){
         Vector vec = new Vector();
 
         String [] titulos = {"Veterinario", "Animal", "Especie Animal", "Peso Animal", "Observaciones", "Fecha de Registro"};
@@ -273,7 +273,7 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        visitas = Sql.verVisitaVeterinario(nom1,nom2,ap1,ap2);
+        visitas = Sql.verVisitaVeterinario(id);
         for (int i = 0; i < visitas.size(); i++) {
             vec = new Vector();
             String nombre1 = visitas.get(i).getNombreVeterinario();
@@ -310,11 +310,11 @@ public class ctrlReporteVisitaMedica implements ActionListener, MouseListener {
         }else if(rvm.cmbVeterinario.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Selecciona un veterinario");
             return false;
-        }else if(rvm.txtObservaciones.getText() == null){
+        }else if(rvm.txtObservaciones.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Ingresa las observaciones");
             return false;
         }else{
-            return false;
+            return true;
         }
     }
 

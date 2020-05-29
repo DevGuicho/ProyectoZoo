@@ -54,6 +54,7 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             limpiar();
             ComboboxHabitat();
         }else if(ae.getSource() == ra.btnGuardar){
+            if(verificarCampos()){
             getActividad();
             getActividadDias();
             if(Sql.registrarActividad(rong,ht)){
@@ -63,8 +64,10 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             }else{
                 JOptionPane.showMessageDialog(null, "Registro Fallido");
             }
+            }
         }else if(ae.getSource() == ra.btnVerActividades){
             setPanel();
+            ComboboxHabitat();
         }
     }
 
@@ -140,7 +143,7 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
     }
    
     
-    private void ComboboxHabitat(){
+    public void ComboboxHabitat(){
         DefaultComboBoxModel cmbHabitatAux = new DefaultComboBoxModel();
         cmbHabitatAux.addElement("Seleccione habitat");
         
@@ -239,8 +242,34 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
         }
     }
     
-    private void verificarCampos(){
-        
+    private boolean verificarCampos(){
+        if(ra.txtNombreONG.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa una ONG");
+            return false;
+        }else if(ra.txtNombreActividad.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa una actividad");
+            return false;
+        }else if(ra.txtHoraApertura.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa la hora de apertura");
+            return false;
+        }else if(ra.txtHoraCierre.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa la hora de cierre");
+            return false;
+        }else if(ra.txtDescripcion.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresa la descripción");
+            return false;
+        }else if(ra.cmbAprobacion.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Selecciona si la actividad fue APROBADA o NO");
+            return false;
+        }else if(ra.cmbHabitat.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Selecciona un habitat");
+            return false;
+        }else if(ra.ckbDomingo.getText().equals("") && ra.ckbMartes.getText().equals("") && ra.ckbMiercoles.getText().equals("") && ra.ckbJueves.getText().equals("") && ra.ckbViernes.getText().equals("") && ra.ckbSabado.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Selecciona los dias en que se realizará la actividad");
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }

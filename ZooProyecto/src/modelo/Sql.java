@@ -923,9 +923,7 @@ public class Sql extends Conexion {
             sql = "delete from registro_ong where reg_nombre_actividad = ?";
             con = getConnection();
             ps = con.prepareStatement(sql);
-            if (rong.getNombreActividad() != null) {
-                ps.setString(1, rong.getNombreActividad());
-            }
+            ps.setString(1, rong.getNombreActividad());
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -1221,20 +1219,17 @@ public class Sql extends Conexion {
         }
     }
 
-    public static ArrayList<RevisaAnimal> verVisitaVeterinario(String nom1, String nom2, String ap1, String ap2) {
+    public static ArrayList<RevisaAnimal> verVisitaVeterinario(int id) {
         ArrayList<RevisaAnimal> revisiones = new ArrayList<>();
         RevisaAnimal ra = new RevisaAnimal();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         try {
-            sql = "call filtroVeterinarioVisitas(?,?,?,?)";
+            sql = "call filtroVeterinarioVisitas(?)";
             con = getConnection();
             CallableStatement sp = con.prepareCall(sql);
-            sp.setString(1, nom1);
-            sp.setString(2, nom2);
-            sp.setString(3, ap1);
-            sp.setString(4, ap2);
+            sp.setInt(1, id);
             sp.execute();
             rs = sp.executeQuery();
 
@@ -1261,11 +1256,6 @@ public class Sql extends Conexion {
             return revisiones;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error de consulta");
-            System.out.println(" " + nom1);
-            System.out.println(" " + nom2);
-            System.out.println(" " + ap1);
-            System.out.println(" " + ap2);
-            System.out.println(" " + revisiones);
             return revisiones;
         }
 
