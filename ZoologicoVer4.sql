@@ -13,7 +13,6 @@ SET GLOBAL time_zone = '+8:00';
 create database Zoologico;
 use Zoologico;
 
-
 CREATE TABLE Veterinario (
     VET_VeterinarioID INT NOT NULL AUTO_INCREMENT,
     VET_Nombre VARCHAR(15) NOT NULL,
@@ -141,8 +140,8 @@ CREATE TABLE Registro_ONG (
     REG_Nombre_actividad VARCHAR(15) NOT NULL,
     REG_Desc_actividad VARCHAR(300) NOT NULL,
     REG_Fecha_solicitud DATE NOT NULL,
-    REG_Hora_apertura TIME NOT NULL,
-    REG_Hora_cierre TIME NOT NULL,
+    REG_Hora_apertura TIME NOT NULL CHECK (REG_Hora_apertura >= cast('11:00:00'as time) AND REG_Hora_apertura < cast('16:00:00' as time)) ,
+    REG_Hora_cierre TIME NOT NULL CHECK (REG_Hora_cierre > cast('11:00:00' as time) AND REG_Hora_cierre <= cast('16:00:00' as time)) ,
     REG_HabitatID INT NOT NULL,
     CONSTRAINT REG_Aprobacion CHECK (REG_Aprobacion IN ('Aprobado' , 'No Aprobado')),
     CONSTRAINT pk_REG_ACTIVIDAD PRIMARY KEY (REG_ActividadID),
@@ -180,6 +179,8 @@ CREATE TABLE Revisa_Animal (
         REFERENCES Animal (ANI_AnimalID)
         ON DELETE NO ACTION
 );
+
+
 
 -- ///////////////////////////////////////////////////
 -- ////////  VISTAS DE LA BASE DE DATOS  /////////////
@@ -337,7 +338,7 @@ create procedure filtroVeterinarioVisitas (in id int)
 		select * from VisitasMedicas
         where vet_veterinarioid = id;
 	end //
-delimiter;
+delimiter ;
 -- drop procedure filtroVeterinarioVisitas;
 -- call filtroVeterinarioVisitas(1);
 
@@ -459,10 +460,10 @@ insert into procedencia_foranea values (1,'Madagascar','2000-01-01'),
                                        (4,'Abtartida','2002-05-15');
 
 insert into Revisa_Animal values (1,1,1,'En buen estado','2000-05-01');
-insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','10:50:50','06:00:00',4),
-							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','10:50:50','06:00:00',1),
-								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','10:50:50','06:00:00',2),
-								(4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','10:50:50','06:00:00',3);
+insert into registro_ong values (1,'Aprobado','Mexico Hacia Delante','Lectura','twitear poesia','2020-05-22','11:00:00','16:00:00',4),
+							    (2,'Aprobado','Juntos tu y Yo','Cineteca','Proyectar Peliculas','2020-05-22','11:50:50','16:00:00',1),
+								(3,'Aprobado','Por Mexico','Biblioteca','Cuenta Cuentos','2020-05-22','11:50:50','16:00:00',2),
+								(4,'Aprobado','Mexico Libre','Ron','Beber y twitear','2020-05-22','11:50:50','16:00:00',3);
 insert into ong_realiza values (1,'martes'),
 							   (1,'viernes'),
 							   (2,'martes'),
