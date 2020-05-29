@@ -201,8 +201,7 @@ select RHA_temperatura, RHA_humedad, HAB_nombre, RHA_Fecha_Registro from Registr
 inner join Habitat
 on Habitat.HAB_HabitatID = Registra.RHA_HabitatID
 order by RHA_RegistroID DESC LIMIT 1;
-select * from  ultimoRegistro;
-select * from registra;
+
 -- //////////////////////////////////////////////////////////////////////////
 
 create view ultimaActividad as
@@ -340,7 +339,7 @@ create procedure filtroVeterinarioVisitas (in  nom1 varchar(15), in nom2 varchar
 	end //
 delimiter;
 -- drop procedure filtroVeterinarioVisitas;
-call filtroVeterinarioVisitas('Leo','Alfonso','Ramirez','Gonzales');
+-- call filtroVeterinarioVisitas('Leo','Alfonso','Ramirez','Gonzales');
 
 -- ///////////////////////////////////////////////////
 
@@ -365,13 +364,13 @@ begin
     end //
     delimiter ;
 
-select * from registra;
-call verRegistrosHabitats('aves');
-call filtroAnimalesEspecie('jirafa');
-call filtroAnimales('leones');
+-- select * from registra;
+-- call verRegistrosHabitats('aves');
+-- call filtroAnimalesEspecie('jirafa');
+-- call filtroAnimales('leones');
 
-call filtroEspecieVisitas('jirafa');
-call filtroFechasRevision('2000-05-01');
+-- call filtroEspecieVisitas('jirafa');
+-- call filtroFechasRevision('2000-05-01');
 
 -- ///////////////////////////////////////////////////
 
@@ -494,6 +493,4 @@ select * from clima;
 select * from Actividades;
 
 
-delete from veterinario where vet_veterinarioid = 1;
-select distinct rev_fecha_revision from revisa_animal;
 
