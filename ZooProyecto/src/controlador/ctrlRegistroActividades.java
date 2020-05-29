@@ -227,11 +227,15 @@ public class ctrlRegistroActividades implements ActionListener, MouseListener{
             this.ra.btnVerActividades.setIcon(new ImageIcon("src/img/addAni.png"));
             ra.pnlVerActividades.setVisible(true);
             ra.pnlRegistroActividad.setVisible(false);
+            ra.btnGuardar.setVisible(false);
+            ra.btnLimpiar.setVisible(false);
         } else {
             ra.btnVerActividades.setText("Ver Actividades");
             this.ra.btnVerActividades.setIcon(new ImageIcon("src/img/vision.png"));
             ra.pnlVerActividades.setVisible(false);
             ra.pnlRegistroActividad.setVisible(true);
+            ra.btnGuardar.setVisible(true);
+            ra.btnLimpiar.setVisible(true);
         }
     }
 

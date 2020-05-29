@@ -85,8 +85,8 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
          comboOpcionesAux.addElement("Seleccione una opcion");
          this.ha.cmbOpciones.setModel(comboOpcionesAux);
          
-        this.verdeOn = new Color(0, 212, 72);
-        this.verdePrincipal = new Color(0, 179, 61);
+        this.verdeOn = new Color(0, 102, 102);
+        this.verdePrincipal = new Color(0, 51, 51);
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);

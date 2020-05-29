@@ -27,50 +27,21 @@ public class HistorialActividades extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlBarraTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         pnlBarraOpciones = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblActividades = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         cmbSeleccion = new javax.swing.JComboBox<>();
         cmbOpciones = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblActividades = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(212, 255, 204));
         setPreferredSize(new java.awt.Dimension(150, 150));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlBarraTitulo.setBackground(new java.awt.Color(0, 179, 61));
-        pnlBarraTitulo.setMinimumSize(new java.awt.Dimension(0, 0));
-        pnlBarraTitulo.setPreferredSize(new java.awt.Dimension(850, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Historial Actividades");
-        jLabel1.setMaximumSize(new java.awt.Dimension(282, 33));
-        jLabel1.setMinimumSize(new java.awt.Dimension(282, 33));
-        jLabel1.setPreferredSize(new java.awt.Dimension(282, 33));
-
-        javax.swing.GroupLayout pnlBarraTituloLayout = new javax.swing.GroupLayout(pnlBarraTitulo);
-        pnlBarraTitulo.setLayout(pnlBarraTituloLayout);
-        pnlBarraTituloLayout.setHorizontalGroup(
-            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraTituloLayout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(286, 286, 286))
-        );
-        pnlBarraTituloLayout.setVerticalGroup(
-            pnlBarraTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraTituloLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        add(pnlBarraTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 40));
-
-        pnlBarraOpciones.setBackground(new java.awt.Color(0, 179, 61));
+        pnlBarraOpciones.setBackground(new java.awt.Color(0, 51, 51));
         pnlBarraOpciones.setAlignmentX(0.0F);
         pnlBarraOpciones.setAlignmentY(0.0F);
         pnlBarraOpciones.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
@@ -78,7 +49,13 @@ public class HistorialActividades extends javax.swing.JPanel {
         pnlBarraOpciones.setPreferredSize(new java.awt.Dimension(200, 40));
         pnlBarraOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnEliminar.setBackground(new java.awt.Color(0, 179, 61));
+        jLabel3.setBackground(new java.awt.Color(0, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Actividades");
+        pnlBarraOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Eliminar.png"))); // NOI18N
@@ -99,24 +76,15 @@ public class HistorialActividades extends javax.swing.JPanel {
                 btnEliminarActionPerformed(evt);
             }
         });
-        pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
+        pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 100, 40));
 
-        add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 850, 40));
+        add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel2.setText("Filtro: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-
-        cmbSeleccion.setPreferredSize(new java.awt.Dimension(150, 150));
-        cmbSeleccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSeleccionActionPerformed(evt);
-            }
-        });
-        add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 150, 30));
-
-        cmbOpciones.setPreferredSize(new java.awt.Dimension(150, 150));
-        add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 150, 30));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        jPanel1.setMinimumSize(new java.awt.Dimension(810, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(810, 500));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblActividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,27 +99,46 @@ public class HistorialActividades extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblActividades);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 810, -1));
-    }// </editor-fold>//GEN-END:initComponents
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 770, 370));
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Filtro: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
+
+        cmbSeleccion.setLightWeightPopupEnabled(false);
+        cmbSeleccion.setPreferredSize(new java.awt.Dimension(150, 150));
+        cmbSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSeleccionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 180, 30));
+
+        cmbOpciones.setPreferredSize(new java.awt.Dimension(150, 150));
+        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 180, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 520));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void cmbSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSeleccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSeleccionActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEliminar;
     public javax.swing.JComboBox<String> cmbOpciones;
     public javax.swing.JComboBox<String> cmbSeleccion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlBarraOpciones;
-    private javax.swing.JPanel pnlBarraTitulo;
     public javax.swing.JTable tblActividades;
     // End of variables declaration//GEN-END:variables
 }
