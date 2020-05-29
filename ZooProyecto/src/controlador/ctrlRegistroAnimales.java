@@ -44,10 +44,11 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener {
     private Veterinario v;
     private PersonalAnimales pv;
     private ctrlPersonalAnimales ctrlPv;
+    private String mensaje;
 
     public ctrlRegistroAnimales(RegistroAnimales ra) {
         this.ra = ra;
-        this.ani = new Animal();
+        
         iniComponents();
     }
 
@@ -156,6 +157,8 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener {
     }
 
     private void iniComponents() {
+        this.ani = new Animal();
+        
         this.ra.btnProcedenciaForanea.addActionListener(this);
         this.ra.btnProcedenciaLocal.addActionListener(this);
         this.ra.btnProcedenciaRescate.addActionListener(this);
@@ -174,13 +177,15 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener {
         ra.pnlRescate.setVisible(false);
         ra.pnlForanea.setVisible(false);
         ra.pnlDefault.setVisible(true);
+        
         this.ra.pnlVistaAnimales.setVisible(false);
         this.verdeOn = new Color(0, 212, 72);
         this.verdePrincipal = new Color(0, 179, 61);
 
         this.fontOn = new Font("Segoe UI", Font.PLAIN, 11);
         this.fontNormal = new Font("Segoe UI", Font.PLAIN, 14);
-
+        
+        this.procedencia = "";
         iniComboBoxes();
     }
 
@@ -234,6 +239,53 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener {
     }
 
     private void guardar() {
+
+        
+        if (validar()) {
+            getAnimal();
+            if (Sql.registrarAnimal(ani)) {
+                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Registro Fallido");
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+
+    }
+
+    public void setPanel() {
+        if (ra.btnSelector.isSelected()) {
+            pv = new PersonalAnimales();
+            ctrlPv = new ctrlPersonalAnimales(pv);
+            this.ra.pnlVistaAnimales.removeAll();
+            this.ra.pnlVistaAnimales.add(pv);
+            this.ra.pnlVistaAnimales.repaint();
+            this.ra.pnlVistaAnimales.revalidate();
+            this.ra.pnlVistaAnimales.setVisible(true);
+            this.ra.pnlRegistroAnimales.setVisible(false);
+            this.ra.btnSelector.setText("Registrar");
+            this.ra.btnSelector.setIcon(new ImageIcon("src/img/addAni.png"));
+            this.ra.btnProcedenciaForanea.setVisible(false);
+            this.ra.btnProcedenciaLocal.setVisible(false);
+            this.ra.btnProcedenciaRescate.setVisible(false);
+            this.ra.btnGuardar.setEnabled(false);
+            this.ra.btnLimpiar.setEnabled(false);
+        } else {
+            this.ra.pnlVistaAnimales.setVisible(false);
+            this.ra.pnlRegistroAnimales.setVisible(true);
+            this.ra.btnSelector.setText("Ver Animales");
+            this.ra.btnSelector.setIcon(new ImageIcon("src/img/vision.png"));
+            this.ra.btnProcedenciaForanea.setVisible(true);
+            this.ra.btnProcedenciaLocal.setVisible(true);
+            this.ra.btnProcedenciaRescate.setVisible(true);
+            this.ra.btnGuardar.setEnabled(true);
+            this.ra.btnLimpiar.setEnabled(true);
+        }
+    }
+
+    public void getAnimal() {
         h = (Habitat) ra.cmbHabitat.getSelectedItem();
         c = (Cuidador) ra.cmbCuidador.getSelectedItem();
         if (ra.cmbVeterinarioNacimeinto.getSelectedIndex() > 0) {
@@ -267,42 +319,44 @@ public class ctrlRegistroAnimales implements ActionListener, MouseListener {
             ani.setFechaTraslado(ra.cldFechaTraslado.getDate());
             ani.setProcedencia(3);
         }
-
-        if (Sql.registrarAnimal(ani)) {
-            JOptionPane.showMessageDialog(null, "Registro Exitoso");
-            limpiar();
-        } else {
-            JOptionPane.showMessageDialog(null, "Registro Fallido");
-        }
     }
-
-    public void setPanel() {
-        if (ra.btnSelector.isSelected()) {
-            pv = new PersonalAnimales();
-            ctrlPv = new ctrlPersonalAnimales(pv);
-            this.ra.pnlVistaAnimales.removeAll();
-            this.ra.pnlVistaAnimales.add(pv);
-            this.ra.pnlVistaAnimales.repaint();
-            this.ra.pnlVistaAnimales.revalidate();
-            this.ra.pnlVistaAnimales.setVisible(true);
-            this.ra.pnlRegistroAnimales.setVisible(false);
-            this.ra.btnSelector.setText("Registrar");
-            this.ra.btnSelector.setIcon(new ImageIcon("src/img/addAni.png"));
-            this.ra.btnProcedenciaForanea.setVisible(false);
-            this.ra.btnProcedenciaLocal.setVisible(false);
-            this.ra.btnProcedenciaRescate.setVisible(false);
-            this.ra.btnGuardar.setEnabled(false);
-            this.ra.btnLimpiar.setEnabled(false);
-        } else {
-            this.ra.pnlVistaAnimales.setVisible(false);
-            this.ra.pnlRegistroAnimales.setVisible(true);
-            this.ra.btnSelector.setText("Ver Animales");
-            this.ra.btnSelector.setIcon(new ImageIcon("src/img/vision.png"));
-            this.ra.btnProcedenciaForanea.setVisible(true);
-            this.ra.btnProcedenciaLocal.setVisible(true);
-            this.ra.btnProcedenciaRescate.setVisible(true);
-            this.ra.btnGuardar.setEnabled(true);
-            this.ra.btnLimpiar.setEnabled(true);
+    
+    public boolean validar(){
+        if(ra.txtNombre.getText().equals("")){
+            mensaje = "Ingrese Nombre";
+            return false;
+        }else if(ra.txtPeso.getText().equals("")){
+            mensaje = "Ingrese Peso";
+            return false;
+        }else if(ra.txtEdad.getText().equals("")){
+            mensaje = "Ingrese Edad";
+            return false;
+        }else if(ra.cmbSexo.getSelectedIndex()==0){
+            mensaje = "Seleccione Sexo";
+            return false;
+        }else if(ra.txtEspecie.getText().equals("")){
+            mensaje = "Ingrese Especie";
+            return false;
+        }else if(ra.txtAniosCautiverio.getText().equals("")){
+            mensaje = "Ingrese Años en cautiverio";
+            return false;
+        }else if(ra.txtAlimentacion.getText().equals("")){
+            mensaje = "Ingrese Alimentacion";
+            return false;
+        }else if(ra.cmbHabitat.getSelectedIndex()==0){
+            mensaje = "Seleccione Habitat";
+            return false;
+        }else if(ra.cmbCuidador.getSelectedIndex() == 0){
+            mensaje = "Seleccione Cuidador";
+            return false;
+        }else if(ra.txtObservaciones.getText().equals("")){
+            mensaje = "Ingrese Observaciones";
+            return false;
+        }else if(procedencia.equals("")){
+            mensaje ="Ingrese Procedencia";
+            return false;
+        }else{
+            return true;
         }
     }
 }

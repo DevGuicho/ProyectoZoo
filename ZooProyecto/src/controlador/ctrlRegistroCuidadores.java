@@ -33,7 +33,7 @@ public class ctrlRegistroCuidadores implements ActionListener, MouseListener{
     private Font fontNormal;
     
     private DefaultTableModel dtm;
-    
+    private String mensaje;
     
     public ctrlRegistroCuidadores(RegistroCuidadores rc) {
         this.rc = rc;
@@ -43,14 +43,7 @@ public class ctrlRegistroCuidadores implements ActionListener, MouseListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == rc.btnGuardar){
-            if(Sql.registrarCuidadores(getData())){
-                JOptionPane.showMessageDialog(null, "Registro Exitoso");
-                iniTable();
-                limpiar();
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Registro Fallido");
-            }
+            guardar();
         }else if(e.getSource() == rc.btnLimpiar){
             limpiar();
         }else if (e.getSource() == rc.btnEditar){
@@ -191,5 +184,38 @@ public class ctrlRegistroCuidadores implements ActionListener, MouseListener{
         else 
             JOptionPane.showMessageDialog(null, "Actualizacion Fallida");
         
+    }
+    
+    public boolean validar(){
+        if(rc.txtNombre.getText().equals("")){
+            mensaje = "Ingrese Nombre";
+            return false;
+        }else if(rc.txtApellidoPaterno.getText().equals("")){
+            mensaje = "Ingrese Apellido Paterno";
+            return false;
+        }else if(rc.txtApellidoMaterno.getText().equals("")){
+            mensaje = "Ingrese Apellido Materno";
+            return false;
+        }else if(rc.txtSueldo.getText().equals("")){
+            mensaje = "Ingrese Sueldo";
+            return false;
+        }else{
+            mensaje = "Registro Exitoso";
+            return true;
+        }
+    }
+    
+    public void guardar() {
+        if (validar()) {
+            if (Sql.registrarCuidadores(getData())) {
+                JOptionPane.showMessageDialog(null, mensaje);
+                iniTable();
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Registro Fallido");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
     }
 }

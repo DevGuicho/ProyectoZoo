@@ -105,8 +105,8 @@ public class ctrlPersonalAnimales implements ActionListener{
             vec.add(animales.get(i).getAnyoCautiverio());
             vec.add(animales.get(i).getEspecie());
             vec.add(animales.get(i).getSexo());
-            vec.add(animales.get(i).getEdad());
-            vec.add(animales.get(i).getPeso());
+            vec.add(animales.get(i).getEdad()+" años");
+            vec.add(animales.get(i).getPeso()+"Kg");
             vec.add(animales.get(i).getObservaciones());
             dtm.addRow(vec);
             vec = new Vector();

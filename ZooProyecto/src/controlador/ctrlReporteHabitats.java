@@ -13,16 +13,13 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
-import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clima;
 import modelo.Cuidador;
@@ -46,22 +43,23 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
     private Font click;
     private DefaultTableModel dtm;
     private DefaultComboBoxModel dcb;
-    private JComboBox comboBox;
+    private String mensaje;
+    private Habitat h;
+    private Registra r;
+    
     public ctrlReporteHabitats(ReporteHabitats rh) {
         this.rh = rh;
         iniComponents();
-       
-        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == rh.btnGuardar){
             guardar();
-            limpiar();
+            
         }else if(e.getSource() == rh.btnGuardar1){
             registrarReporte();
-            limpiar1();
+            
         }else if(e.getSource() == rh.btnLimpiar)
             limpiar();
         else if (e.getSource() == rh.btnLimpiar1)
@@ -218,36 +216,38 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
         
         rh.cmbHabitats.setModel(dcb);
     }
-    public void guardar(){
-        Habitat h = new Habitat();
-        Clima c = (Clima) rh.cmbClima.getSelectedItem();
-        Cuidador cui = (Cuidador) rh.cmbResponsable.getSelectedItem();
-        h.setNombre(rh.txtNombre.getText());
-        h.setClimaId(c.getId());
-        h.setCuidadorId(cui.getId());
-        h.setDisponibilidad("disponible");
-        if(Sql.registrarHabitat(h)){
-            JOptionPane.showMessageDialog(null, "Registroso Exitoso");
-            iniTableHabitats();
-            iniReporteHabitat();
+    public void guardar() {
+
+        if (validarRegistro()) {
+            getHabitat();
+            if (Sql.registrarHabitat(h)) {
+                JOptionPane.showMessageDialog(null, "Registroso Exitoso");
+                iniTableHabitats();
+                iniReporteHabitat();
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "Registroso Fallido");
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "Registroso Fallido");
+            JOptionPane.showMessageDialog(null, mensaje);
         }
+
     }
 
-    public void registrarReporte(){
-        Registra r = new Registra();
-        Habitat h = (Habitat) rh.cmbHabitats.getSelectedItem();
-        System.out.println(h.getId());
-        r.setHabitatId(h.getId());
-        r.setTemperatura(Float.parseFloat(rh.txtTemperatura.getText()));
-        r.setHumedad(Float.parseFloat(rh.txtHumedad.getText()));
-        r.setFechaRegistro(new Date());
-        if(Sql.registroTempHum(r)){
-            JOptionPane.showMessageDialog(null, "Registro Exitoso");
-        }else{
-            JOptionPane.showMessageDialog(null, "Registro Fallido");
+    public void registrarReporte() {
+
+        if (validarReporte()) {
+            getRegistro();
+            if (Sql.registroTempHum(r)) {
+                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                limpiar1();
+            } else {
+                JOptionPane.showMessageDialog(null, "Registro Fallido");
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, mensaje);
         }
+
     }
     
     public void limpiar1(){
@@ -309,5 +309,53 @@ public class ctrlReporteHabitats implements ActionListener, MouseListener, Focus
     }
     
    
+    public boolean validarRegistro(){
+        if(rh.txtNombre.getText().equals("")){
+            mensaje = "Ingrese Nombre";
+            return false;
+        }else if(rh.cmbClima.getSelectedIndex() ==0){
+            mensaje = "Seleccione Clima";
+            return false;
+        }else if(rh.cmbResponsable.getSelectedIndex() == 0){
+            mensaje = "Seleccione Responsable";
+            return false;
+        }else{
+            return true;
+        }
+    }
     
+    public boolean validarReporte(){
+        if(rh.cmbHabitats.getSelectedIndex() == 0){
+            mensaje = "Seleccione Habitat";
+            return false;
+        }else if(rh.txtHumedad.getText().equals("Humedad")){
+            mensaje = "Ingrese Humedad";
+            return false;
+        }else if(rh.txtTemperatura.getText().equals("Temperatura")){
+            mensaje = "Ingrese Temperatura";
+            return false;
+        }else {
+            return true;
+        }
+    }
+    
+    public void getHabitat(){
+        h = new Habitat();
+        Clima c = (Clima) rh.cmbClima.getSelectedItem();
+        Cuidador cui = (Cuidador) rh.cmbResponsable.getSelectedItem();
+        h.setNombre(rh.txtNombre.getText());
+        h.setClimaId(c.getId());
+        h.setCuidadorId(cui.getId());
+        h.setDisponibilidad("disponible");
+    }
+    
+    public void getRegistro(){
+        r = new Registra();
+        h = (Habitat) rh.cmbHabitats.getSelectedItem();
+        System.out.println(h.getId());
+        r.setHabitatId(h.getId());
+        r.setTemperatura(Float.parseFloat(rh.txtTemperatura.getText()));
+        r.setHumedad(Float.parseFloat(rh.txtHumedad.getText()));
+        r.setFechaRegistro(new Date());
+    }
 }

@@ -41,8 +41,8 @@ public class ctrlHome implements ActionListener {
         h.lblAnimalRevisado.setText(ur.getNombreAnimal());
         h.lblFechaVisita.setText(sdf.format(ur.getFechaRevision()));
         Sql.ultimoRegistroTempHum(ur);
-        h.lblTemperatura.setText(String.valueOf(ur.getTemperatura()));
-        h.lblHumedad.setText(String.valueOf(ur.getHumedad()));
+        h.lblTemperatura.setText(String.valueOf(ur.getTemperatura())+" °C");
+        h.lblHumedad.setText(String.valueOf(ur.getHumedad())+" %");
         h.lblHabitat.setText(ur.getNombreHabitat());
         h.lblFechaRegistro.setText(sdf.format(ur.getFechaRegistro()));
         Sql.ultimaActividad(ur);

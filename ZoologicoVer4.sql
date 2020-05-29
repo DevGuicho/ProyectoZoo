@@ -199,9 +199,10 @@ order by REV_id DESC LIMIT 1;
 create view ultimoRegistro as
 select RHA_temperatura, RHA_humedad, HAB_nombre, RHA_Fecha_Registro from Registra
 inner join Habitat
-on Habitat.HAB_HabitatID = Registra.RHA_RegistroID
+on Habitat.HAB_HabitatID = Registra.RHA_HabitatID
 order by RHA_RegistroID DESC LIMIT 1;
-
+select * from  ultimoRegistro;
+select * from registra;
 -- //////////////////////////////////////////////////////////////////////////
 
 create view ultimaActividad as
