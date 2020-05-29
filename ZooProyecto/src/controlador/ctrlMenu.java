@@ -217,7 +217,7 @@ public class ctrlMenu implements ActionListener, MouseListener {
         this.ctrlRA = new ctrlRegistroActividades(ra);
         this.ctrlSS.setProgress(581);
         
-        this.ctrlSS.setModulo("Anmales");
+        this.ctrlSS.setModulo("Animales");
         this.rani = new RegistroAnimales();
         this.ctrlRAni = new ctrlRegistroAnimales(rani);
         this.ctrlSS.setProgress(664);
