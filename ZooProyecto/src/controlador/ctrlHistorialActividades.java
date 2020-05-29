@@ -186,7 +186,7 @@ public class ctrlHistorialActividades implements ActionListener, MouseListener{
     }
     
     private boolean validarEliminar(){
-        if(ha.tblActividades.isColumnSelected(0) || ha.tblActividades.isColumnSelected(1) || ha.tblActividades.isColumnSelected(2) || ha.tblActividades.isColumnSelected(3) || ha.tblActividades.isColumnSelected(4) || ha.tblActividades.isColumnSelected(5)){
+        if(ha.tblActividades.isColumnSelected(0) || ha.tblActividades.isColumnSelected(1) || ha.tblActividades.isColumnSelected(2) || ha.tblActividades.isColumnSelected(3) || ha.tblActividades.isColumnSelected(4) || ha.tblActividades.isColumnSelected(5) || ha.tblActividades.isColumnSelected(6) || ha.tblActividades.isColumnSelected(7)){
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "Selecciona una actividad");
