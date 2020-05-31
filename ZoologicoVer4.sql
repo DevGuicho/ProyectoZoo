@@ -19,12 +19,12 @@ CREATE TABLE Veterinario (
     VET_Nombre2 VARCHAR(15),
     VET_Apellido1 VARCHAR(20) NOT NULL,
     VET_Apellido2 VARCHAR(20) NOT NULL,
-    VET_Correo VARCHAR(20) NOT NULL,
+    VET_Correo VARCHAR(50) NOT NULL,
     VET_Cedula VARCHAR(8) NOT NULL,
     VET_Telefono VARCHAR(10) NOT NULL,
     CONSTRAINT pk_VETERINARIO PRIMARY KEY (VET_VeterinarioID)
 );
-
+-- alter table Veterinario modify VET_Correo varchar(50) not null;
 CREATE TABLE Cuidador (
     CUI_CuidadorId INT NOT NULL AUTO_INCREMENT,
     CUI_Nombre VARCHAR(15) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Registra (
     CONSTRAINT pk_REGISTRA PRIMARY KEY (RHA_RegistroID),
     CONSTRAINT fk_REGISTRA_HABITAT FOREIGN KEY (RHA_HabitatID)
         REFERENCES Habitat (HAB_HabitatID)
-        ON UPDATE CASCADE ON DELETE SET NULL
+        ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 CREATE TABLE Animal (
@@ -95,7 +95,7 @@ CREATE TABLE Animal (
         ON UPDATE CASCADE ON DELETE SET NULL,
     CONSTRAINT fk_ANIMAL_HABITAT FOREIGN KEY (ANI_HabitatID)
         REFERENCES Habitat (HAB_HabitatID)
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
 CREATE TABLE Procedencia_Foranea (
@@ -131,6 +131,7 @@ CREATE TABLE Procedencia_Local (
         ON DELETE CASCADE,
     CONSTRAINT fk_LOCAL_VETERINARIO FOREIGN KEY (LOC_VeterinarioID)
         REFERENCES Veterinario (VET_VeterinarioID)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE Registro_ONG (
@@ -174,7 +175,7 @@ CREATE TABLE Revisa_Animal (
     CONSTRAINT pk_REVISA_ANIMAL PRIMARY KEY (REV_id),
     CONSTRAINT fk_REVISA_VETERINARIO FOREIGN KEY (REV_VeterinarioID)
         REFERENCES Veterinario (VET_VeterinarioID)
-        ON DELETE restrict ,
+        ON DELETE NO ACTION,
     CONSTRAINT fk_REVISA_ANIMAL FOREIGN KEY (REV_AnimalID)
         REFERENCES Animal (ANI_AnimalID)
         ON DELETE NO ACTION
@@ -430,20 +431,121 @@ insert into clima values (1,'Arido',0,5,40,45),
 						 (3,'Templado',10,15,20,25),
 						 (4,'Tropical',50,60,30,35);
 
-insert into Cuidador values (1,'Mario','Albert','Dominguez','Junco',1000.50),
-							(2,'Luis','Angel','Vazquez','Padilla',2000.50),
-                            (3,'Rosa','Jazmin','Portillo','Sanchez',5000.50);
+							
+                            
 
+INSERT INTO Cuidador (CUI_Nombre,CUI_Nombre2,CUI_Apellido1,CUI_Apellido2,CUI_Sueldo) VALUES ('Mario','Albert','Dominguez','Junco',1000.50), 
+																						    ('Luis','Angel','Vazquez','Padilla',2000.50), 
+                                                                                            ('Rosa','Jazmin','Portillo','Sanchez',5000.50),
+																							("Katelyn","Nicholas","Conway","Becker",1423),
+                                                                                            ("Ferris","Gil","Gay","Hale",6481),
+                                                                                            ("Burton","Levi","Holden","Mays",3415),
+                                                                                            ("Bree","Marsden","Olsen","Michael",4356),
+                                                                                            ("Iona","Sawyer","Davenport","Booth",2255),
+                                                                                            ("Germaine","Denton","Dunlap","Weaver",2201),
+                                                                                            ("Genevieve","Lance","Hampton","Wagner",4059),
+                                                                                            ("Quamar","Ivana","Ramsey","Morris",8929),
+                                                                                            ("Tamara","Ivor","Robles","Summers",3164),
+                                                                                            ("Hilel","Larissa","Faulkner","Frye",5733),
+                                                                                            ("Hedwig","Piper","Payne","Bruce",4213),
+                                                                                            ("Rose","Mannix","Gonzales","Gonzales",5565),
+                                                                                            ("Chandler","Kaseem","Richmond","Hayden",7281),
+                                                                                            ("Hall","Doris","Hess","Hampton",9522),
+                                                                                            ("Kelsey","Vera","Porter","Price",3996),
+                                                                                            ("Sylvester","Echo","Miranda","Hess",9130),
+                                                                                            ("Lara","Daquan","Townsend","Jimenez",6067),
+                                                                                            ("Hayden","Cody","Head","Buckley",2486),
+                                                                                            ("Illiana","Lane","Walker","Stokes",4145),
+                                                                                            ("Ella","Donna","Russo","Warren",7342),
+                                                                                            ("Alexis","Alfreda","Walls","Garcia",6725),
+                                                                                            ("Ulric","Shellie","Huber","Mccarthy",3816),
+                                                                                            ("Odessa","Celeste","Stephens","Owens",7828),
+                                                                                            ("Ainsley","Mercedes","Johnson","Mcconnell",3452),
+                                                                                            ("Jena","Nigel","Vinson","Campbell",5552),
+                                                                                            ("Judith","Selma","Baxter","Crane",906),
+                                                                                            ("Chandler","Cherokee","Valencia","Boyd",1288),
+                                                                                            ("Kaden","Leandra","Kinney","Mclaughlin",4347),
+                                                                                            ("Martina","Ignacia","Rios","Nieves",5346),
+                                                                                            ("Merrill","Nell","Chase","Mathews",9355),
+                                                                                            ("Kaseem","Jonas","Kelley","Pittman",8875),
+                                                                                            ("Matthew","Althea","Battle","Mercer",8597),
+                                                                                            ("Teegan","Beau","Jarvis","Rosario",3730),
+                                                                                            ("Germaine","Victoria","Bell","Stevenson",6408),
+                                                                                            ("Violet","Kylee","Jacobson","Durham",3335),
+                                                                                            ("Kimberly","Dennis","Hendrix","Carver",9217),
+                                                                                            ("Yvonne","Quinn","Maynard","Wise",6630),
+                                                                                            ("Vanna","Brielle","Smith","Booth",1657),
+                                                                                            ("Reuben","Zorita","Guthrie","Stephens",6232),
+                                                                                            ("Mia","Ferris","Knowles","Spencer",2414),
+                                                                                            ("Lani","Veronica","Berry","Blake",5109),
+                                                                                            ("Lewis","Halee","David","Kennedy",6113),
+                                                                                            ("Perry","Olga","Monroe","Duran",3126),
+                                                                                            ("May","Magee","Cox","Bradford",1088),
+                                                                                            ("Britanni","Norman","Gay","Frost",1150),
+                                                                                            ("Rooney","Vernon","Rose","Gross",1794),
+                                                                                            ("Marcia","Tatiana","Mccoy","Thomas",4024),
+                                                                                            ("Anjolie","Shelly","Tucker","Ford",5271),
+                                                                                            ("Cole","Myra","Scott","Andrews",1868),
+                                                                                            ("Karleigh","Mufutau","Johnson","Beard",1677);
 
 insert into Habitat values (1,4,1,'leones','disponible'),
 						   (2,3,2,'aves','disponible'),
                            (3,4,3,'reptiliario','disponible'),
                            (4,4,1,'anfibios','disponible');
 
-insert into Veterinario values(1,'Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167'),
-							  (2,'Leo','Alfonso','Ramirez','Gonzales','leo@gmail.com','CED12347','5519548761'),
-                              (3,'Carlo','Alberto','Ramirez','Gonzalez','algo@gmail.com','CED12477','5519548761');
 
+INSERT INTO Veterinario (VET_Nombre,VET_Nombre2,VET_Apellido1,VET_Apellido2,VET_Correo,VET_Cedula,VET_Telefono) VALUES ('Rodrigo','Angeles','Garcia','Zenon','rodangel@gmail.com','CED12345','5519038167'),
+																													   ('Leo','Alfonso','Ramirez','Gonzales','leo@gmail.com','CED12347','5519548761'),
+                                                                                                                       ('Carlo','Alberto','Ramirez','Gonzalez','algo@gmail.com','CED12477','5519548761'),
+																													   ("Alfreda","Isaac","Floyd","Watson","semper.pretium@nec.com","24541958","1608120935"),
+																													   ("Bethany","Margaret","Horne","Vincent","Lorem@lacusvestibulum.org","22300296","1666081599"),
+                                                                                                                       ("Wynne","Xantha","Frost","Mendoza","sem.eget@etliberoProin.com","48049576","1614012735"),
+                                                                                                                       ("Cairo","Jolie","Rowland","Figueroa","eu.dui@mauris.com","39764612","1695050206"),
+                                                                                                                       ("Cameron","Ivory","Parks","Duke","egestas@sitamet.co.uk","54633442","1655120419"),
+                                                                                                                       ("Lane","Stacey","Pena","Payne","sagittis.lobortis.mauris@auctorvitaealiquet.edu","32318036","1639051292"),
+                                                                                                                       ("Patrick","Hayes","Mayo","Coffey","cursus.a.enim@Phasellus.org","28172415","1659082516"),
+                                                                                                                       ("Kirsten","Aidan","Cohen","Rich","Nam.ac.nulla@sitamet.com","89904333","1628090612"),
+                                                                                                                       ("Kimberly","Lewis","Peterson","Hickman","laoreet@loremfringilla.com","98587547","1696082198"),
+                                                                                                                       ("Jena","Vielka","Haney","Mack","purus.gravida@imperdietnecleo.com","22770389","1685090981"),
+                                                                                                                       ("Conan","Miriam","Blankenship","Wong","augue.porttitor.interdum@Fuscefeugiat.ca","05142153","1680122441"),
+																													   ("Jesse","Erin","Huff","Gill","et.rutrum.non@nonloremvitae.co.uk","27637123","1617060917"),
+                                                                                                                       ("Desiree","Alika","Fields","Rutledge","Aliquam.erat.volutpat@nibh.co.uk","65931407","1658122892"),
+                                                                                                                       ("Aimee","Roth","Trujillo","Dawson","vestibulum.lorem@lorem.net","01434972","1603041373"),
+                                                                                                                       ("Ursa","Eaton","Gilbert","Huber","Proin.vel.nisl@semegestasblandit.co.uk","21648916","1657060808"),
+                                                                                                                       ("Kylan","Addison","Harmon","Curry","molestie.orci.tincidunt@rhoncus.org","93213236","1635030941"),
+                                                                                                                       ("Ivana","Odette","Pacheco","Cunningham","ante.ipsum@ante.org","38746861","1627101723"),
+                                                                                                                       ("Deborah","Shea","Anderson","Delaney","non@vitaesodales.net","81916443","1686052695"),
+                                                                                                                       ("Nathaniel","Iona","Solomon","Price","egestas.urna.justo@interdum.co.uk","51494547","1610022445"),
+                                                                                                                       ("Beverly","Mari","Reese","Alford","magna.a.neque@urna.com","05466330","1608100517"),																												
+                                                                                                                       ("Reese","Patrick","Elliott","Strickland","Integer@ametdiameu.org","22209029","1617050108"),
+																													   ("Noble","Curran","Day","Ruiz","quam.vel@acnulla.net","45204312","1629011189"),
+                                                                                                                       ("Justine","Sandra","Kelly","Allen","odio.a.purus@egetmetuseu.co.uk","68059283","1623061981"),
+                                                                                                                       ("Francesca","Mallory","Mcintosh","Hutchinson","Aliquam.tincidunt.nunc@leoVivamus.co.uk","71898573","1685031944"),
+                                                                                                                       ("Katelyn","Moana","Fitzpatrick","Peck","facilisis@commodoipsum.co.uk","22989133","1603070391"),
+                                                                                                                       ("Valentine","Paloma","Bell","Knight","adipiscing.elit@Nuncmaurissapien.com","30910132","1669020389"),
+                                                                                                                       ("Tiger","Jaquelyn","Hayden","Mendoza","dolor@eutellus.ca","12701135","1661061336"),
+                                                                                                                       ("Jackson","Briar","Vazquez","Harper","congue.elit@dui.co.uk","59528994","1658120589"),
+                                                                                                                       ("Emerald","Sandra","Gay","Bird","sem.egestas.blandit@erosNamconsequat.com","16306422","1610052775"),
+                                                                                                                       ("Keaton","Galena","Lindsay","Meadows","Nulla.facilisis.Suspendisse@magnis.org","04395440","1678100880"),
+                                                                                                                       ("Kieran","Callie","Langley","Wyatt","tempus.risus@Aliquamtinciduntnunc.org","59497997","1697013077"),
+																													   ("Brendan","Kellie","Rodriquez","Frye","Donec@eratinconsectetuer.net","53540570","1631071467"),
+                                                                                                                       ("Evan","Brynne","Harper","Steele","euismod.et@nisl.ca","86330373","1687022899"),
+                                                                                                                       ("Nolan","Joel","Palmer","Zamora","auctor.vitae@euaccumsansed.edu","50377878","1676022715"),
+                                                                                                                       ("Denise","Melyssa","Hardin","Phillips","arcu.Morbi@Mauris.org","21626007","1651121167"),
+                                                                                                                       ("Ciaran","Yoshi","Gaines","Alvarez","in.consequat@nec.org","02272023","1665083012"),
+                                                                                                                       ("Beatrice","Orla","Cervantes","Thomas","eu.dui@enim.org","39479813","1605072220"),
+                                                                                                                       ("Pearl","Elmo","Dixon","Chambers","sit@variusNamporttitor.com","35781162","1674040279"),
+                                                                                                                       ("Thor","Mia","Conley","Cooley","sagittis.lobortis.mauris@maurisipsum.net","84527408","1636101503"),
+                                                                                                                       ("Ivy","Carson","White","Walters","sit.amet@magnaSuspendisse.edu","13587674","1694119353"),																													("Irma","Reese","Hicks","Rutledge","dictum.eu.placerat@eliterat.org","74384273","1606012241"),
+																													   ("Jerry","Chancellor","Prince","Cote","primis.in.faucibus@nec.ca","19471357","1695111414"),
+                                                                                                                       ("Penelope","Kenneth","Small","Copeland","pede.blandit@viverraDonectempus.net","67313994","1604121492"),
+                                                                                                                       ("Tashya","Isaiah","Miles","Morales","lorem@velitjustonec.ca","03827167","1626040437"),
+                                                                                                                       ("Cole","Noble","Cotton","Buck","Proin.vel@mollisDuissit.co.uk","25347194","1668030740"),
+                                                                                                                       ("Wang","Graham","Abbott","Mosley","vitae@felis.com","10450092","1654112904"),
+                                                                                                                       ("Uma","Howard","Finch","Oliver","ornare.facilisis@ametconsectetueradipiscing.co.uk","66601365","1644032401"),
+                                                                                                                       ("Tatiana","Breanna","Bray","Williamson","neque.vitae@eu.co.uk","01053446","1654012747"),
+                                                                                                                       ("Charles","Talon","Juarez","Preston","metus.urna@quamCurabitur.edu","31801746","1643020185"),
+                                                                                                                       ("Velma","Porter","Cabrera","Camacho","pede.nonummy@ipsumdolorsit.org","43624111","1622072799");   
 
 insert into Registra values (1,1,35.5,40.5,'2000-05-21'),
 						    (3,1,35.5,40.5,'2000-05-25 10:50:51');
@@ -495,3 +597,10 @@ select * from Actividades;
 
 
 
+delete from animal where ANI_animalid = 1;
+delete from veterinario where vet_veterinarioid = 1;
+delete from cuidador where cui_cuidadorid = 1;
+
+                                                                                                                    
+                                                                                                                       
+                                                                             
