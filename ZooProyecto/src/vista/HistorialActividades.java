@@ -76,7 +76,7 @@ public class HistorialActividades extends javax.swing.JPanel {
                 btnEliminarActionPerformed(evt);
             }
         });
-        pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 100, 40));
+        pnlBarraOpciones.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 100, 40));
 
         add(pnlBarraOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 40));
 
@@ -104,7 +104,7 @@ public class HistorialActividades extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Filtro: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         cmbSeleccion.setLightWeightPopupEnabled(false);
         cmbSeleccion.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -113,10 +113,10 @@ public class HistorialActividades extends javax.swing.JPanel {
                 cmbSeleccionActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 180, 30));
+        jPanel1.add(cmbSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 180, 30));
 
         cmbOpciones.setPreferredSize(new java.awt.Dimension(150, 150));
-        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 180, 30));
+        jPanel1.add(cmbOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 180, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 810, 520));
     }// </editor-fold>//GEN-END:initComponents

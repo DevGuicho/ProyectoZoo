@@ -20,7 +20,7 @@ import vista.PersonalAnimales;
  * @author beatl
  */
 public class ctrlPersonalAnimales implements ActionListener{
-    
+
     private PersonalAnimales pa;
     private DefaultTableModel dtm;
     private ArrayList<Animal> animales;
@@ -29,6 +29,7 @@ public class ctrlPersonalAnimales implements ActionListener{
     private DefaultComboBoxModel dcm;
     private DefaultComboBoxModel dcm2;
     private int filtroSelected;
+
     public ctrlPersonalAnimales(PersonalAnimales pa) {
         this.pa = pa;
         ini();
@@ -36,28 +37,47 @@ public class ctrlPersonalAnimales implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()== pa.cmbFiltro){
-            opciones = Sql.filtros(pa.cmbFiltro.getSelectedIndex());
-            //dcm2.removeAllElements();
-            int l = dcm2.getSize();
-            while(dcm2.getSize()>l){
-                dcm2.removeElementAt(1);
+        if (e.getSource() == pa.cmbFiltro) {
+            if (pa.cmbFiltro.getSelectedIndex() == 3) {
+                int l = dcm2.getSize();
+                while (dcm2.getSize() != 1) {
+                    dcm2.removeElementAt(1);
+                    
+                }
+                pa.cmbSeleccion.addActionListener(this);
+                dcm2.addElement("Local");
+                dcm2.addElement("Foranea");
+                dcm2.addElement("Rescate");
+                this.pa.cmbSeleccion.setModel(dcm2);
+                this.pa.cmbSeleccion.repaint();
+                opciones = null;
+                setTable("todos", 1);
+            } else {
+                opciones = Sql.filtros(pa.cmbFiltro.getSelectedIndex());
+
+                int l = dcm2.getSize();
+                while (dcm2.getSize()!=1 ) {
+                    dcm2.removeElementAt(1);
+                }
+
+                pa.cmbSeleccion.addActionListener(this);
+                for (int i = 0; i < opciones.size(); i++) {
+                    dcm2.addElement(opciones.get(i));
+                }
+                this.pa.cmbSeleccion.setModel(dcm2);
+                this.pa.cmbSeleccion.repaint();
+                opciones = null;
+                setTable("todos", 1);
             }
-            
-            pa.cmbSeleccion.addActionListener(this);
-            for (int i = 0; i < opciones.size(); i++) {
-                dcm2.addElement(opciones.get(i));
+
+        } else if (e.getSource() == pa.cmbSeleccion) {
+            if (pa.cmbSeleccion.getSelectedIndex() != 0) {
+                if(pa.cmbFiltro.getSelectedIndex()==3)
+                    setTable("procedencia", pa.cmbSeleccion.getSelectedIndex());
+                else 
+                    setTable(pa.cmbSeleccion.getSelectedItem().toString(), pa.cmbFiltro.getSelectedIndex());
             }
-            this.pa.cmbSeleccion.setModel(dcm2);
-            this.pa.cmbSeleccion.repaint();
-            opciones = null;
-            setTable("todos",1);
-        }else if(e.getSource() == pa.cmbSeleccion){
-            if(pa.cmbSeleccion.getSelectedIndex()!=0){
-                
-                setTable(pa.cmbSeleccion.getSelectedItem().toString(),pa.cmbFiltro.getSelectedIndex());
-            }
-                
+
         }
     }
     
@@ -70,6 +90,7 @@ public class ctrlPersonalAnimales implements ActionListener{
         dcm.addElement("Seleccione Filtro");
         dcm.addElement("Especie");
         dcm.addElement("Habitat");
+        dcm.addElement("Procedencia");
         dcm2.addElement("Selecciones una Opcion");
         this.pa.cmbFiltro.setModel(dcm);
         this.pa.cmbSeleccion.setModel(dcm2);

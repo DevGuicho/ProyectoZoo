@@ -194,7 +194,7 @@ public class Home extends javax.swing.JPanel {
 
         lblVeterinario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblVeterinario.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 160, 25));
+        jPanel2.add(lblVeterinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 190, 25));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -204,11 +204,11 @@ public class Home extends javax.swing.JPanel {
 
         lblFechaVisita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaVisita.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblFechaVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 160, 25));
+        jPanel2.add(lblFechaVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 190, 25));
 
         lblAnimalRevisado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAnimalRevisado.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(lblAnimalRevisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 160, 25));
+        jPanel2.add(lblAnimalRevisado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 190, 25));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N

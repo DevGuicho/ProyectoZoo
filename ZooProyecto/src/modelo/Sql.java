@@ -278,7 +278,39 @@ public class Sql extends Conexion {
                     System.out.println(e);
                     return animales;
                 }
+            case "procedencia":
+                try {
+                    sql = "call filtroAnimalesProcedencia(?)";
+                    con = getConnection();
+                    CallableStatement sp = con.prepareCall(sql);
+                    sp.setInt(1, sel);
+                    sp.execute();
+                    rs = sp.getResultSet();
 
+                    while (rs.next()) {
+                        a = new Animal();
+                        a.setId(rs.getInt(1));
+                        a.setNombreCuidador(rs.getString(2));
+                        a.setNombreHabitat(rs.getString(3));
+                        a.setNombre(rs.getString(4));
+                        a.setAlimentacion(rs.getString(5));
+                        a.setAnyoCautiverio(rs.getInt(6));
+                        a.setEspecie(rs.getString(7));
+                        a.setSexo(rs.getString(8));
+                        a.setEdad(rs.getInt(9));
+                        a.setPeso(rs.getFloat(10));
+                        a.setObservaciones(rs.getString(11));
+                        animales.add(a);
+                        a = null;
+                    }
+                    return animales;
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error de consulta");
+                    System.out.println(e);
+                    return animales;
+                }
+            
+                
             default:
                 if (sel == 2) {
                     try {
@@ -626,7 +658,8 @@ public class Sql extends Conexion {
                 return opciones;
         }
     }
-
+    
+    
     public static boolean registrarCuidadores(Cuidador c) {
         try {
             sql = "insert into Cuidador (CUI_nombre,CUI_nombre2,CUI_Apellido1,CUI_Apellido2,CUI_sueldo) values (?,?,?,?,?)";
